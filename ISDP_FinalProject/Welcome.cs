@@ -2,16 +2,16 @@ using System.Data.SqlClient;
 
 namespace ISDP_FinalProject
 {
-    public partial class Welcome : Form
+    public partial class FormWelcome : Form
     {
-        public Welcome()
+        public FormWelcome()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
-            SqlConnection sql = new SqlConnection();
+
         }
     }
 }

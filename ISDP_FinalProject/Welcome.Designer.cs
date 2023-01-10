@@ -1,6 +1,6 @@
 ﻿namespace ISDP_FinalProject
 {
-    partial class Welcome
+    partial class FormWelcome
     {
         /// <summary>
         ///  Required designer variable.
@@ -38,13 +38,13 @@
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLogin.Location = new System.Drawing.Point(231, 71);
+            this.btnLogin.Location = new System.Drawing.Point(145, 83);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(205, 44);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login as user";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // pictureBox1
             // 
@@ -59,7 +59,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(284, 194);
+            this.button1.Location = new System.Drawing.Point(196, 217);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 44);
             this.button1.TabIndex = 8;
@@ -69,24 +69,24 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(231, 133);
+            this.button2.Location = new System.Drawing.Point(145, 144);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(205, 44);
             this.button2.TabIndex = 5;
             this.button2.Text = "Login as admin";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnLogin_Click);
+            this.button2.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
-            // Login
+            // FormWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 367);
+            this.ClientSize = new System.Drawing.Size(422, 333);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnLogin);
-            this.Name = "Login";
+            this.Name = "FormWelcome";
             this.Text = "Bullseye Sporting Goods - Welcome";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
