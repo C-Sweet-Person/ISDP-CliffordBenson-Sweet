@@ -28,7 +28,11 @@ namespace ISDP_FinalProject
             {
                 MessageBox.Show("Please enter a valid password matching the criteria.", "notice", MessageBoxButtons.OK);
             }
-            else 
+            else if (txtPswrd.Text != txtPasswordConfirm.Text)
+            {
+                MessageBox.Show("Both passwords do not match. Please enter the password again.", "notice", MessageBoxButtons.OK);
+            }
+            else
             {
                 MessageBox.Show("Password is good", "notice", MessageBoxButtons.OK);
             }
@@ -46,17 +50,7 @@ namespace ISDP_FinalProject
             int capitalLength = 0;
             int specialLength = 0;
             int testInt;
-            bool result = true;
-            //Does it have 8 characters?
-            if (Password.Length < 8)
-            {
-                result = false;
-            }
-            //Does the password start with a letter?
-            else if (int.TryParse(Password[0].ToString(), out testInt))
-                {
-                result = false;
-                }
+            bool result = false;
             //Is there at least one capital letter?
             foreach (char c in Password)
             {
@@ -73,12 +67,31 @@ namespace ISDP_FinalProject
                     specialLength++;
                 }
             }
-            //Did those two foreach pass?
-            if (capitalLength <= 0 && specialLength <= 0)
+            //Does it have 8 characters?
+            if (Password.Length < 8)
             {
                 result = false;
             }
+            //Does the password start with a letter?
+            else if (int.TryParse(Password[0].ToString(), out testInt))
+                {
+                result = false;
+                }
+           
+            //Did those two foreach pass?
+            else if (capitalLength > 0 && specialLength > 0)
+            {
+                result = true;
+            }
+            
+            System.Diagnostics.Debug.WriteLine(specialLength + "" + capitalLength + " Test");
             return result;
+        }
+
+        private void lblShow_Click(object sender, EventArgs e)
+        {
+            bool boolean = txtPswrd.UseSystemPasswordChar == true ? false : true;
+            txtPswrd.UseSystemPasswordChar = boolean;
         }
     }
 }
