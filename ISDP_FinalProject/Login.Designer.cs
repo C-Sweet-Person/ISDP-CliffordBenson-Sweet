@@ -89,6 +89,7 @@ namespace ISDP_FinalProject
             this.label1.Size = new System.Drawing.Size(159, 20);
             this.label1.TabIndex = 12;
             this.label1.Text = "Forget your password?";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 

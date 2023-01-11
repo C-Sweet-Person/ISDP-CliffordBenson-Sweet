@@ -11,7 +11,8 @@ namespace ISDP_FinalProject
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-
+            Login login = new Login();
+            login.ShowDialog();
         }
     }
 }

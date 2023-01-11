@@ -133,6 +133,7 @@ namespace ISDP_FinalProject
             this.picHelp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picHelp.TabIndex = 10;
             this.picHelp.TabStop = false;
+            this.picHelp.Click += new System.EventHandler(this.picHelp_Click);
             // 
             // btnExit
             // 
@@ -154,7 +155,7 @@ namespace ISDP_FinalProject
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // ForgetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -170,7 +171,7 @@ namespace ISDP_FinalProject
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
-            this.Name = "Form1";
+            this.Name = "ForgetPassword";
             this.Text = "Bullseye Sporting Goods - Forget your Password";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHelp)).EndInit();

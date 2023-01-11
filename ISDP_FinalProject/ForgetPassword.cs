@@ -16,5 +16,10 @@ namespace ISDP_FinalProject
         {
             InitializeComponent();
         }
+
+        private void picHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("A password must be at least 8 characters long, start with a letter, contain at least one capital letter and one special character.");
+        }
     }
 }

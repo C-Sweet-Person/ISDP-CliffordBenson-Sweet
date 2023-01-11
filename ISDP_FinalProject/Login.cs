@@ -16,5 +16,11 @@ namespace ISDP_FinalProject
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            ForgetPassword forgetPassword = new ForgetPassword();
+            forgetPassword.ShowDialog();
+        }
     }
 }
