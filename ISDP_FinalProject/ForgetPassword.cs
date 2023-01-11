@@ -24,7 +24,14 @@ namespace ISDP_FinalProject
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            passwordCheck(txtPswrd.Text);
+            if(!passwordCheck(txtPswrd.Text))
+            {
+                MessageBox.Show("Please enter a valid password matching the criteria.", "notice", MessageBoxButtons.OK);
+            }
+            else 
+            {
+                MessageBox.Show("Password is good", "notice", MessageBoxButtons.OK);
+            }
         }
         /*
          * Name: passwordCheck
@@ -35,8 +42,42 @@ namespace ISDP_FinalProject
          */
         private bool passwordCheck(string Password)
         {
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
+            int capitalLength = 0;
+            int specialLength = 0;
+            int testInt;
             bool result = true;
-            
+            //Does it have 8 characters?
+            if (Password.Length < 8)
+            {
+                result = false;
+            }
+            //Does the password start with a letter?
+            else if (int.TryParse(Password[0].ToString(), out testInt))
+                {
+                result = false;
+                }
+            //Is there at least one capital letter?
+            foreach (char c in Password)
+            {
+                if (Char.IsUpper(c) == true)
+                {
+                    capitalLength++;
+                }
+            }
+            //Is at least one character a special character
+            foreach (char c in Password)
+            {
+                if (specialChar.Contains(c) == true)
+                {
+                    specialLength++;
+                }
+            }
+            //Did those two foreach pass?
+            if (capitalLength <= 0 && specialLength <= 0)
+            {
+                result = false;
+            }
             return result;
         }
     }

@@ -40,6 +40,7 @@ namespace ISDP_FinalProject
             this.picHelp = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
+            this.lblShow = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHelp)).BeginInit();
             this.SuspendLayout();
@@ -156,11 +157,22 @@ namespace ISDP_FinalProject
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // lblShow
+            // 
+            this.lblShow.AutoSize = true;
+            this.lblShow.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.lblShow.Location = new System.Drawing.Point(438, 29);
+            this.lblShow.Name = "lblShow";
+            this.lblShow.Size = new System.Drawing.Size(26, 20);
+            this.lblShow.TabIndex = 13;
+            this.lblShow.Text = "◯";
+            // 
             // ForgetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 371);
+            this.Controls.Add(this.lblShow);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.picHelp);
@@ -194,5 +206,6 @@ namespace ISDP_FinalProject
         private PictureBox picHelp;
         private Button btnExit;
         private Button btnReset;
+        private Label lblShow;
     }
 }
