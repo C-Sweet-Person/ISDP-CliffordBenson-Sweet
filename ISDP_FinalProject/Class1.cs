@@ -33,7 +33,6 @@ namespace ISDP_FinalProject
             {
                 cnn.CreateCommand().CommandText = "Help";
                 cnn.BeginTransaction();
-                cnn.EnlistTransaction()
             }
         }
     }
