@@ -22,5 +22,10 @@ namespace ISDP_FinalProject
             ForgetPassword forgetPassword = new ForgetPassword();
             forgetPassword.ShowDialog();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

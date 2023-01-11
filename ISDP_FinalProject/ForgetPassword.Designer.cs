@@ -160,10 +160,10 @@ namespace ISDP_FinalProject
             // lblShow
             // 
             this.lblShow.AutoSize = true;
-            this.lblShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblShow.Location = new System.Drawing.Point(278, 158);
+            this.lblShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblShow.Location = new System.Drawing.Point(272, 157);
             this.lblShow.Name = "lblShow";
-            this.lblShow.Size = new System.Drawing.Size(15, 12);
+            this.lblShow.Size = new System.Drawing.Size(21, 17);
             this.lblShow.TabIndex = 13;
             this.lblShow.Text = "◯";
             this.lblShow.Click += new System.EventHandler(this.lblShow_Click);
