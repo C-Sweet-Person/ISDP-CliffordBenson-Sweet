@@ -21,5 +21,23 @@ namespace ISDP_FinalProject
         {
             MessageBox.Show("A password must be at least 8 characters long, start with a letter, contain at least one capital letter and one special character.");
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            passwordCheck(txtPswrd.Text);
+        }
+        /*
+         * Name: passwordCheck
+         * Return: bool
+         * Arguements: String
+         * Description: Take a password, give it a number of tests,
+         * depending if that password passes, returns true. Else, return false.
+         */
+        private bool passwordCheck(string Password)
+        {
+            bool result = true;
+            
+            return result;
+        }
     }
 }
