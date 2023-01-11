@@ -1,6 +1,6 @@
 -- Bullseye DB SQL Script
--- version 1.0
--- January 3, 2023
+-- version 1.1
+-- January 10, 2023
 -- 
 
 -- ********************************************
@@ -102,7 +102,7 @@ CREATE TABLE `site` (
 --
 CREATE TABLE `employee` (
   `employeeID` int(11) NOT NULL PRIMARY KEY,
-  `username` varchar(32) NOT NULL,
+  `username` varchar(32) NOT NULL UNIQUE,
   `password` varchar(32) NOT NULL,
   `firstName` varchar(20) NOT NULL,
   `lastName` varchar(20) NOT NULL,
@@ -115,7 +115,6 @@ CREATE TABLE `employee` (
   FOREIGN KEY(`siteID`) REFERENCES site(`siteID`)
 );
 
-
 --
 -- Create table `permissions`
 --
@@ -123,17 +122,16 @@ CREATE TABLE `permission` (
   `permissionID` varchar(20) NOT NULL PRIMARY KEY
 );
 
-
 --
 -- Create table `user_permissions`
 --
 CREATE TABLE `user_permission` (
   `employeeID`int(11), 
   `permissionID` varchar(20),
+  PRIMARY KEY (`employeeID`, `permissionID`),  
   FOREIGN KEY(`employeeID`) REFERENCES employee(`employeeID`),
   FOREIGN KEY(`permissionID`) REFERENCES permission(`permissionID`)
 );
-
 
 --
 -- Create table `supplier`
