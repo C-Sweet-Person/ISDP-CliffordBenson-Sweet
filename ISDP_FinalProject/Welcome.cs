@@ -14,5 +14,9 @@ namespace ISDP_FinalProject
             Login login = new Login();
             login.ShowDialog();
         }
+        private void BtnUserLogin_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("localhost:3000/login.php");
+        }
     }
 }

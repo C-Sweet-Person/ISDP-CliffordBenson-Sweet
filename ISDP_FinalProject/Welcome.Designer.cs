@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnUserLogin = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnLoginAdmin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnLogin
+            // btnUserLogin
             // 
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLogin.Location = new System.Drawing.Point(145, 83);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(205, 44);
-            this.btnLogin.TabIndex = 5;
-            this.btnLogin.Text = "Login as user";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
+            this.btnUserLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUserLogin.Location = new System.Drawing.Point(145, 83);
+            this.btnUserLogin.Name = "btnUserLogin";
+            this.btnUserLogin.Size = new System.Drawing.Size(205, 44);
+            this.btnUserLogin.TabIndex = 5;
+            this.btnUserLogin.Text = "Login as user";
+            this.btnUserLogin.UseVisualStyleBackColor = true;
+            this.btnUserLogin.Click += new System.EventHandler(this.BtnUserLogin_Click);
             // 
             // pictureBox1
             // 
@@ -66,16 +66,16 @@
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnLoginAdmin
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(145, 144);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(205, 44);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Login as admin";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.BtnLogin_Click);
+            this.btnLoginAdmin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLoginAdmin.Location = new System.Drawing.Point(145, 144);
+            this.btnLoginAdmin.Name = "btnLoginAdmin";
+            this.btnLoginAdmin.Size = new System.Drawing.Size(205, 44);
+            this.btnLoginAdmin.TabIndex = 5;
+            this.btnLoginAdmin.Text = "Login as admin";
+            this.btnLoginAdmin.UseVisualStyleBackColor = true;
+            this.btnLoginAdmin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // FormWelcome
             // 
@@ -84,8 +84,8 @@
             this.ClientSize = new System.Drawing.Size(422, 333);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.btnLoginAdmin);
+            this.Controls.Add(this.btnUserLogin);
             this.Name = "FormWelcome";
             this.Text = "Bullseye Sporting Goods - Welcome";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -94,9 +94,9 @@
         }
 
         #endregion
-        private Button btnLogin;
+        private Button btnUserLogin;
         private PictureBox pictureBox1;
         private Button button1;
-        private Button button2;
+        private Button btnLoginAdmin;
     }
 }
