@@ -17,7 +17,7 @@ namespace ISDP_FinalProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormWelcome());
+            Application.Run(new DashboardAdmin());
         }
     }
 
