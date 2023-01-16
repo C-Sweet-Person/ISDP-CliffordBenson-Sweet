@@ -17,7 +17,12 @@ namespace ISDP_FinalProject
         {
             InitializeComponent();
         }
-
-        
+        /*
+         * Need to find out way to make datagrid info visible via DBConnector function (GetUsers) and (GetPermissions)
+         * And of course move those functions into their own function.
+         */
+        private void btn_refreshInfo_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
