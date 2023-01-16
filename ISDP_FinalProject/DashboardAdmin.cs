@@ -18,15 +18,6 @@ namespace ISDP_FinalProject
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DBConnector db = new DBConnector();
-           List<string> list = db.GetResults();
-            foreach (string s in list)
-            {
-                MessageBox.Show(s, "Notice");
-            }
-           
-        }
+        
     }
 }
