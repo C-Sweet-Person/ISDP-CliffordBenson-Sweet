@@ -33,7 +33,7 @@ namespace ISDP_FinalProject
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblForget = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -81,16 +81,16 @@ namespace ISDP_FinalProject
             this.button2.Text = "Exit";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblForget
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(150, 345);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Forget your password?";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblForget.AutoSize = true;
+            this.lblForget.ForeColor = System.Drawing.Color.Blue;
+            this.lblForget.Location = new System.Drawing.Point(150, 345);
+            this.lblForget.Name = "lblForget";
+            this.lblForget.Size = new System.Drawing.Size(159, 20);
+            this.lblForget.TabIndex = 12;
+            this.lblForget.Text = "Forget your password?";
+            this.lblForget.Click += new System.EventHandler(this.lblForget_Click);
             // 
             // label2
             // 
@@ -137,7 +137,7 @@ namespace ISDP_FinalProject
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblForget);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.pictureBox2);
@@ -157,7 +157,7 @@ namespace ISDP_FinalProject
         private PictureBox pictureBox2;
         private Button button1;
         private Button button2;
-        private Label label1;
+        private Label lblForget;
         private Label label2;
         private Label label3;
         private TextBox txtUsername;

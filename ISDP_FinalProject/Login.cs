@@ -16,16 +16,18 @@ namespace ISDP_FinalProject
         {
             InitializeComponent();
         }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            DBConnector db = new DBConnector();
+            db.login(username, password);
+        }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void lblForget_Click(object sender, EventArgs e)
         {
             ForgetPassword forgetPassword = new ForgetPassword();
             forgetPassword.ShowDialog();
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
