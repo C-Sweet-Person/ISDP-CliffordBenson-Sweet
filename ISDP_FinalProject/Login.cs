@@ -21,7 +21,14 @@ namespace ISDP_FinalProject
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             DBConnector db = new DBConnector();
-            db.login(username, password);
+            if (db.login(username, password))
+            {
+                MessageBox.Show("Welcome " + username);
+            }
+            else
+            {
+                MessageBox.Show("Invalid combination of username/password.");
+            }
         }
 
         private void lblForget_Click(object sender, EventArgs e)

@@ -56,14 +56,19 @@ namespace ISDP_FinalProject
             try
             {
                 cnn.Open();
-                MessageBox.Show("Is the password correct?");
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = String.Format("select username, password,firstName,lastName from employee where username = '{0}'",username);
                 using MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    string s = rdr.GetString(1) + " " + rdr.GetString(2) + " " + rdr.GetString(3);
-                    MessageBox.Show(s,"Error");
+                    if (rdr.GetString(0) == password)
+                    {
+                        return true;
+                    }
+                else
+                    {
+                        return false;
+                    }
                 }
                 cnn.Close();
             }
