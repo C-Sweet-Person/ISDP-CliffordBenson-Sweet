@@ -12,6 +12,7 @@ namespace ISDP_FinalProject
 {
     public partial class Login : Form
     {
+        string userLogged;
         public Login()
         {
             InitializeComponent();
@@ -24,6 +25,9 @@ namespace ISDP_FinalProject
             if (db.login(username, password))
             {
                 MessageBox.Show("Welcome " + username);
+                userLogged = username;
+                DashboardAdmin AdminDash = new DashboardAdmin();
+                AdminDash.Show();
             }
             else
             {

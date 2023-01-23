@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
+
 namespace ISDP_FinalProject
 {
     internal class DBConnector
@@ -13,7 +15,7 @@ namespace ISDP_FinalProject
         public MySqlConnection cnn;
         public DBConnector()
         {
-            connectionString = "Server=localhost;Database=bullseyedb2023;Uid=root;password=mysql";
+            connectionString = "Server=127.0.0.1;Database=bullseyedb2023;Uid=root;port=3306;password=mysql";
             cnn = new MySqlConnection(connectionString);
         }
         /*
@@ -44,20 +46,20 @@ namespace ISDP_FinalProject
             }
             return results;
         }
-         /*
-          * This part will be the login.
-          * It will get the username and password and see if they match.
-          * If they do, return a true boolean.
-          * Else, return false.
-          */
-         public bool login(string username, string password)
+        /*
+         * This part will be the login.
+         * It will get the username and password and see if they match.
+         * If they do, return a true boolean.
+         * Else, return false.
+         */
+        public bool login(string username, string password)
         {
             string passwordTest;
             try
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = String.Format("select username, password,firstName,lastName from employee where username = '{0}'",username);
+                cmd.CommandText = String.Format("select username, password,firstName,lastName from employee where username = '{0}'", username);
                 using MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -65,7 +67,7 @@ namespace ISDP_FinalProject
                     {
                         return true;
                     }
-                else
+                    else
                     {
                         return false;
                     }
@@ -78,6 +80,6 @@ namespace ISDP_FinalProject
             }
             return false;
         }
-      
+
     }
 }

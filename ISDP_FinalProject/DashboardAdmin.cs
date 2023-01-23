@@ -23,6 +23,9 @@ namespace ISDP_FinalProject
          */
         private void btn_refreshInfo_Click(object sender, EventArgs e)
         {
+           DBConnector db = new DBConnector();
+           employee employee1 = employee.GetEmployeeByUsername("admin");
+           MessageBox.Show(employee1.returnAll());
         }
     }
 }

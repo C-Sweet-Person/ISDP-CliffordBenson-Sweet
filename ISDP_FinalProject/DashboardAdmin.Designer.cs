@@ -31,8 +31,8 @@ namespace ISDP_FinalProject
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabUsers = new System.Windows.Forms.TabPage();
-            this.tabPermissions = new System.Windows.Forms.TabPage();
             this.dataGridUsers = new System.Windows.Forms.DataGridView();
+            this.tabPermissions = new System.Windows.Forms.TabPage();
             this.dataGridPermissions = new System.Windows.Forms.DataGridView();
             this.btn_newUser = new System.Windows.Forms.Button();
             this.btn_removeUser = new System.Windows.Forms.Button();
@@ -40,10 +40,11 @@ namespace ISDP_FinalProject
             this.btn_refreshInfo = new System.Windows.Forms.Button();
             this.btn_editUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
-            this.tabPermissions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
+            this.tabPermissions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPermissions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +69,16 @@ namespace ISDP_FinalProject
             this.tabUsers.Text = "Users";
             this.tabUsers.UseVisualStyleBackColor = true;
             // 
+            // dataGridUsers
+            // 
+            this.dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridUsers.Location = new System.Drawing.Point(6, 5);
+            this.dataGridUsers.Name = "dataGridUsers";
+            this.dataGridUsers.RowHeadersWidth = 51;
+            this.dataGridUsers.RowTemplate.Height = 29;
+            this.dataGridUsers.Size = new System.Drawing.Size(746, 294);
+            this.dataGridUsers.TabIndex = 0;
+            // 
             // tabPermissions
             // 
             this.tabPermissions.Controls.Add(this.dataGridPermissions);
@@ -78,16 +89,6 @@ namespace ISDP_FinalProject
             this.tabPermissions.TabIndex = 1;
             this.tabPermissions.Text = "Permissions";
             this.tabPermissions.UseVisualStyleBackColor = true;
-            // 
-            // dataGridUsers
-            // 
-            this.dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridUsers.Location = new System.Drawing.Point(6, 5);
-            this.dataGridUsers.Name = "dataGridUsers";
-            this.dataGridUsers.RowHeadersWidth = 51;
-            this.dataGridUsers.RowTemplate.Height = 29;
-            this.dataGridUsers.Size = new System.Drawing.Size(746, 294);
-            this.dataGridUsers.TabIndex = 0;
             // 
             // dataGridPermissions
             // 
@@ -155,11 +156,20 @@ namespace ISDP_FinalProject
             this.label1.TabIndex = 6;
             this.label1.Text = "User Management (Admin Section)";
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(545, 465);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(150, 114);
+            this.checkedListBox1.TabIndex = 7;
+            // 
             // DashboardAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_editUser);
             this.Controls.Add(this.btn_refreshInfo);
@@ -171,8 +181,8 @@ namespace ISDP_FinalProject
             this.Text = "DashboardAdmin";
             this.tabControl1.ResumeLayout(false);
             this.tabUsers.ResumeLayout(false);
-            this.tabPermissions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).EndInit();
+            this.tabPermissions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPermissions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -192,5 +202,6 @@ namespace ISDP_FinalProject
         private Button btn_refreshInfo;
         private Button btn_editUser;
         private Label label1;
+        private CheckedListBox checkedListBox1;
     }
 }
