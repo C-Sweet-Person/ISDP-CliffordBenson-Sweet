@@ -40,7 +40,6 @@ namespace ISDP_FinalProject
             this.btn_refreshInfo = new System.Windows.Forms.Button();
             this.btn_editUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
@@ -71,11 +70,16 @@ namespace ISDP_FinalProject
             // 
             // dataGridUsers
             // 
+            this.dataGridUsers.AllowUserToAddRows = false;
+            this.dataGridUsers.AllowUserToDeleteRows = false;
+            this.dataGridUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridUsers.Location = new System.Drawing.Point(6, 5);
             this.dataGridUsers.Name = "dataGridUsers";
             this.dataGridUsers.RowHeadersWidth = 51;
             this.dataGridUsers.RowTemplate.Height = 29;
+            this.dataGridUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridUsers.Size = new System.Drawing.Size(746, 294);
             this.dataGridUsers.TabIndex = 0;
             // 
@@ -117,6 +121,7 @@ namespace ISDP_FinalProject
             this.btn_removeUser.TabIndex = 2;
             this.btn_removeUser.Text = "Remove User";
             this.btn_removeUser.UseVisualStyleBackColor = true;
+            this.btn_removeUser.Click += new System.EventHandler(this.btn_removeUser_Click);
             // 
             // btn_closeAdminDashboard
             // 
@@ -145,6 +150,7 @@ namespace ISDP_FinalProject
             this.btn_editUser.TabIndex = 5;
             this.btn_editUser.Text = "Edit";
             this.btn_editUser.UseVisualStyleBackColor = true;
+            this.btn_editUser.Click += new System.EventHandler(this.btn_editUser_Click);
             // 
             // label1
             // 
@@ -156,20 +162,11 @@ namespace ISDP_FinalProject
             this.label1.TabIndex = 6;
             this.label1.Text = "User Management (Admin Section)";
             // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(545, 465);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(150, 114);
-            this.checkedListBox1.TabIndex = 7;
-            // 
             // DashboardAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 488);
-            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_editUser);
             this.Controls.Add(this.btn_refreshInfo);
@@ -202,6 +199,5 @@ namespace ISDP_FinalProject
         private Button btn_refreshInfo;
         private Button btn_editUser;
         private Label label1;
-        private CheckedListBox checkedListBox1;
     }
 }
