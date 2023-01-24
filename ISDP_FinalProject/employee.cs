@@ -34,6 +34,12 @@ namespace ISDP_FinalProject
             this.siteID = siteID;
 
         }
+        /*
+         * This section contains all
+         * of the getters for each of
+         * the properties of the class
+         * ***** START OF GETTER SECTION *****
+         */
         public int getID()
         { return this.id; }
         public string getUsername()
@@ -71,6 +77,12 @@ namespace ISDP_FinalProject
             ret[9] = Convert.ToString(getPositionID());
             return ret;
         }
+        /*
+         * ***** END OF GETTER SECTION ******
+         * 
+         */
+
+        //This converts a boolean value to a int.
         public int boolConvert(bool boolean)
         {
             int booleanCon;
@@ -84,6 +96,11 @@ namespace ISDP_FinalProject
             }
             return booleanCon;
         }
+        //
+        //
+        //Gets just the username for each employee.
+        //
+        //
         public static List<String> GetUsernames()
         {
             List<String> users = new List<String>();
@@ -100,6 +117,11 @@ namespace ISDP_FinalProject
             }
             return users;
         }
+        //
+        //
+        //Gets the IDS of all of the employees.
+        //
+        //
         public static List<int> GetIDs()
         {
             List<int> IDs = new List<int>();
@@ -116,10 +138,20 @@ namespace ISDP_FinalProject
             }
             return IDs;
         }
+        //
+        //
+        //Gets the latest ID and adds one to it.
+        //
+        //
         public static int newID()
         {
-            return employee.GetIDs()[GetIDs().Count - 2] + 1;
+            return employee.GetIDs()[GetIDs().Count - 1] + 1;
         }
+        //
+        //
+        //Gets an employee via their username.
+        //
+        //
         public static employee GetEmployeeByUsername(string username)
         {
             employee obj = null;
@@ -152,6 +184,11 @@ namespace ISDP_FinalProject
             }
             return obj;
         }
+        //
+        //
+        //Adds an employee based on the given worker sent to it.
+        //
+        //
         public static bool addEmployee(employee worker)
         {
             try
@@ -169,9 +206,19 @@ namespace ISDP_FinalProject
             }
             return true;
         }
+        //
+        //
+        // Edit an employee given an employee.
+        //
+        //
         public static bool EditEmployee(employee worker)
         {
-
+            DBConnector db = new DBConnector();
+            MySqlConnection cnn = db.cnn;
+            MySqlCommand cmd = cnn.CreateCommand();
+            cnn.Open();
+            cmd.CommandText = String.Format("update employee set username = '{0}', password = '{1}', firstName = '{2}', lastName = '{3}', email = '{4}', active = {5}, locked = {6}, positionID = {7}, siteID = {8} where employeeID = {9}", worker.getUsername(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.getEmail(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), employee.newID());
+            cmd.ExecuteNonQuery();
             return true;
         }
         public static bool deleteEmployee(string username)
