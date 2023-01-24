@@ -78,11 +78,21 @@ namespace ISDP_FinalProject
             if (employee.deleteEmployee(username))
             {
                 MessageBox.Show(username + " deleted sucessfully", "Notice");
+                refresh();
+                DashboardAdmin dashboardAdmin = new DashboardAdmin();
+                dashboardAdmin.btn_editUser.Enabled = false;
+                dashboardAdmin.Show();
             }
             else
             {
                 MessageBox.Show(username + " could not be deleted.", "Error");
             }
+        }
+
+        private void btn_newUser_Click(object sender, EventArgs e)
+        {
+            AddUser addUser = new AddUser();
+            addUser.ShowDialog();
         }
     }
 }

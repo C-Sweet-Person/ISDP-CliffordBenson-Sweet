@@ -71,6 +71,19 @@ namespace ISDP_FinalProject
             ret[9] = Convert.ToString(getPositionID());
             return ret;
         }
+        public int boolConvert(bool boolean)
+        {
+            int booleanCon;
+            if (boolean)
+            {
+                booleanCon = 1;
+            }
+            else
+            {
+                booleanCon = 0;
+            }
+            return booleanCon;
+        }
         public static List<String> GetUsernames()
         {
             List<String> users = new List<String>();
@@ -86,6 +99,26 @@ namespace ISDP_FinalProject
                 users.Add(uName);
             }
             return users;
+        }
+        public static List<int> GetIDs()
+        {
+            List<int> IDs = new List<int>();
+            DBConnector db = new DBConnector();
+            MySqlConnection cnn = db.cnn;
+            cnn.Open();
+            MySqlCommand cmd = cnn.CreateCommand();
+            cmd.CommandText = "select employeeID from employee";
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                IDs.Add(id);
+            }
+            return IDs;
+        }
+        public static int newID()
+        {
+            return employee.GetIDs()[GetIDs().Count - 2] + 1;
         }
         public static employee GetEmployeeByUsername(string username)
         {
@@ -118,6 +151,28 @@ namespace ISDP_FinalProject
                 throw new Exception(ex.Message);
             }
             return obj;
+        }
+        public static bool addEmployee(employee worker)
+        {
+            try
+            {
+                DBConnector db = new DBConnector();
+                MySqlConnection cnn = db.cnn;
+                MySqlCommand cmd = cnn.CreateCommand();
+                cnn.Open();
+                cmd.CommandText = String.Format("insert into employee(employeeID, username,password,firstName,lastName,email,active,locked,positionID,siteID) VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},{8},{9})",employee.newID(), worker.getUsername(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.getEmail(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID());
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return true;
+        }
+        public static bool EditEmployee(employee worker)
+        {
+
+            return true;
         }
         public static bool deleteEmployee(string username)
         {

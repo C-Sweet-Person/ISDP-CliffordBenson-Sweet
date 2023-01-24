@@ -112,6 +112,7 @@ namespace ISDP_FinalProject
             this.btn_newUser.TabIndex = 1;
             this.btn_newUser.Text = "Add new user";
             this.btn_newUser.UseVisualStyleBackColor = true;
+            this.btn_newUser.Click += new System.EventHandler(this.btn_newUser_Click);
             // 
             // btn_removeUser
             // 
