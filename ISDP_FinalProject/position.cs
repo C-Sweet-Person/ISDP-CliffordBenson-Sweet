@@ -20,6 +20,20 @@ namespace ISDP_FinalProject
         { return this.positionID; }
         public string getPermissionLevel()
         { return this.permissionLevel; }
+        public static string getPermissionLevelByID(int id)
+        {
+            string level = null;
+            DBConnector connector = new DBConnector();
+            connector.cnn.Open();
+            MySqlCommand cmd = connector.cnn.CreateCommand();
+            cmd.CommandText = string.Format("select permissionLevel from posn where positionID = {0}", id);
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                level = rdr.GetString(0);
+            }
+            return level;
+        }
         public static List<position> GetPositions()
         {
             List<position> positions = new List<position>();

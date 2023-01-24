@@ -28,6 +28,7 @@ namespace ISDP_FinalProject
                 userLogged = username;
                 DashboardAdmin AdminDash = new DashboardAdmin();
                 AdminDash.Show();
+                this.Hide();
             }
             else
             {

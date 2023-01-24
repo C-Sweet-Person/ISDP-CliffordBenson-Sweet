@@ -31,6 +31,12 @@ namespace ISDP_FinalProject
             if (dataGridUsers.SelectedRows.Count == 1)
             {
                 MessageBox.Show((string)dataGridUsers.SelectedCells[0].Value, "EmployeeID");
+                string username = (string)dataGridUsers.SelectedCells[1].Value;
+                employee selected = employee.GetEmployeeByUsername(username);
+                EditUser editUser = new EditUser();
+                editUser.ChangeText(selected);
+                editUser.ShowDialog();
+                refresh();
             }
             else if (dataGridUsers.SelectedRows.Count <= 0)
             {
@@ -79,9 +85,6 @@ namespace ISDP_FinalProject
             {
                 MessageBox.Show(username + " deleted sucessfully", "Notice");
                 refresh();
-                DashboardAdmin dashboardAdmin = new DashboardAdmin();
-                dashboardAdmin.btn_editUser.Enabled = false;
-                dashboardAdmin.Show();
             }
             else
             {
@@ -93,6 +96,12 @@ namespace ISDP_FinalProject
         {
             AddUser addUser = new AddUser();
             addUser.ShowDialog();
+            refresh();
+        }
+
+        private void btn_closeAdminDashboard_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

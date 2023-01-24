@@ -24,6 +24,20 @@ namespace ISDP_FinalProject
         {
             return siteName;
         }
+        public static string getSiteNameByID(int id)
+        {
+            string name = null;
+            DBConnector connector = new DBConnector();
+            connector.cnn.Open();
+            MySqlCommand cmd = connector.cnn.CreateCommand();
+            cmd.CommandText = string.Format("select name from site where siteID = {0}",id);
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                name = rdr.GetString(0);
+            }
+            return name;
+        }
         public static List<site> GetSites()
         {
             List<site> sites = new List<site>();

@@ -132,6 +132,7 @@ namespace ISDP_FinalProject
             this.btn_closeAdminDashboard.TabIndex = 3;
             this.btn_closeAdminDashboard.Text = "Close";
             this.btn_closeAdminDashboard.UseVisualStyleBackColor = true;
+            this.btn_closeAdminDashboard.Click += new System.EventHandler(this.btn_closeAdminDashboard_Click);
             // 
             // btn_refreshInfo
             // 

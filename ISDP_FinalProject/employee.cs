@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISDP_FinalProject
 {
-    internal class employee
+    public class employee
     {
         private int id;
         private string username;
@@ -145,7 +145,7 @@ namespace ISDP_FinalProject
         //
         public static int newID()
         {
-            return employee.GetIDs()[GetIDs().Count - 1] + 1;
+            return employee.GetIDs()[GetIDs().Count - 2] + 1;
         }
         //
         //
@@ -217,7 +217,7 @@ namespace ISDP_FinalProject
             MySqlConnection cnn = db.cnn;
             MySqlCommand cmd = cnn.CreateCommand();
             cnn.Open();
-            cmd.CommandText = String.Format("update employee set username = '{0}', password = '{1}', firstName = '{2}', lastName = '{3}', email = '{4}', active = {5}, locked = {6}, positionID = {7}, siteID = {8} where employeeID = {9}", worker.getUsername(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.getEmail(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), employee.newID());
+            cmd.CommandText = String.Format("update employee set username = '{0}', password = '{1}', firstName = '{2}', lastName = '{3}', email = '{4}', active = {5}, locked = {6}, positionID = {7}, siteID = {8} where employeeID = {9}", worker.getUsername(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.getEmail(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
             cmd.ExecuteNonQuery();
             return true;
         }
