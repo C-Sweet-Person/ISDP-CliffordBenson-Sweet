@@ -197,7 +197,7 @@ namespace ISDP_FinalProject
                 MySqlConnection cnn = db.cnn;
                 MySqlCommand cmd = cnn.CreateCommand();
                 cnn.Open();
-                cmd.CommandText = String.Format("insert into employee(employeeID, username,password,firstName,lastName,email,active,locked,positionID,siteID) VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},{8},{9})",employee.newID(), worker.getUsername(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.getEmail(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID());
+                cmd.CommandText = String.Format("insert into employee(username,password,firstName,lastName,email,active,locked,positionID,siteID) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},{8})",worker.getUsername(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.getEmail(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID());
                 cmd.ExecuteNonQuery();
             }
             catch(Exception ex)
