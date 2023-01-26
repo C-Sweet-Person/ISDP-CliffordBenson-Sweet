@@ -1,6 +1,7 @@
 RewriteEngine on
 
-RewriteRule ^User/login$ api/UserService.php [NC]
+RewriteRule ^User/login$ API/UserService.php [NC]
+RewriteRule ^User/loadInventory$ API/InventoryService.php [NC]
 #RewriteRule ^User/Login/^\d{3,40}$ DB/UserService.php?username=^\d{3,40} [NC]
-#RewriteRule ^User/Register/^\d{3,40}$ api/UserService.php?username=^\d{3,40} [NC]
+#RewriteRule ^User/Register/^\d{3,40}$ API/UserService.php?username=^\d{3,40} [NC]
 

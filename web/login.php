@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="style.css"></link>
 </head>
 <body>
 <img src="img/Logo.jpg" width="100px" height="100px"><br>
