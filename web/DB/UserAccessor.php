@@ -1,12 +1,18 @@
 <?php
-require_once '../DB/DatabaseConnecter.php';
-require_once ('../Entity/User.php');
+require_once 'DatabaseConnecter.php';
+require_once '../Entity/User.php';
 
 class UserAccessor {
 
     private $getByIDStatementString = "select * from employee where username = :user";
+    private $deleteStatementString = "delete from QuizAppUser where username = :user";
+    private $insertStatementString = "insert INTO QuizAppUser values (:user, :pass, :perm)";
+    private $updateStatementString = "update QuizAppUser set password = :pass, permissionLevel = :perm where username = :user";
     private $conn = NULL;
     private $getByIDStatement = NULL;
+    private $deleteStatement = NULL;
+    private $insertStatement = NULL;
+    private $updateStatement = NULL;
 
     // Constructor will throw exception if there is a problem with ConnectionManager,
     // or with the prepared statements.
@@ -19,7 +25,22 @@ class UserAccessor {
         }
         $this->getByIDStatement = $this->conn->prepare($this->getByIDStatementString);
         if (is_null($this->getByIDStatement)) {
-            throw new Exception("bad statement: '" . $this->getByIDStatementString . "'");
+            throw new Exception("bad statement: '" . $this->getAllStatementString . "'");
+        }
+
+        $this->deleteStatement = $this->conn->prepare($this->deleteStatementString);
+        if (is_null($this->deleteStatement)) {
+            throw new Exception("bad statement: '" . $this->deleteStatementString . "'");
+        }
+
+        $this->insertStatement = $this->conn->prepare($this->insertStatementString);
+        if (is_null($this->insertStatement)) {
+            throw new Exception("bad statement: '" . $this->getAllStatementString . "'");
+        }
+
+        $this->updateStatement = $this->conn->prepare($this->updateStatementString);
+        if (is_null($this->updateStatement)) {
+            throw new Exception("bad statement: '" . $this->updateStatementString . "'");
         }
     }
 
@@ -84,17 +105,17 @@ class UserAccessor {
             $dbresults = $this->getByIDStatement->fetch(PDO::FETCH_ASSOC); // not fetchAll
 
             if ($dbresults) {
-                $id = $dbresults['employeeID'];
+                $ID = $dbresults['employeeID'];
                 $user = $dbresults['username'];
                 $pass = $dbresults['password'];
-                $fname = $dbresults['firstName'];
-                $lname = $dbresults['lastName'];
+                $firstName = $dbresults['employeeID'];
+                $lastName = $dbresults['employeeID'];
                 $email = $dbresults['email'];
                 $active = $dbresults['active'];
                 $locked = $dbresults['locked'];
                 $positionID = $dbresults['positionID'];
                 $siteID = $dbresults['siteID'];
-                $usern = new User($id,$user, $pass, $fname,$lname,$email,$active,$locked,$positionID,$siteID);
+                $usern = new User($ID, $user, $pass,$firstName,$lastName,$email,$active,$locked,$positionID,$siteID);
                 array_push($result, $usern);
             }
         }
@@ -106,7 +127,6 @@ class UserAccessor {
                 $this->getByIDStatement->closeCursor();
             }
         }
-
         return $result;
     }
 
