@@ -1,41 +1,31 @@
 <?php
 session_start();
-require_once '../DB/UserAccessor.php';
+require_once '../DB/ItemAccessor.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-if ($method === "POST")
+if ($method === "GET")
 {
-        doLogin();
+        doGrab();
 }
 
 
 
 
-function doLogin(){
-    $bool = 0;
+function doGrab(){
     try {
         $body = file_get_contents('php://input');
-        $contents = json_decode($body, true);
-        $username = $contents["username"];
-        $password = $contents["password"];
-        $uc = new UserAccessor();
-        $user = $uc->getUserByUsername($username);
+        $ic = new itemAccessor();
+        $items = $ic->getInventoryItems("select * from item");
         //$passReal = password_hash($contents['password'], PASSWORD_DEFAULT);
-    if (strcmp($password,$user[0]->getPassword()) === 0) {
-        $bool = 1;
-    } else {
-        $bool = 0;
-    }
     //$passwords = [$user->getID(), $user->getUsername(), $user->getPassword(), $user->getEmail(), $bool];
     //$resultsA = json_encode($passwords, JSON_NUMERIC_CHECK);
-    $success = true;
-    $_SESSION["username"] = json_encode($user, JSON_NUMERIC_CHECK);
+        $result = json_encode($items,JSON_NUMERIC_CHECK);
 } 
 catch (PDOException $e) {
-    echo $e->getMessage() . "Help" . print_r($user);
+        echo $e->getMessage();
     
 }
-echo $bool;
+echo json_encode($ic->getInventoryItems("select * from item"), JSON_NUMERIC_CHECK);
 }
 
 function doRegister(){
