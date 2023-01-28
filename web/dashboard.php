@@ -1,5 +1,6 @@
 <html>
     <head>
+        <?php ?>
         <style>
             #tableItems th, td, table 
             {
