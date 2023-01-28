@@ -86,7 +86,7 @@ console.log(difference);
     let tableItem = "";
     tableItem += "<tr>";
     tableItem += "<td><input type='checkbox' class='checkItem'></td>";
-    tableItem += `<td>${items[i]['itemID']}</td>`;
+    tableItem += `<td>${items[i]['itemID']}AA</td>`;
     tableItem += `<td>${items[i]['name']}</td>`;
     tableItem += `<td>${items[i]['description']}</td>`;
     tableItem += `<td>${items[i]['category']}</td>`;

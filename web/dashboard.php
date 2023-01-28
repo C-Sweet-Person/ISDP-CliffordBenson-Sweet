@@ -27,6 +27,7 @@
 <table>
 </table>
 <p id="currentIndex"></p>
+<p>HELP</p>
 <button id="Previous">Prev</button>
 <button id="Forward">Next</button>
 <script src="Dashboard.js"></script>
