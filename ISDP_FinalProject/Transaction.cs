@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,15 +30,19 @@ namespace ISDP_FinalProject
             this.employeeID = employeeID;
             this.notes = notes;
         }
-        public bool createTransaction(employee worker)
+        public bool createTransaction()
         {
-            if (worker == null)
+            try
             {
-                MessageBox.Show("This shouldn't be able to happen.");
-            }
-            else
+                DBConnector db = new DBConnector();
+                MySqlConnection cnn = db.cnn;
+                MySqlCommand cmd = cnn.CreateCommand();
+                cnn.Open();
+                cmd.CommandText = String.Format("insert into txnAudit (")
+                }
+            catch (Exception ex)
             {
-               
+                throw ex;
             }
             return true;
         }
