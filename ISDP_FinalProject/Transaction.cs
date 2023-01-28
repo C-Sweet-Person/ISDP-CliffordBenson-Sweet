@@ -28,7 +28,18 @@ namespace ISDP_FinalProject
             this.deliveryID = deliveryID;
             this.employeeID = employeeID;
             this.notes = notes;
-
+        }
+        public bool createTransaction(employee worker)
+        {
+            if (worker == null)
+            {
+                MessageBox.Show("This shouldn't be able to happen.");
+            }
+            else
+            {
+               
+            }
+            return true;
         }
     }
 }
