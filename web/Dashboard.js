@@ -85,6 +85,7 @@ console.log(difference);
   for (let i = currentIndex; i < currentIndex+100-difference; i++) {
     let tableItem = "";
     tableItem += "<tr>";
+    tableItem += "<td><input type='checkbox' class='checkItem'></td>";
     tableItem += `<td>${items[i]['itemID']}</td>`;
     tableItem += `<td>${items[i]['name']}</td>`;
     tableItem += `<td>${items[i]['description']}</td>`;

@@ -25,9 +25,10 @@
 </div>
 <table>
 </table>
-<script src="Dashboard.js"></script>
 <p id="currentIndex"></p>
 <button id="Previous">Prev</button>
 <button id="Forward">Next</button>
+<script src="Dashboard.js"></script>
+
 </body>
 </html>
