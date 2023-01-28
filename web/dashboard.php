@@ -29,6 +29,7 @@
 <p id="currentIndex"></p>
 <button id="Previous">Prev</button>
 <button id="Forward">Next</button>
+<p>HELP</p>
 <script src="Dashboard.js"></script>
 
 </body>
