@@ -35,26 +35,24 @@ namespace ISDP_FinalProject
         {
             List<position> positions = position.GetPositions();
             List<site> sites = site.GetSites();
-            string username = txtUsername.Text;
             string password = txtPassword.Text;
             string firstName = txtFirstname.Text;
             string lastName = txtLastname.Text;
-            string email = txtEmail.Text;
             bool active = check_Active.Checked;
             bool locked = check_Locked.Checked;
             int indexPos = cbox_Position.SelectedIndex;
             int indexSite = cbox_Site.SelectedIndex;
             int siteID = sites[indexSite].getID();
             int posID = positions[indexPos].getID();
-            employee employee = new employee(999, username, password, firstName, lastName, email, active, locked, posID, siteID);
+            employee employee = new employee(999, "Dummy", password, firstName, lastName, "Dummy", active, locked, posID, siteID);
             if (employee.addEmployee(employee))
             {
-                MessageBox.Show(username + " has been added.");
+                MessageBox.Show(firstName + " has been added.");
                 Close();
             }
             else
             {
-                MessageBox.Show(username + " could not be added.");
+                MessageBox.Show(firstName + " could not be added.");
                
             }
 

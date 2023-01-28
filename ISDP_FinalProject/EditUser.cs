@@ -28,26 +28,25 @@ namespace ISDP_FinalProject
             List<position> positions = position.GetPositions();
             List<site> sites = site.GetSites();
             int id = Convert.ToInt32(txtID.Text);
-            string username = txtUsername.Text;
             string password = txtPassword.Text;
             string firstName = txtFirstname.Text;
             string lastName = txtLastname.Text;
-            string email = txtEmail.Text;
             bool active = check_Active.Checked;
             bool locked = check_Locked.Checked;
-            int indexPos = cbox_Position.SelectedIndex;
-            int indexSite = cbox_Site.SelectedIndex;
+            int indexPos = cbox_Position.FindString(cbox_Position.Text);
+            int indexSite = cbox_Site.FindString(cbox_Site.Text);
+            MessageBox.Show(indexSite.ToString());
             int siteID = sites[indexSite].getID();
             int posID = positions[indexPos].getID();
-            employee employee = new employee(id, username, password, firstName, lastName, email, active, locked, posID, siteID);
+            employee employee = new employee(id, "Dummy", password, firstName, lastName, "dummy", active, locked, posID, siteID);
             if (employee.EditEmployee(employee))
             {
-                MessageBox.Show(username + " has been edited.");
+                MessageBox.Show(employee.getFirstName() + " has been edited.");
                 Close();
             }
             else
             {
-                MessageBox.Show(username + " could not be edited.");
+                MessageBox.Show(employee.getFirstName() + " could not be edited.");
 
             }
         }
@@ -68,7 +67,6 @@ namespace ISDP_FinalProject
         public void ChangeText(employee worker)
         {
             txtID.Text = Convert.ToString(worker.getID());
-            txtUsername.Text = worker.getUsername();
             txtPassword.Text = worker.getPassword();
             txtFirstname.Text = worker.getFirstName();
             txtLastname.Text = worker.getLastName();
