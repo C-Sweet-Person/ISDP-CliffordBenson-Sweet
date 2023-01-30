@@ -38,7 +38,7 @@ namespace ISDP_FinalProject
                 MySqlConnection cnn = db.cnn;
                 MySqlCommand cmd = cnn.CreateCommand();
                 cnn.Open();
-                cmd.CommandText = String.Format("insert into txnAudit (")
+                cmd.CommandText = String.Format("insert into txnAudit (");
                 }
             catch (Exception ex)
             {
