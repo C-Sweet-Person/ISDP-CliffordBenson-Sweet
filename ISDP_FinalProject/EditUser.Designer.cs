@@ -37,17 +37,13 @@ namespace ISDP_FinalProject
             this.btn_save = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbox_Position = new System.Windows.Forms.ComboBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtLastname = new System.Windows.Forms.TextBox();
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,7 +65,7 @@ namespace ISDP_FinalProject
             // cbox_Site
             // 
             this.cbox_Site.FormattingEnabled = true;
-            this.cbox_Site.Location = new System.Drawing.Point(150, 448);
+            this.cbox_Site.Location = new System.Drawing.Point(150, 364);
             this.cbox_Site.Name = "cbox_Site";
             this.cbox_Site.Size = new System.Drawing.Size(151, 28);
             this.cbox_Site.TabIndex = 33;
@@ -79,7 +75,7 @@ namespace ISDP_FinalProject
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(18, 448);
+            this.label8.Location = new System.Drawing.Point(21, 360);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 28);
             this.label8.TabIndex = 32;
@@ -129,74 +125,49 @@ namespace ISDP_FinalProject
             // cbox_Position
             // 
             this.cbox_Position.FormattingEnabled = true;
-            this.cbox_Position.Location = new System.Drawing.Point(150, 400);
+            this.cbox_Position.Location = new System.Drawing.Point(150, 318);
             this.cbox_Position.Name = "cbox_Position";
             this.cbox_Position.Size = new System.Drawing.Size(151, 28);
             this.cbox_Position.TabIndex = 26;
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(150, 352);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(151, 27);
-            this.txtEmail.TabIndex = 22;
-            // 
             // txtLastname
             // 
-            this.txtLastname.Location = new System.Drawing.Point(150, 303);
+            this.txtLastname.Location = new System.Drawing.Point(150, 267);
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.Size = new System.Drawing.Size(151, 27);
             this.txtLastname.TabIndex = 21;
             // 
             // txtFirstname
             // 
-            this.txtFirstname.Location = new System.Drawing.Point(150, 254);
+            this.txtFirstname.Location = new System.Drawing.Point(150, 218);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.Size = new System.Drawing.Size(151, 27);
             this.txtFirstname.TabIndex = 23;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(150, 204);
+            this.txtPassword.Location = new System.Drawing.Point(150, 168);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(151, 27);
             this.txtPassword.TabIndex = 24;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(150, 159);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(151, 27);
-            this.txtUsername.TabIndex = 25;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(18, 400);
+            this.label7.Location = new System.Drawing.Point(21, 314);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 28);
             this.label7.TabIndex = 19;
             this.label7.Text = "Position:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(18, 351);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 28);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Email:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(18, 302);
+            this.label5.Location = new System.Drawing.Point(21, 262);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 28);
             this.label5.TabIndex = 17;
@@ -207,7 +178,7 @@ namespace ISDP_FinalProject
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(18, 253);
+            this.label4.Location = new System.Drawing.Point(21, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 28);
             this.label4.TabIndex = 16;
@@ -218,22 +189,11 @@ namespace ISDP_FinalProject
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(18, 204);
+            this.label3.Location = new System.Drawing.Point(21, 164);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 28);
             this.label3.TabIndex = 15;
             this.label3.Text = "Password:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(18, 155);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 28);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Username:";
             // 
             // pictureBox2
             // 
@@ -279,17 +239,13 @@ namespace ISDP_FinalProject
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbox_Position);
-            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtLastname);
             this.Controls.Add(this.txtFirstname);
             this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Name = "EditUser";
             this.Text = "EditUser";

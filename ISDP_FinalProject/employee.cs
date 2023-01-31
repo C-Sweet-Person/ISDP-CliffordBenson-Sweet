@@ -186,6 +186,38 @@ namespace ISDP_FinalProject
         }
         //
         //
+        //Create username based on first and last name
+        //
+        //
+        private string usernameGen()
+        {
+            string userName;
+            char fLetter = char.ToLower(getFirstName()[0]);
+            MessageBox.Show(Convert.ToString(fLetter));
+            List<string> users = employee.GetUsernames();
+            userName = (Convert.ToString(fLetter) + getLastName()).ToLower();
+            if (users.Contains(userName))
+            {
+                userName += 1;
+            }
+            else
+            {
+
+            }
+            return userName;
+        }
+        //
+        //
+        //Create email based on username
+        //
+        //
+        private string EmailGen()
+        {
+            string email = usernameGen() + "@bullseye.ca";
+            return email;
+        }
+        //
+        //
         //Adds an employee based on the given worker sent to it.
         //
         //
@@ -197,7 +229,7 @@ namespace ISDP_FinalProject
                 MySqlConnection cnn = db.cnn;
                 MySqlCommand cmd = cnn.CreateCommand();
                 cnn.Open();
-                cmd.CommandText = String.Format("insert into employee(employeeID, username,password,firstName,lastName,email,active,locked,positionID,siteID) VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},{8},{9})",employee.newID(), worker.getUsername(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.getEmail(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID());
+                cmd.CommandText = String.Format("insert into employee(username,password,firstName,lastName,email,active,locked,positionID,siteID) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},{8})",worker.usernameGen(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID());
                 cmd.ExecuteNonQuery();
             }
             catch(Exception ex)
@@ -217,7 +249,7 @@ namespace ISDP_FinalProject
             MySqlConnection cnn = db.cnn;
             MySqlCommand cmd = cnn.CreateCommand();
             cnn.Open();
-            cmd.CommandText = String.Format("update employee set username = '{0}', password = '{1}', firstName = '{2}', lastName = '{3}', email = '{4}', active = {5}, locked = {6}, positionID = {7}, siteID = {8} where employeeID = {9}", worker.getUsername(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.getEmail(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
+            cmd.CommandText = String.Format("update employee set username = '{0}', password = '{1}', firstName = '{2}', lastName = '{3}', email = '{4}', active = {5}, locked = {6}, positionID = {7}, siteID = {8} where employeeID = {9}", worker.usernameGen(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
             cmd.ExecuteNonQuery();
             return true;
         }

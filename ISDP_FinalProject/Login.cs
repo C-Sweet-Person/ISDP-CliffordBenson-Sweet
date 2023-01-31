@@ -41,5 +41,11 @@ namespace ISDP_FinalProject
             ForgetPassword forgetPassword = new ForgetPassword();
             forgetPassword.ShowDialog();
         }
+
+        private void lblShow_Click(object sender, EventArgs e)
+        {
+            bool boolean = txtPassword.UseSystemPasswordChar == true ? false : true;
+            txtPassword.UseSystemPasswordChar = boolean;
+        }
     }
 }
