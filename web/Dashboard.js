@@ -1,11 +1,18 @@
 window.onload = (event) => {
 document.querySelector("#Forward").addEventListener("click", indexForward)
 document.querySelector("#Previous").addEventListener("click", indexBackward)
+document.querySelector("#logout").addEventListener("click", logout);
 document.querySelector("#currentIndex").innerHTML = 0;
   Dashboard();
 };
+
 currentIndex = 0;
 let items;
+
+function logout()
+{
+  window.location.assign("login.php");
+}
 function Dashboard() {
   //Actual login
   let url = "API/ItemService.php"; // REST-style: URL refers to an entity or collection, not an action

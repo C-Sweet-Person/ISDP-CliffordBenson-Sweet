@@ -29,8 +29,7 @@
 <p id="currentIndex"></p>
 <button id="Previous">Prev</button>
 <button id="Forward">Next</button>
-<p>HELP</p>
+<br><button id="Logout">Logout</button>
 <script src="Dashboard.js"></script>
-
 </body>
 </html>
