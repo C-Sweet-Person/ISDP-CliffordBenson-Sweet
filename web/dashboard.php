@@ -23,6 +23,7 @@
     <p id="Signed"><?php
     $user = json_decode($_SESSION['user']);
     echo $user[0]->username ?></p>
+ 
 <h1>User Dashboard</h1>
 <hr>
 <div id="tableDisplay"><table id="tableItems"></table>
