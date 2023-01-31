@@ -84,6 +84,10 @@ namespace ISDP_FinalProject
             if (employee.deleteEmployee(username))
             {
                 MessageBox.Show(username + " deleted sucessfully", "Notice");
+                DateTime datetimenow = DateTime.Now;
+                string sqlDate = datetimenow.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                Transaction transaction = new Transaction(0, 0, "DeleteUser", "N/A", sqlDate, 1, 1, employee.GetEmployeeByUsername("admin").getID(), "Deleted user " + username);
+                transaction.createTransaction();
                 refresh();
             }
             else

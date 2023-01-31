@@ -311,7 +311,7 @@ namespace ISDP_FinalProject
                 employee worker = employee.GetEmployeeByUsername(username);
                 string userName = worker.getUsername();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = String.Format("update employee set locked = 1 where username = '{0}';",userName);
+                cmd.CommandText = String.Format("update employee set active = 0 where username = '{0}';",userName);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
