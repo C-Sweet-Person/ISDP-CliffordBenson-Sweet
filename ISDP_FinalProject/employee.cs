@@ -213,17 +213,21 @@ namespace ISDP_FinalProject
         private string usernameGen()
         {
             string userName;
+            int num = 0;
             char fLetter = char.ToLower(getFirstName()[0]);
             MessageBox.Show(Convert.ToString(fLetter));
             List<string> users = employee.GetUsernames();
             userName = (Convert.ToString(fLetter) + getLastName()).ToLower();
-            if (users.Contains(userName))
+            foreach (string user in users)
             {
-                userName += 1;
+                if (user == userName)
+                {
+                    num += 1;
+                }
             }
-            else
+            if (num >= 1)
             {
-
+                userName += (num + 1);
             }
             return userName;
         }
@@ -293,7 +297,7 @@ namespace ISDP_FinalProject
             MySqlConnection cnn = db.cnn;
             MySqlCommand cmd = cnn.CreateCommand();
             cnn.Open();
-            cmd.CommandText = String.Format("update employee set username = '{0}',password = '{1}', firstName = '{2}', lastName = '{3}', email = '{4}', active = {5}, locked = {6}, positionID = {7}, siteID = {8} where employeeID = {9}", worker.usernameGen(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
+            cmd.CommandText = String.Format("update employee set password = '{0}', firstName = '{1}', lastName = '{2}', email = '{3}', active = {4}, locked = {5}, positionID = {6}, siteID = {7} where employeeID = {8}", worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
             cmd.ExecuteNonQuery();
             return true;
         }
