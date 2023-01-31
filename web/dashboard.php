@@ -1,6 +1,6 @@
 <html>
     <head>
-        <?php ?>
+        <?php Session_start()?>
         <style>
             #tableItems th, td, table 
             {
@@ -20,6 +20,7 @@
         </style>
 </head>
 <body>
+    <p><?php $_SESSION['username'][0] ?></p>
 <h1>User Dashboard</h1>
 <hr>
 <div id="tableDisplay"><table id="tableItems"></table>
