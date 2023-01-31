@@ -29,5 +29,6 @@
 <p id="currentIndex"></p>
 <button id="Previous">Prev</button>
 <button id="Forward">Next</button>
+<br><button id="Logout">Logout</button>
 </body>
 </html>
