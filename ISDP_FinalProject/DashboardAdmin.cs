@@ -54,7 +54,7 @@ namespace ISDP_FinalProject
             dataGridUsers.Columns.Clear();
             DBConnector db = new DBConnector();
             List<employee> employees = new List<employee>();
-            List<string> list = employee.GetUsernames();
+            List<string> list = employee.GetUsernamesNotActive();
             foreach (string s in list)
             {
                 employees.Add(employee.GetEmployeeByUsername(s));
@@ -101,7 +101,21 @@ namespace ISDP_FinalProject
 
         private void btn_closeAdminDashboard_Click(object sender, EventArgs e)
         {
-            Close();
+            Login login = new Login();
+            login.Show();
+            Hide();
+        }
+        private void lockFunctions()
+        {
+            btn_editUser.Enabled = false;
+            btn_newUser.Enabled = false;
+            btn_removeUser.Enabled = false;
+        }
+
+        private void btnViewTransactions_Click(object sender, EventArgs e)
+        {
+            ViewTransactions viewTransactions = new ViewTransactions();
+            viewTransactions.ShowDialog();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace ISDP_FinalProject
                 result = true;
             }
 
-            System.Diagnostics.Debug.WriteLine(specialLength + "" + capitalLength + " Test");
+            MessageBox.Show(specialLength + "" + capitalLength + " Test");
             return result;
         }
     }

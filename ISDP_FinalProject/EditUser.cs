@@ -39,18 +39,64 @@ namespace ISDP_FinalProject
             int siteID = sites[indexSite].getID();
             int posID = positions[indexPos].getID();
             employee employee = new employee(id, "Dummy", password, firstName, lastName, "dummy", active, locked, posID, siteID);
-            if (employee.EditEmployee(employee))
+            if (BoxChecker())
             {
-                MessageBox.Show(employee.getFirstName() + " has been edited.");
-                Close();
+                if (employee.EditEmployee(employee))
+                {
+                    MessageBox.Show(employee.getFirstName() + " has been edited.");
+                    DateTime datetimenow = DateTime.Now;
+                    string sqlDate = datetimenow.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                    Transaction transaction = new Transaction(0, 0, "EditUser", "N/A", sqlDate, 1, 1, employee.GetEmployeeByUsername("admin").getID(), "Edited user " + id);
+                    transaction.createTransaction();
+                    Close();
+                }
             }
             else
             {
-                MessageBox.Show(employee.getFirstName() + " could not be edited.");
+                MessageBox.Show("User could not be edited.", "Error");
 
             }
         }
+        /// <summary>
+        /// Checks to see which fields are empty/validation testing.
+        /// </summary>
+        /// <returns></returns>
+        private bool BoxChecker()
+        {
+            string error = "";
+            bool check = true;
+            if (txtPassword.Text == "")
+            {
+                error += "Please enter a password\n";
+                txtPassword.Focus();
+                check = false;
+            }
+            if (Validation.passwordCheck(txtPassword.Text) && String.IsNullOrWhiteSpace(txtPassword.Text) == false)
+            {
+                error += "Password not in the correct criteria.\n";
+                txtPassword.Focus();
+                check = false;
+            }
+            if (txtFirstname.Text == "")
+            {
+                error += "Please enter a first name\n";
+                txtFirstname.Focus();
+                check = false;
+            }
+            if (txtLastname.Text == "")
+            {
+                error += "Please enter a last name";
+                txtFirstname.Focus();
+                check = false;
 
+            }
+            if (error != "")
+            {
+                MessageBox.Show(error, "Error");
+            }
+            return check;
+     
+        }
         private void EditUser_Load(object sender, EventArgs e)
         {
             List<site> sites = site.GetSites();
@@ -70,7 +116,6 @@ namespace ISDP_FinalProject
             txtPassword.Text = worker.getPassword();
             txtFirstname.Text = worker.getFirstName();
             txtLastname.Text = worker.getLastName();
-            txtEmail.Text = worker.getEmail();
             cbox_Position.Text = position.getPermissionLevelByID(worker.getPositionID());
             cbox_Site.Text = site.getSiteNameByID(worker.getSiteID());
             check_Active.Checked = worker.getActive();

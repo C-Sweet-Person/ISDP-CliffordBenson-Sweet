@@ -48,6 +48,10 @@ namespace ISDP_FinalProject
             if (employee.addEmployee(employee))
             {
                 MessageBox.Show(firstName + " has been added.");
+                DateTime datetimenow = DateTime.Now;
+                string sqlDate = datetimenow.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                Transaction transaction = new Transaction(0, 0, "AddUser", "N/A", sqlDate, 1, 1, employee.GetEmployeeByUsername("admin").getID(), "Added user " + employee.getLastEmployee().getUsername());
+                transaction.createTransaction();
                 Close();
             }
             else

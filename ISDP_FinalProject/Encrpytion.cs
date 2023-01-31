@@ -26,7 +26,7 @@ namespace ISDP_FinalProject
             byte[] encrypted = null;
             using (Aes aes = Aes.Create())
             {
-                roundtrip = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
+                roundtrip = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
             }
             return roundtrip;
 

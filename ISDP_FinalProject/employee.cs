@@ -119,6 +119,27 @@ namespace ISDP_FinalProject
         }
         //
         //
+        //Work
+        //
+        //
+        public static List<String> GetUsernamesNotActive()
+        {
+            List<String> users = new List<String>();
+            DBConnector db = new DBConnector();
+            MySqlConnection cnn = db.cnn;
+            cnn.Open();
+            MySqlCommand cmd = cnn.CreateCommand();
+            cmd.CommandText = "select username from employee where active = 1";
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                string uName = rdr.GetString(0);
+                users.Add(uName);
+            }
+            return users;
+        }
+        //
+        //
         //Gets the IDS of all of the employees.
         //
         //
@@ -218,6 +239,29 @@ namespace ISDP_FinalProject
         }
         //
         //
+        //Get latest Employee
+        //
+        //
+        public static employee getLastEmployee()
+        {
+            DBConnector db = new DBConnector();
+            MySqlConnection cnn = db.cnn;
+            MySqlCommand cmd = cnn.CreateCommand();
+            string username = "";
+            cnn.Open();
+            cmd.CommandText = "select username from employee order by employeeID desc limit 1";
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                username = rdr.GetString(0);
+            }
+            rdr.Close();
+            employee worker = employee.GetEmployeeByUsername(username);
+            return worker;
+
+        }
+        //
+        //
         //Adds an employee based on the given worker sent to it.
         //
         //
@@ -249,7 +293,7 @@ namespace ISDP_FinalProject
             MySqlConnection cnn = db.cnn;
             MySqlCommand cmd = cnn.CreateCommand();
             cnn.Open();
-            cmd.CommandText = String.Format("update employee set username = '{0}', password = '{1}', firstName = '{2}', lastName = '{3}', email = '{4}', active = {5}, locked = {6}, positionID = {7}, siteID = {8} where employeeID = {9}", worker.usernameGen(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
+            cmd.CommandText = String.Format("update employee set username = '{0}',password = '{1}', firstName = '{2}', lastName = '{3}', email = '{4}', active = {5}, locked = {6}, positionID = {7}, siteID = {8} where employeeID = {9}", worker.usernameGen(), worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
             cmd.ExecuteNonQuery();
             return true;
         }
@@ -263,7 +307,7 @@ namespace ISDP_FinalProject
                 employee worker = employee.GetEmployeeByUsername(username);
                 string userName = worker.getUsername();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = String.Format("delete from employee where username = '{0}';",userName);
+                cmd.CommandText = String.Format("update employee set locked = 1 where username = '{0}';",userName);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)

@@ -59,16 +59,26 @@ namespace ISDP_FinalProject
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = String.Format("select username, password,firstName,lastName from employee where username = '{0}'", username);
+                cmd.CommandText = String.Format("select username, password,firstName,lastName, positionID from employee where username = '{0}'", username);
                 using MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
+                    string permLevel = position.getPermissionLevelByID(rdr.GetInt32(4));
                     if (rdr.GetString(0) == password)
                     {
-                        return true;
+                        if (permLevel == "Administrator")
+                        {
+                            MessageBox.Show("Admin role found.", "Notice");
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Permissions.", "Error");
+                        }
                     }
                     else
                     {
+                        MessageBox.Show("Invalid username/password combination", "Error");
                         return false;
                     }
                 }
