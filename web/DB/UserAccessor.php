@@ -1,7 +1,11 @@
 <?php
 require_once 'DatabaseConnecter.php';
 require_once '../Entity/User.php';
-
+/*
+Half of this code is from my QuizAPP page.
+Future versions will remove that old code.
+Hopefully can make this look better.
+*/
 class UserAccessor {
 
     private $getByIDStatementString = "select * from employee where username = :user";

@@ -29,7 +29,7 @@ function doLogin(){
     //$passwords = [$user->getID(), $user->getUsername(), $user->getPassword(), $user->getEmail(), $bool];
     //$resultsA = json_encode($passwords, JSON_NUMERIC_CHECK);
     $success = true;
-    $_SESSION["username"] = json_encode($user, JSON_NUMERIC_CHECK);
+    $_SESSION["user"] = json_encode($user, JSON_NUMERIC_CHECK);
 } 
 catch (PDOException $e) {
     echo $e->getMessage() . "Help" . print_r($user);

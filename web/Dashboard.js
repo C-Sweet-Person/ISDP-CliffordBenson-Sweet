@@ -1,14 +1,22 @@
+const USERNAME = document.querySelector("#Signed").innerHTML;
 window.onload = (event) => {
 document.querySelector("#Forward").addEventListener("click", indexForward)
 document.querySelector("#Previous").addEventListener("click", indexBackward)
 document.querySelector("#logout").addEventListener("click", logout);
 document.querySelector("#currentIndex").innerHTML = 0;
-  Dashboard();
+document.querySelector("#Test").addEventListener("click", testUser);
+Dashboard();
 };
+
+
 
 currentIndex = 0;
 let items;
 
+function testUser()
+{
+  console.log(USERNAME);
+}
 function logout()
 {
   window.location.assign("login.php");

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <?php ?>
+        <?php Session_start()?>
         <style>
             #tableItems th, td, table 
             {
@@ -20,6 +20,10 @@
         </style>
 </head>
 <body>
+    <p id="Signed"><?php
+    $user = json_decode($_SESSION['user']);
+    echo $user[0]->username ?></p>
+ 
 <h1>User Dashboard</h1>
 <hr>
 <div id="tableDisplay"><table id="tableItems"></table>
@@ -30,6 +34,7 @@
 <button id="Previous">Prev</button>
 <button id="Forward">Next</button>
 <br><button id="Logout">Logout</button>
+<br><button id="Test">Test</button>
 <script src="Dashboard.js"></script>
 </body>
 </html>
