@@ -88,7 +88,7 @@ function tableItemCreation() {
   let tableItems = document.querySelector("#tableItems");
   tableItems.innerHTML = "";
   headerRow =
-    "<th>Select</th><th>itemID</th><th>name</th><th>description</th><th>category</th>" +
+    "<th>itemID</th><th>name</th><th>description</th><th>category</th>" +
     "<th>weight</th><th>costPrice</th><th>retailPrice</th>" +
     "<th>supplierID</th><th>active</th><th>notes</th><th>caseSize</th>";
   tableItems.innerHTML += headerRow;
@@ -100,7 +100,6 @@ console.log(difference);
   for (let i = currentIndex; i < currentIndex+100-difference; i++) {
     let tableItem = "";
     tableItem += "<tr>";
-    tableItem += "<td><input type='checkbox' class='checkItem'></td>";
     tableItem += `<td>${items[i]['itemID']}</td>`;
     tableItem += `<td>${items[i]['name']}</td>`;
     tableItem += `<td>${items[i]['description']}</td>`;
@@ -116,15 +115,20 @@ console.log(difference);
     tableItems.innerHTML += tableItem;
 
   }
-  boxes = document.querySelectorAll(".checkItem");
-  for (let i = 0; i < boxes.length -1; i++)
+  rows = document.querySelectorAll("tr");
+  for (let i = 1; i < rows.length -1; i++)
   {
-    boxes[i].addEventListener("click", selectRow);
+    rows[i].addEventListener("click", selectRow);
   }
 }
 
 function selectRow(evt)
 {
-  row = evt.currentTarget.parentElement.parentElement
-  row.style.color = "blue";
+  rows = document.querySelectorAll(".selected");
+  for (let i = 0; i < rows.length; i++)
+  {
+    rows[i].classList.remove("selected");
+  }
+  row = evt.currentTarget
+  row.classList.add("selected");
 }

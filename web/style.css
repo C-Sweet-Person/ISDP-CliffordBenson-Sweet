@@ -8,3 +8,8 @@ body
     border:solid thin black;
     width:fit-content;
 }
+.selected
+{
+    color: white;
+    background-color: black;
+}
