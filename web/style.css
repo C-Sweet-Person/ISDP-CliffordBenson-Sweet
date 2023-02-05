@@ -2,3 +2,9 @@ body
 {
     background-color: lightcyan;
 }
+.option
+{
+    color: blue;
+    border:solid thin black;
+    width:fit-content;
+}

@@ -2,6 +2,7 @@
     <head>
         <?php Session_start()?>
         <style>
+
             #tableItems th, td, table 
             {
                 border: solid thin black;
@@ -18,6 +19,7 @@
                 margin: auto;
             }
         </style>
+                    <link rel="stylesheet" href="style.css"></link>
 </head>
 <body>
     <p id="Signed"><?php
@@ -25,6 +27,9 @@
     echo $user[0]->username ?></p>
  
 <h1>User Dashboard</h1>
+<div id="Menu">
+    <p class="option" id="createOrder">Create Store Orders</p>
+</div>
 <hr>
 <div id="tableDisplay"><table id="tableItems"></table>
 </div>
