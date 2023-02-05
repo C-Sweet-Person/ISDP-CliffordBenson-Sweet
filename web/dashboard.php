@@ -20,6 +20,8 @@
             }
         </style>
                     <link rel="stylesheet" href="style.css"></link>
+                    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<title>Dashboard Page</title>
 </head>
 <body>
     <p id="Signed"><?php
@@ -29,6 +31,9 @@
 <h1>User Dashboard</h1>
 <div id="Menu">
     <p class="option" id="createOrder">Create Store Orders</p>
+    <p class="option" id="createEOrder">Create Emergency Orders</p>
+    <p class="option" id="RecieveOrder">Recieve Orders</p>
+    <p class="option" id="RecieveOrder">Fulfil Orders</p>
 </div>
 <hr>
 <div id="tableDisplay"><table id="tableItems"></table>
