@@ -18,13 +18,20 @@ function createOrder()
     //for the current store
 
 
-    //
+    //Check to see if items are active if type is emergency order.
+    //Else, go nuts.
     return "Null";
 }
 
+//Way to check the status of the 
 function getOrder()
 {
     return "Null";
+}
+function getOrders()
+{
+    //Bulk checking of orders
+    //In case one needs to do that.
 }
 
 function checkStatus()
