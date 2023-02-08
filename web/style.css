@@ -13,3 +13,8 @@ body
     color: white;
     background-color: black;
 }
+.center
+{
+    display:block;
+    margin:auto;
+}
