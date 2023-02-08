@@ -11,6 +11,6 @@
 <span>Password: </span><input type="password" id="password" name="password"><br>
 <input type="checkbox" id="passwordVisibility"><br>
 <button id="loginBtn">Login</button>
-<script src="login.js"></script>
+<script src="scripts/login.js"></script>
 </body>
 </html>

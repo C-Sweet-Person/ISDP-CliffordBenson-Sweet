@@ -27,7 +27,15 @@
     <p id="Signed"><?php
     $user = json_decode($_SESSION['user']);
     echo $user[0]->username ?></p>
- 
+ <?php if (strcmp($user[0]->username,"admin") === 0)
+ {
+     echo "<p><a href='OrderPage.php'>Order Page</a></p>";
+ }
+ else
+ {
+     echo "Whatever";
+ }
+ ?>
 <h1>User Dashboard</h1>
 <div id="Menu">
     <p class="option" id="createOrder">Create Store Orders</p>
@@ -45,6 +53,6 @@
 <button id="Forward">Next</button>
 <br><button id="Logout">Logout</button>
 <br><button id="Test">Test</button>
-<script src="Dashboard.js"></script>
+<script src="scripts/Dashboard.js"></script>
 </body>
 </html>
