@@ -18,3 +18,10 @@ body
     display:block;
     margin:auto;
 }
+#orderDetails
+{
+    border:solid thin black;
+    min-width: 200px;
+    min-height: 200px;
+
+}
