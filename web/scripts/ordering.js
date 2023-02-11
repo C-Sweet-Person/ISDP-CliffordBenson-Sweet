@@ -1,7 +1,24 @@
 let items;
 window.onload = function()
 {
+  document.querySelector("#AddItem").addEventListener("click",Add_Item)
     Dashboard();
+}
+
+function Add_Item()
+{
+  //This function will iterate through the list of items and
+  //Check for the minimum quantity.
+  Rows = document.querySelectorAll("tr input");
+  console.log(Rows);
+  for (let i = 0; i < Rows.length;i++)
+  {
+    if (Rows[i].value > 0)
+    {
+      console.log(Rows[i].parentElement.parentElement)
+    }
+  }
+
 }
 function Dashboard() {
     let url = "API/ItemService.php"; // REST-style: URL refers to an entity or collection, not an action
