@@ -10,16 +10,48 @@ function Add_Item()
   //This function will iterate through the list of items and
   //Check for the minimum quantity.
   Rows = document.querySelectorAll("tr input");
+  let orderItems = []
   console.log(Rows);
   for (let i = 0; i < Rows.length;i++)
   {
     if (Rows[i].value > 0)
     {
-      console.log(Rows[i].parentElement.parentElement)
+      let nodes = Rows[i].parentElement.parentElement.childNodes;
+      itemIDNode = nodes[0].innerHTML
+      itemNameNode = nodes[1].innerHTML
+      itemDescriptionNode = nodes[2].innerHTML
+      itemCategoryNode = nodes[3].innerHTML
+      itemCostPrice = nodes[4].innerHTML
+      itemRetailPrice = nodes[5].innerHTML
+      itemQuantity = nodes[11].firstChild.value;
+      console.log(itemQuantity)     
+      //Item list generation. 
+      orderItems.push(`${itemIDNode}, ${itemNameNode},${itemDescriptionNode},${itemCategoryNode},${itemCostPrice},${itemRetailPrice},${itemQuantity}`) 
     }
-  }
 
+  }
+  console.log(orderItems)
+  orderSummary = document.querySelector("#orderDetails")
+  html = ""
+  for (let i = 0; i < orderItems.length; i++)
+  {
+    line = orderItems[i].split(',');
+    html += trCreator(line)
+  }
+  orderSummary.innerHTML += html;
 }
+
+function trCreator(line)
+{
+let html = "<tr>"
+for (let i = 0; i < line.length; i++)
+{
+html += `<td>${line[i]}</td>`
+}
+html += "</tr>"
+return html
+}
+
 function Dashboard() {
     let url = "API/ItemService.php"; // REST-style: URL refers to an entity or collection, not an action
     let xmlhttp = new XMLHttpRequest();

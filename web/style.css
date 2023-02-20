@@ -18,10 +18,28 @@ body
     display:block;
     margin:auto;
 }
-#orderDetails
+#orderDetails tr td
 {
     border:solid thin black;
     min-width: 200px;
     min-height: 200px;
-
+}
+#orderDetails
+{
+    border-collapse: collapse;
+}
+#Summary
+{
+    border:solid thin black;
+    padding: 5px;
+}
+#orderPage tr td
+{
+    border:solid thin black;
+    min-width: 50px;
+    min-height: 200px;
+}
+#orderPage
+{
+border-collapse: collapse;
 }
