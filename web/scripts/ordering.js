@@ -43,7 +43,7 @@ function Add_Item()
 
 function trCreator(line)
 {
-let html = "<tr>"
+let html = "<tr id='lineItem'>"
 for (let i = 0; i < line.length; i++)
 {
 html += `<td>${line[i]}</td>`

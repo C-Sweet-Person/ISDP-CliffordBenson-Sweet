@@ -11,6 +11,7 @@
     <div id="Summary"><table id="orderDetails"></table></div>
     <button id="AddItem" class="center">AddItem</button>
     <button id="RemoveItem"class="center">RemoveItem</button>
+    <button id="OrderSubmit"class="center">Order items</button>
     <br><a href="dashboard.php"><button class="center">Go back.</button></a>
     <script src="scripts/ordering.js"></script>
 </body>
