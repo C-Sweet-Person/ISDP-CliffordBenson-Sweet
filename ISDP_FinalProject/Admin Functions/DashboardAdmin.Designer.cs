@@ -40,8 +40,8 @@ namespace ISDP_FinalProject
             this.btn_refreshInfo = new System.Windows.Forms.Button();
             this.btn_editUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnViewTransactions = new System.Windows.Forms.Button();
+            this.btnOtherFunctions = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
@@ -166,16 +166,6 @@ namespace ISDP_FinalProject
             this.label1.TabIndex = 6;
             this.label1.Text = "User Management (Admin Section)";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(169, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Testimg";
-            this.label2.Visible = false;
-            // 
             // btnViewTransactions
             // 
             this.btnViewTransactions.Location = new System.Drawing.Point(22, 447);
@@ -186,13 +176,22 @@ namespace ISDP_FinalProject
             this.btnViewTransactions.UseVisualStyleBackColor = true;
             this.btnViewTransactions.Click += new System.EventHandler(this.btnViewTransactions_Click);
             // 
+            // btnOtherFunctions
+            // 
+            this.btnOtherFunctions.Location = new System.Drawing.Point(289, 400);
+            this.btnOtherFunctions.Name = "btnOtherFunctions";
+            this.btnOtherFunctions.Size = new System.Drawing.Size(160, 53);
+            this.btnOtherFunctions.TabIndex = 9;
+            this.btnOtherFunctions.Text = "Other Admin functions";
+            this.btnOtherFunctions.UseVisualStyleBackColor = true;
+            // 
             // DashboardAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.btnOtherFunctions);
             this.Controls.Add(this.btnViewTransactions);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_editUser);
             this.Controls.Add(this.btn_refreshInfo);
@@ -225,7 +224,7 @@ namespace ISDP_FinalProject
         private Button btn_refreshInfo;
         private Button btn_editUser;
         private Label label1;
-        private Label label2;
         private Button btnViewTransactions;
+        private Button btnOtherFunctions;
     }
 }
