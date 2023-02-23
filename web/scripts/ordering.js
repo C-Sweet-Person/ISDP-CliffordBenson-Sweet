@@ -2,6 +2,7 @@ let items;
 window.onload = function()
 {
   document.querySelector("#AddItem").addEventListener("click",Add_Item)
+  document.querySelector("#OrderSubmit").addEventListener("click",OrderCreate);
     Dashboard();
 }
 
@@ -121,4 +122,24 @@ function Dashboard() {
     }
     row = evt.currentTarget
     row.classList.add("selected");
+  }
+  ///
+  /// The creation of the order.
+  ///
+  function OrderCreate() {
+    let url = "API/ItemService.php"; // REST-style: URL refers to an entity or collection, not an action
+    let xmlhttp = new XMLHttpRequest();
+    let method = "PUT";
+    let lineItems = []
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+        let resp = xmlhttp.responseText;
+        console.log(resp);
+        alert("Order has been created.")
+        initialSetup(resp);
+      }
+    
+    };
+    xmlhttp.open(method, url, true); // method is either POST or PUT
+    xmlhttp.send();
   }
