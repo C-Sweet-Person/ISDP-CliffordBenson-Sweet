@@ -11,10 +11,35 @@ namespace ISDP_FinalProject
     {
         private int siteID;
         private string siteName;
-        public site(int siteID, string siteName)
+        private string provinceID;
+        private string address;
+        private string address2;
+        private string city;
+        private string country;
+        private string postalCode;
+        private string phone;
+        private string dayOfWeek;
+        private int distanceFromWH;
+        private string siteType;
+        private string notes;
+        private bool active;
+
+        public site(int siteID, string siteName, string provinceID,string address, string address2,string city,string country,string postalCode,string phone,string dayOfWeek,int distanceFromWH,string siteType,string notes, bool active)
         {
             this.siteID = siteID;
             this.siteName = siteName;
+            this.provinceID = provinceID;
+            this.address = address;
+            this.address2 = address2;
+            this.city = city;
+            this.country = country;
+            this.postalCode = postalCode;
+            this.phone = phone;
+            this.dayOfWeek = dayOfWeek;
+            this.distanceFromWH = distanceFromWH;
+            this.siteType = siteType;
+            this.notes = notes;
+            this.active = active;
         }
         public int getID()
         {
@@ -44,7 +69,7 @@ namespace ISDP_FinalProject
             DBConnector connector = new DBConnector();
             connector.cnn.Open();
             MySqlCommand cmd = connector.cnn.CreateCommand();
-            cmd.CommandText = "select siteID, name from site";
+            cmd.CommandText = "select siteID, name, provinceID, address, address2, city, country, postalCode,phone, dayOfWeek,distanceFromWH,siteType,notes,active from site";
             using MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
@@ -53,6 +78,20 @@ namespace ISDP_FinalProject
                 sites.Add(new site(siteID, siteName));
             }
             return sites;
+        }
+        public string[] returnList()
+        {
+            string[] ret = new string[9];
+            ret[0] = this.getID.ToString();
+            ret[1] = this.getTxnID().ToString();
+            ret[2] = this.getTxnType();
+            ret[3] = this.getStatus();
+            ret[4] = this.getTxnDate();
+            ret[5] = this.getSiteID().ToString();
+            ret[6] = this.getDeliveryID().ToString();
+            ret[7] = this.getEmployeeID().ToString();
+            ret[8] = this.getNotes();
+            return ret;
         }
     }
 }

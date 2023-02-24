@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnViewLocation = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.BtnRefresh = new System.Windows.Forms.Button();
+            this.dataViewLocations = new System.Windows.Forms.DataGridView();
             this.btnEditLocation = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewLocations)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnViewLocation
+            // BtnRefresh
             // 
-            this.btnViewLocation.Location = new System.Drawing.Point(12, 338);
-            this.btnViewLocation.Name = "btnViewLocation";
-            this.btnViewLocation.Size = new System.Drawing.Size(175, 29);
-            this.btnViewLocation.TabIndex = 0;
-            this.btnViewLocation.Text = "View Location";
-            this.btnViewLocation.UseVisualStyleBackColor = true;
+            this.BtnRefresh.Location = new System.Drawing.Point(12, 338);
+            this.BtnRefresh.Name = "BtnRefresh";
+            this.BtnRefresh.Size = new System.Drawing.Size(175, 29);
+            this.BtnRefresh.TabIndex = 0;
+            this.BtnRefresh.Text = "Refresh/Load";
+            this.BtnRefresh.UseVisualStyleBackColor = true;
+            this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
             // 
-            // dataGridView1
+            // dataViewLocations
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 320);
-            this.dataGridView1.TabIndex = 1;
+            this.dataViewLocations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataViewLocations.Location = new System.Drawing.Point(12, 12);
+            this.dataViewLocations.Name = "dataViewLocations";
+            this.dataViewLocations.RowHeadersWidth = 51;
+            this.dataViewLocations.RowTemplate.Height = 29;
+            this.dataViewLocations.Size = new System.Drawing.Size(776, 320);
+            this.dataViewLocations.TabIndex = 1;
             // 
             // btnEditLocation
             // 
@@ -79,19 +80,19 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEditLocation);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnViewLocation);
+            this.Controls.Add(this.dataViewLocations);
+            this.Controls.Add(this.BtnRefresh);
             this.Name = "LocationTools";
             this.Text = "LocationTools - Bullseye Sporting Goods";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewLocations)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Button btnViewLocation;
-        private DataGridView dataGridView1;
+        private Button BtnRefresh;
+        private DataGridView dataViewLocations;
         private Button btnEditLocation;
         private Button btnClose;
     }
