@@ -41,7 +41,7 @@ namespace ISDP_FinalProject
             this.btn_editUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnViewTransactions = new System.Windows.Forms.Button();
-            this.btnOtherFunctions = new System.Windows.Forms.Button();
+            this.btnLocation = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
@@ -176,21 +176,22 @@ namespace ISDP_FinalProject
             this.btnViewTransactions.UseVisualStyleBackColor = true;
             this.btnViewTransactions.Click += new System.EventHandler(this.btnViewTransactions_Click);
             // 
-            // btnOtherFunctions
+            // btnLocation
             // 
-            this.btnOtherFunctions.Location = new System.Drawing.Point(289, 400);
-            this.btnOtherFunctions.Name = "btnOtherFunctions";
-            this.btnOtherFunctions.Size = new System.Drawing.Size(160, 53);
-            this.btnOtherFunctions.TabIndex = 9;
-            this.btnOtherFunctions.Text = "Other Admin functions";
-            this.btnOtherFunctions.UseVisualStyleBackColor = true;
+            this.btnLocation.Location = new System.Drawing.Point(137, 377);
+            this.btnLocation.Name = "btnLocation";
+            this.btnLocation.Size = new System.Drawing.Size(160, 29);
+            this.btnLocation.TabIndex = 9;
+            this.btnLocation.Text = "Locations";
+            this.btnLocation.UseVisualStyleBackColor = true;
+            this.btnLocation.Click += new System.EventHandler(this.btnLocation_Click);
             // 
             // DashboardAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 488);
-            this.Controls.Add(this.btnOtherFunctions);
+            this.Controls.Add(this.btnLocation);
             this.Controls.Add(this.btnViewTransactions);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_editUser);
@@ -225,6 +226,6 @@ namespace ISDP_FinalProject
         private Button btn_editUser;
         private Label label1;
         private Button btnViewTransactions;
-        private Button btnOtherFunctions;
+        private Button btnLocation;
     }
 }

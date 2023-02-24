@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using ISDP_FinalProject.Admin_Functions;
+
 namespace ISDP_FinalProject
 {
     public partial class DashboardAdmin : Form
@@ -120,6 +122,12 @@ namespace ISDP_FinalProject
         {
             ViewTransactions viewTransactions = new ViewTransactions();
             viewTransactions.ShowDialog();
+        }
+
+        private void btnLocation_Click(object sender, EventArgs e)
+        {
+            LocationTools location = new LocationTools();
+            location.ShowDialog();
         }
     }
 }

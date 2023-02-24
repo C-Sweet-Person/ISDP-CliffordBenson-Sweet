@@ -128,7 +128,7 @@ namespace ISDP_FinalProject
             DBConnector connector = new DBConnector();
             connector.cnn.Open();
             MySqlCommand cmd = connector.cnn.CreateCommand();
-            cmd.CommandText = "select siteID, name, provinceID, address, address2, city, country, postalCode,phone, dayOfWeek,distanceFromWH,siteType,notes,active from site";
+            cmd.CommandText = "select * from site";
             using MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
@@ -136,7 +136,7 @@ namespace ISDP_FinalProject
                 string siteName = rdr.GetString(1);
                 string province = rdr.GetString(2);
                 string address = rdr.GetString(3);
-                string address2 = rdr.GetString(4);
+                string address2 = rdr.IsDBNull(4) ? null : rdr.GetString(4);
                 string city = rdr.GetString(5);
                 string country = rdr.GetString(6);
                 string postalCode = rdr.GetString(7);
@@ -144,7 +144,7 @@ namespace ISDP_FinalProject
                 string dayOfWeek = rdr.GetString(9);
                 int distanceFromWH = rdr.GetInt32(10);
                 string siteType = rdr.GetString(11);
-                string notes = rdr.GetString(12);
+                string notes = rdr.IsDBNull(12) ? null : rdr.GetString(12);
                 bool active = rdr.GetBoolean(13);
                 sites.Add(new site(siteID, siteName,province,address,address2,city,country,postalCode,phone,dayOfWeek,distanceFromWH,siteType,notes,active));
             }
@@ -154,7 +154,7 @@ namespace ISDP_FinalProject
         {
             string[] ret = new string[14];
             ret[0] = this.getID().ToString();
-            ret[1] = this.getName()
+            ret[1] = this.getName();
             ret[2] = this.getProvince();
             ret[3] = this.getAddress();
             ret[4] = this.getAddress2();

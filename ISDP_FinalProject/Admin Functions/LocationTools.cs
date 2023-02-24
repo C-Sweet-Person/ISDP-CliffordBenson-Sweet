@@ -35,6 +35,7 @@ namespace ISDP_FinalProject.Admin_Functions
             dataViewLocations.Columns.Add("address", "address");
             dataViewLocations.Columns.Add("address2", "address2");
             dataViewLocations.Columns.Add("city", "city");
+            dataViewLocations.Columns.Add("country", "country");
             dataViewLocations.Columns.Add("postalCode", "postalCode");
             dataViewLocations.Columns.Add("phone", "phoneNumber");
             dataViewLocations.Columns.Add("dayOfWeek", "dayOfWeek");
@@ -49,6 +50,11 @@ namespace ISDP_FinalProject.Admin_Functions
             {
                 dataViewLocations.Rows.Add(site.returnList());
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
