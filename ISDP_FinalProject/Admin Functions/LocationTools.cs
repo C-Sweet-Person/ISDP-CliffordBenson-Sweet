@@ -19,7 +19,7 @@ namespace ISDP_FinalProject.Admin_Functions
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-
+            refresh();
         }
         private void refresh()
         {
@@ -35,15 +35,18 @@ namespace ISDP_FinalProject.Admin_Functions
             dataViewLocations.Columns.Add("address", "address");
             dataViewLocations.Columns.Add("address2", "address2");
             dataViewLocations.Columns.Add("city", "city");
-            dataViewLocations.Columns.Add("country", "deliveryID");
-            dataViewLocations.Columns.Add("employeeID", "employeeID");
-            dataViewLocations.Columns.Add("notes", "notes");
+            dataViewLocations.Columns.Add("postalCode", "postalCode");
+            dataViewLocations.Columns.Add("phone", "phoneNumber");
+            dataViewLocations.Columns.Add("dayOfWeek", "dayOfWeek");
+            dataViewLocations.Columns.Add("distanceFromWH", "distanceFromWH");
+            dataViewLocations.Columns.Add("siteType", "siteType");
+            dataViewLocations.Columns.Add("notes", "Notes");
+            dataViewLocations.Columns.Add("active", "active");
 
 
             foreach (site site
                 in sites)
             {
-
                 dataViewLocations.Rows.Add(site.returnList());
             }
         }

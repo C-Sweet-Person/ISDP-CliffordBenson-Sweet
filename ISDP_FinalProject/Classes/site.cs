@@ -134,22 +134,39 @@ namespace ISDP_FinalProject
             {
                 int siteID = rdr.GetInt32(0);
                 string siteName = rdr.GetString(1);
-                sites.Add(new site(siteID, siteName));
+                string province = rdr.GetString(2);
+                string address = rdr.GetString(3);
+                string address2 = rdr.GetString(4);
+                string city = rdr.GetString(5);
+                string country = rdr.GetString(6);
+                string postalCode = rdr.GetString(7);
+                string phone = rdr.GetString(8);
+                string dayOfWeek = rdr.GetString(9);
+                int distanceFromWH = rdr.GetInt32(10);
+                string siteType = rdr.GetString(11);
+                string notes = rdr.GetString(12);
+                bool active = rdr.GetBoolean(13);
+                sites.Add(new site(siteID, siteName,province,address,address2,city,country,postalCode,phone,dayOfWeek,distanceFromWH,siteType,notes,active));
             }
             return sites;
         }
         public string[] returnList()
         {
-            string[] ret = new string[9];
-            ret[0] = this.getID.ToString();
-            ret[1] = this.getTxnID().ToString();
-            ret[2] = this.getTxnType();
-            ret[3] = this.getStatus();
-            ret[4] = this.getTxnDate();
-            ret[5] = this.getSiteID().ToString();
-            ret[6] = this.getDeliveryID().ToString();
-            ret[7] = this.getEmployeeID().ToString();
-            ret[8] = this.getNotes();
+            string[] ret = new string[14];
+            ret[0] = this.getID().ToString();
+            ret[1] = this.getName()
+            ret[2] = this.getProvince();
+            ret[3] = this.getAddress();
+            ret[4] = this.getAddress2();
+            ret[5] = this.getCity();
+            ret[6] = this.getCountry();
+            ret[7] = this.getProvince();
+            ret[8] = this.getPhone();
+            ret[9] = this.getDayOfWeek();
+            ret[10] = this.getDistanceFromWH().ToString();
+            ret[11] = this.getSiteType();
+            ret[12] = this.getNotes();
+            ret[13] = this.getActive().ToString();
             return ret;
         }
     }
