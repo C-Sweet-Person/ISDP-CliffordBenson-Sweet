@@ -32,6 +32,7 @@
             this.dataViewLocations = new System.Windows.Forms.DataGridView();
             this.btnEditLocation = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewLocations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,11 +75,22 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(12, 409);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(175, 29);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "DeleteLocation";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // LocationTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEditLocation);
             this.Controls.Add(this.dataViewLocations);
@@ -96,5 +108,6 @@
         private DataGridView dataViewLocations;
         private Button btnEditLocation;
         private Button btnClose;
+        private Button btnDelete;
     }
 }

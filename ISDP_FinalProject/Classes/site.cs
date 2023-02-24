@@ -169,5 +169,35 @@ namespace ISDP_FinalProject
             ret[13] = this.getActive().ToString();
             return ret;
         }
+
+        /*
+         * The Add/Edit/Delete functionality of the
+         * code is located below
+         * this part.
+         */
+        public bool deleteLocation()
+        {
+            return true;
+        }
+        public bool addLocation()
+        {
+            return true;
+        }
+        public bool editLocation()
+        {
+            return true;
+        }
+
+
+
+
+
+
+
+        /*
+         * This is the end
+         * of the main tools
+         * section.
+         */
     }
 }

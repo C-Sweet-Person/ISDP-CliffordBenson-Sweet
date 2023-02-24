@@ -56,5 +56,10 @@ namespace ISDP_FinalProject.Admin_Functions
         {
             Close();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
