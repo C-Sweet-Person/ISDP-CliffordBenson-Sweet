@@ -41,6 +41,11 @@ namespace ISDP_FinalProject
             this.notes = notes;
             this.active = active;
         }
+        /*
+         * This is the getters section
+         * There is a lot of them.
+         * But this is where it starts.
+         */
         public int getID()
         {
             return siteID;
@@ -49,6 +54,60 @@ namespace ISDP_FinalProject
         {
             return siteName;
         }
+        private string getProvince()
+        {
+            return provinceID;
+        }
+        private string getAddress()
+        {
+            return address;
+        }
+        private string getAddress2()
+        {
+            return address2;
+        }
+        private string getCity()
+        {
+            return city;
+        }
+        private string getCountry()
+        {
+            return country;
+        }
+        private string getPostalCode()
+        {
+            return postalCode;
+        }
+        private string getPhone()
+        {
+            return phone;
+        }
+        private string getDayOfWeek()
+        {
+            return dayOfWeek;
+        }
+        private int getDistanceFromWH()
+        {
+            return distanceFromWH;
+        }
+        private string getSiteType()
+        {
+            return siteType;
+        }
+        private string getNotes()
+        {
+            return notes;
+        }
+         private bool getActive()
+        {
+            return active;
+        }
+        
+        /*
+         * This is the end
+         * of the getters section.
+         * Now onto the main code.
+         */
         public static string getSiteNameByID(int id)
         {
             string name = null;
