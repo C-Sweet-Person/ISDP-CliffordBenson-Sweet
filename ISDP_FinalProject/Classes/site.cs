@@ -198,7 +198,7 @@ namespace ISDP_FinalProject
                 MySqlConnection cnn = db.cnn;
                 MySqlCommand cmd = cnn.CreateCommand();
                 cnn.Open();
-                cmd.CommandText = String.Format("insert into site(username,password,firstName,lastName,email,active,locked,positionID,siteID) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},{8})", , worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID());
+                cmd.CommandText = String.Format("insert into site(name,provinceID,address,address2,city,country,postalCode,phone,dayOfWeek,distanceFromWH,siteType,notes,active) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')", , location.getName(), location.getProvince(), location.getAddress(), location.getAddress2(), location.getCity(),location.getCountry(),location.getPostalCode(),location.getPhone(),location.dayOfWeek,location.getDistanceFromWH(),location.getSiteType(),location.getNotes(),true);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -218,7 +218,7 @@ namespace ISDP_FinalProject
             MySqlConnection cnn = db.cnn;
             MySqlCommand cmd = cnn.CreateCommand();
             cnn.Open();
-            cmd.CommandText = String.Format("update site set password = '{0}', firstName = '{1}', lastName = '{2}', email = '{3}', active = {4}, locked = {5}, positionID = {6}, siteID = {7} where employeeID = {8}", worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
+            cmd.CommandText = String.Format("update site set name = '{0}', provinceID = '{1}', address = '{2}', address2 = '{3}', city = '{4}', country = '{5}', postalCode = '{6}', phone = '{7}', dayOfWeek = '{8}', distanceFromWH = {9}, siteType = '{10}' where siteID = {11}", location.getName(), location.getProvince(), location.getAddress(), location.getAddress(), location.getAddress2(), location.getCity(), location.getCountry(), location.getPostalCode(), location.getPhone(), location.getDayOfWeek(), location.getDistanceFromWH(), location.getSiteType(), location.getNotes(), location.getID());
             cmd.ExecuteNonQuery();
             return true;
         }
