@@ -108,19 +108,33 @@ namespace ISDP_FinalProject
          * of the getters section.
          * Now onto the main code.
          */
-        public static string getSiteNameByID(int id)
+        public static site getSiteByID(int id)
         {
-            string name = null;
+            site location = null;
             DBConnector connector = new DBConnector();
             connector.cnn.Open();
             MySqlCommand cmd = connector.cnn.CreateCommand();
-            cmd.CommandText = string.Format("select name from site where siteID = {0}",id);
+            cmd.CommandText = string.Format("select * from site where siteID = {0}",id);
             using MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                name = rdr.GetString(0);
+                int siteID = rdr.GetInt32(0);
+                string siteName = rdr.GetString(1);
+                string province = rdr.GetString(2);
+                string address = rdr.GetString(3);
+                string address2 = rdr.IsDBNull(4) ? null : rdr.GetString(4);
+                string city = rdr.GetString(5);
+                string country = rdr.GetString(6);
+                string postalCode = rdr.GetString(7);
+                string phone = rdr.GetString(8);
+                string dayOfWeek = rdr.GetString(9);
+                int distanceFromWH = rdr.GetInt32(10);
+                string siteType = rdr.GetString(11);
+                string notes = rdr.IsDBNull(12) ? null : rdr.GetString(12);
+                bool active = rdr.GetBoolean(13);
+                location = new site(siteID, siteName, province, address, address2, city, country, postalCode, phone, dayOfWeek, distanceFromWH, siteType, notes, active);
             }
-            return name;
+            return location;
         }
         public static List<site> GetSites()
         {
@@ -170,30 +184,63 @@ namespace ISDP_FinalProject
             return ret;
         }
 
-        /*
-         * The Add/Edit/Delete functionality of the
-         * code is located below
-         * this part.
-         */
-        public bool deleteLocation()
+
+        //
+        //
+        //Adds an location based on the given site sent to it.
+        //
+        //
+        public static bool addLocation(site location)
         {
+            try
+            {
+                DBConnector db = new DBConnector();
+                MySqlConnection cnn = db.cnn;
+                MySqlCommand cmd = cnn.CreateCommand();
+                cnn.Open();
+                cmd.CommandText = String.Format("insert into site(username,password,firstName,lastName,email,active,locked,positionID,siteID) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},{8})", , worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID());
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return true;
         }
-        public bool addLocation()
+        //
+        //
+        // Edit an location given an location.
+        //
+        //
+        public static bool EditLocation(site location)
         {
+            DBConnector db = new DBConnector();
+            MySqlConnection cnn = db.cnn;
+            MySqlCommand cmd = cnn.CreateCommand();
+            cnn.Open();
+            cmd.CommandText = String.Format("update site set password = '{0}', firstName = '{1}', lastName = '{2}', email = '{3}', active = {4}, locked = {5}, positionID = {6}, siteID = {7} where employeeID = {8}", worker.getPassword(), worker.getFirstName(), worker.getLastName(), worker.EmailGen(), worker.boolConvert(worker.getActive()), worker.boolConvert(worker.getLocked()), worker.getPositionID(), worker.getSiteID(), worker.getID());
+            cmd.ExecuteNonQuery();
             return true;
         }
-        public bool editLocation()
+        public static bool deleteLocation(int locationID)
         {
+            try
+            {
+                DBConnector db = new DBConnector();
+                MySqlConnection cnn = db.cnn;
+                cnn.Open();
+                site locale = site.getSiteByID(locationID);
+                string userName = locale.getName();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = String.Format("update site set active = 0 where siteName = '{0}';", userName);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return true;
-        }
-
-
-
-
-
-
-
+        } 
         /*
          * This is the end
          * of the main tools
