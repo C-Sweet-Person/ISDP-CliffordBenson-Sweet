@@ -31,16 +31,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtWHDistance = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSiteType = new System.Windows.Forms.TextBox();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtProvince = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.txtNotes = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -77,12 +77,12 @@
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // txtWHDistance
             // 
-            this.textBox7.Location = new System.Drawing.Point(163, 231);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(125, 27);
-            this.textBox7.TabIndex = 42;
+            this.txtWHDistance.Location = new System.Drawing.Point(163, 231);
+            this.txtWHDistance.Name = "txtWHDistance";
+            this.txtWHDistance.Size = new System.Drawing.Size(125, 27);
+            this.txtWHDistance.TabIndex = 42;
             // 
             // textBox9
             // 
@@ -92,47 +92,47 @@
             this.textBox9.Size = new System.Drawing.Size(165, 126);
             this.textBox9.TabIndex = 41;
             // 
-            // textBox6
+            // txtSiteType
             // 
-            this.textBox6.Location = new System.Drawing.Point(163, 269);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(125, 27);
-            this.textBox6.TabIndex = 40;
+            this.txtSiteType.Location = new System.Drawing.Point(163, 269);
+            this.txtSiteType.Name = "txtSiteType";
+            this.txtSiteType.Size = new System.Drawing.Size(125, 27);
+            this.txtSiteType.TabIndex = 40;
             // 
-            // textBox5
+            // txtPostalCode
             // 
-            this.textBox5.Location = new System.Drawing.Point(163, 195);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(125, 27);
-            this.textBox5.TabIndex = 39;
+            this.txtPostalCode.Location = new System.Drawing.Point(163, 195);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(125, 27);
+            this.txtPostalCode.TabIndex = 39;
             // 
-            // textBox4
+            // txtCountry
             // 
-            this.textBox4.Location = new System.Drawing.Point(163, 158);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(125, 27);
-            this.textBox4.TabIndex = 38;
+            this.txtCountry.Location = new System.Drawing.Point(163, 158);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Size = new System.Drawing.Size(125, 27);
+            this.txtCountry.TabIndex = 38;
             // 
-            // textBox3
+            // txtCity
             // 
-            this.textBox3.Location = new System.Drawing.Point(163, 125);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 27);
-            this.textBox3.TabIndex = 37;
+            this.txtCity.Location = new System.Drawing.Point(163, 125);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(125, 27);
+            this.txtCity.TabIndex = 37;
             // 
-            // textBox2
+            // txtProvince
             // 
-            this.textBox2.Location = new System.Drawing.Point(163, 87);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 27);
-            this.textBox2.TabIndex = 43;
+            this.txtProvince.Location = new System.Drawing.Point(163, 87);
+            this.txtProvince.Name = "txtProvince";
+            this.txtProvince.Size = new System.Drawing.Size(125, 27);
+            this.txtProvince.TabIndex = 43;
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(163, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 36;
+            this.txtName.Location = new System.Drawing.Point(163, 49);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(125, 27);
+            this.txtName.TabIndex = 36;
             // 
             // label3
             // 
@@ -143,14 +143,14 @@
             this.label3.TabIndex = 35;
             this.label3.Text = "Province: ";
             // 
-            // label10
+            // txtNotes
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(294, 52);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 20);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "Notes:";
+            this.txtNotes.AutoSize = true;
+            this.txtNotes.Location = new System.Drawing.Point(294, 52);
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(51, 20);
+            this.txtNotes.TabIndex = 33;
+            this.txtNotes.Text = "Notes:";
             // 
             // label8
             // 
@@ -212,16 +212,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 450);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtWHDistance);
             this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSiteType);
+            this.Controls.Add(this.txtPostalCode);
+            this.Controls.Add(this.txtCountry);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtProvince);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -243,16 +243,16 @@
         private Label label1;
         private Button button1;
         private Button button2;
-        private TextBox textBox7;
+        private TextBox txtWHDistance;
         private TextBox textBox9;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtSiteType;
+        private TextBox txtPostalCode;
+        private TextBox txtCountry;
+        private TextBox txtCity;
+        private TextBox txtProvince;
+        private TextBox txtName;
         private Label label3;
-        private Label label10;
+        private Label txtNotes;
         private Label label8;
         private Label label7;
         private Label label6;
