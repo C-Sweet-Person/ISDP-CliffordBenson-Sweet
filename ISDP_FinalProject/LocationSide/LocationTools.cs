@@ -61,5 +61,11 @@ namespace ISDP_FinalProject.Admin_Functions
         {
 
         }
+
+        private void btnEditLocation_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(dataViewLocations.SelectedCells[0].Value.ToString(), "text");
+            
+        }
     }
 }

@@ -198,7 +198,7 @@ namespace ISDP_FinalProject
                 MySqlConnection cnn = db.cnn;
                 MySqlCommand cmd = cnn.CreateCommand();
                 cnn.Open();
-                cmd.CommandText = String.Format("insert into site(name,provinceID,address,address2,city,country,postalCode,phone,dayOfWeek,distanceFromWH,siteType,notes,active) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')", , location.getName(), location.getProvince(), location.getAddress(), location.getAddress2(), location.getCity(),location.getCountry(),location.getPostalCode(),location.getPhone(),location.dayOfWeek,location.getDistanceFromWH(),location.getSiteType(),location.getNotes(),true);
+                cmd.CommandText = String.Format("insert into site(name,provinceID,address,address2,city,country,postalCode,phone,dayOfWeek,distanceFromWH,siteType,notes,active) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')", location.getName(), location.getProvince(), location.getAddress(), location.getAddress2(), location.getCity(),location.getCountry(),location.getPostalCode(),location.getPhone(),location.dayOfWeek,location.getDistanceFromWH(),location.getSiteType(),location.getNotes(),true);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)

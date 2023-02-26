@@ -64,10 +64,11 @@
             this.btnEditLocation.TabIndex = 2;
             this.btnEditLocation.Text = "EditLocation";
             this.btnEditLocation.UseVisualStyleBackColor = true;
+            this.btnEditLocation.Click += new System.EventHandler(this.btnEditLocation_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(613, 373);
+            this.btnClose.Location = new System.Drawing.Point(613, 338);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(175, 29);
             this.btnClose.TabIndex = 3;
