@@ -112,12 +112,13 @@ namespace ISDP_FinalProject
         }
         public void ChangeText(employee worker)
         {
+            site Site = site.getSiteByID(worker.getSiteID());
             txtID.Text = Convert.ToString(worker.getID());
             txtPassword.Text = worker.getPassword();
             txtFirstname.Text = worker.getFirstName();
             txtLastname.Text = worker.getLastName();
             cbox_Position.Text = position.getPermissionLevelByID(worker.getPositionID());
-            cbox_Site.Text = site.getSiteNameByID(worker.getSiteID());
+            cbox_Site.Text = Site.getName();
             check_Active.Checked = worker.getActive();
             check_Locked.Checked = worker.getLocked();
 

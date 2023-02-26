@@ -40,8 +40,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NewFolder\NewFolder\" />
-  </ItemGroup>
-
 </Project>
