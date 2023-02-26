@@ -2,6 +2,14 @@ window.onload = function()
 {
 
 }
+function getOrders()
+{
+
+}
+function showOrders()
+{
+
+}
 
 function fulfilOrder()
 {
@@ -10,7 +18,7 @@ function fulfilOrder()
 
 function recieveOrder()
 {
-
+//Grab the table 
 }
 
 function backend(method,list)
