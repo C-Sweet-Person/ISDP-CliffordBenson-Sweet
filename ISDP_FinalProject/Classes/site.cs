@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISDP_FinalProject
 {
-    internal class site
+    public class site
     {
         private int siteID;
         private string siteName;
@@ -54,51 +54,51 @@ namespace ISDP_FinalProject
         {
             return siteName;
         }
-        private string getProvince()
+        public string getProvince()
         {
             return provinceID;
         }
-        private string getAddress()
+        public string getAddress()
         {
             return address;
         }
-        private string getAddress2()
+        public string getAddress2()
         {
             return address2;
         }
-        private string getCity()
+        public string getCity()
         {
             return city;
         }
-        private string getCountry()
+        public string getCountry()
         {
             return country;
         }
-        private string getPostalCode()
+        public string getPostalCode()
         {
             return postalCode;
         }
-        private string getPhone()
+        public string getPhone()
         {
             return phone;
         }
-        private string getDayOfWeek()
+        public string getDayOfWeek()
         {
             return dayOfWeek;
         }
-        private int getDistanceFromWH()
+        public int getDistanceFromWH()
         {
             return distanceFromWH;
         }
-        private string getSiteType()
+        public string getSiteType()
         {
             return siteType;
         }
-        private string getNotes()
+        public string getNotes()
         {
             return notes;
         }
-         private bool getActive()
+         public bool getActive()
         {
             return active;
         }
@@ -224,6 +224,7 @@ namespace ISDP_FinalProject
         }
         public static bool deleteLocation(int locationID)
         {
+            bool worked = false;
             try
             {
                 DBConnector db = new DBConnector();
@@ -232,14 +233,15 @@ namespace ISDP_FinalProject
                 site locale = site.getSiteByID(locationID);
                 string userName = locale.getName();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = String.Format("update site set active = 0 where siteName = '{0}';", userName);
+                cmd.CommandText = String.Format("update site set active = 0 where name = '{0}';", userName);
                 cmd.ExecuteNonQuery();
+                worked = true;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return true;
+            return worked;
         } 
         /*
          * This is the end

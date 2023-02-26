@@ -49,10 +49,13 @@
             // dataViewLocations
             // 
             this.dataViewLocations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataViewLocations.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataViewLocations.Location = new System.Drawing.Point(12, 12);
+            this.dataViewLocations.MultiSelect = false;
             this.dataViewLocations.Name = "dataViewLocations";
             this.dataViewLocations.RowHeadersWidth = 51;
             this.dataViewLocations.RowTemplate.Height = 29;
+            this.dataViewLocations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataViewLocations.Size = new System.Drawing.Size(776, 320);
             this.dataViewLocations.TabIndex = 1;
             // 

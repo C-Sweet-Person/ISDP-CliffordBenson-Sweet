@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ISDP_FinalProject.LocationSide;
 
 namespace ISDP_FinalProject.Admin_Functions
 {
@@ -48,6 +49,7 @@ namespace ISDP_FinalProject.Admin_Functions
             foreach (site site
                 in sites)
             {
+                if (site.getActive())
                 dataViewLocations.Rows.Add(site.returnList());
             }
         }
@@ -59,13 +61,25 @@ namespace ISDP_FinalProject.Admin_Functions
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            int ID = Convert.ToInt32(dataViewLocations.SelectedCells[0].Value.ToString()); 
+            string name = dataViewLocations.SelectedRows[0].Cells[1].Value.ToString();
+            if (site.deleteLocation(ID))
+            {
+                MessageBox.Show(name + " Location deleted.");
+            }
+            else
+            {
+                MessageBox.Show("Location could not be deleted.");
+            }
         }
 
         private void btnEditLocation_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dataViewLocations.SelectedCells[0].Value.ToString(), "text");
-            
+            EditLocation editLocation = new EditLocation();
+            int ID = Convert.ToInt32(dataViewLocations.SelectedCells[0].Value.ToString());
+            site currentSite = site.getSiteByID(ID);
+            editLocation.ChangeText(currentSite);
+            editLocation.ShowDialog();
         }
     }
 }

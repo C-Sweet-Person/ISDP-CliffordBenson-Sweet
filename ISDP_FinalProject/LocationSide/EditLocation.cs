@@ -21,5 +21,22 @@ namespace ISDP_FinalProject.LocationSide
         {
             Close();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void ChangeText(site site)
+        {
+        txtName.Text = site.getName();
+        txtProvince.Text = site.getProvince();
+        txtCity.Text = site.getCity();
+        txtCountry.Text = site.getCountry();
+        txtPostalCode.Text = site.getPostalCode();
+        txtWHDistance.Text = site.getDistanceFromWH().ToString();
+        txtSiteType.Text = site.getSiteType();
+        txtNotes.Text = site.getNotes();
+
+        }
     }
 }
