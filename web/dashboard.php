@@ -40,8 +40,6 @@
 <div id="Menu">
     <p class="option" id="createOrder">Create Store Orders</p>
     <p class="option" id="createEOrder">Create Emergency Orders</p>
-    <p class="option" id="RecieveOrder">Recieve Orders</p>
-    <p class="option" id="RecieveOrder">Fulfil Orders</p>
 </div>
 <hr>
 <div id="tableDisplay"><table id="tableItems"></table>
