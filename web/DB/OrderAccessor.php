@@ -24,19 +24,18 @@ class OrderAccessor
             $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //( $itemID, $name, $description,$category,$weight,$costPrice,$retailPrice,$supplierID,$active,$notes,$caseSize) 
             foreach ($dbresults as $r) {
-                $itemID = $r['itemID'];
-                $name = $r['name'];
-                $description = $r['description'];
-                $category = $r['category'];
-                $weight = $r['weight'];
-                $costPrice = $r['costPrice'];
-                $retailPrice = $r['retailPrice'];
-                $supplierID = $r['supplierID'];
-                $active = $r['active'];
-                $notes = $r['notes'];
-                $caseSize = $r['caseSize'];
-                $item = new item( $itemID, $name, $description,$category,$weight,$costPrice,$retailPrice,$supplierID,$active,$notes,$caseSize);
-                array_push($result, $item);
+                $txnID = $r['txnID'];
+                $siteIDTo = $r['siteIDTo'];
+                $siteIDFrom = $r['siteIDFrom'];
+                $status = $r['status'];
+                $shipDate = $r['shipDate'];
+                $txnType = $r['txnType'];
+                $barCode = $r['barCode'];
+                $createdDate = $r['createdDate'];
+                $deliveryID = $r['deliveryID'];
+                $emergencyDelivery = $r['emergencyDelivery'];
+                $txn = new transaction( $txnID, $siteIDTo, $siteIDFrom,$status,$shipDate,$txnType,$barCode,$createdDate,$deliveryID,$emergencyDelivery);
+                array_push($result, $txn);
             }
         } catch (Exception $e) {
             $result = [];
@@ -48,9 +47,10 @@ class OrderAccessor
 
         return $result;
     }
-    public function deleteOrder()
+    public function changeStatus($orderID, $msg)
     {
-        
+        $stmt = $this->conn->prepare("update txn set status = '" . $msg . "' where txnID = " . $orderID);
+        $stmt->execute();    
     }
     public function getOrderDetails()
     {
