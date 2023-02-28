@@ -83,6 +83,17 @@ class OrderAccessor
         $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);  
     }
     /**
+     * We of course need a function
+     * That will allow us to create
+     * line items attached to an order.
+     * Best way to do this, create a function that will
+     * Take in an ID and a line.
+     */
+    public function createTxnItem($ID,$line)
+    {
+        
+    }
+    /**
      * This function will just take in an order
      * And a type in order to change
      * that order's status to a particular 
@@ -90,9 +101,19 @@ class OrderAccessor
      */
     public function changeType($order,$type)
     {
+        try{
         $stmt = $this->conn->prepare('Update txn set txnType = ' . '"'. $type . '" ' . 'where txnID = ' . $order);
         $stmt->execute();
-        $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);    
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        finally {
+            if (!is_null($this->insertStatement)) {
+                $stmt->closeCursor();
+            }
+            return $success;
+        }    
     }
 }
 ?>
