@@ -33,6 +33,7 @@
             this.btnEditLocation = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAddLocation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewLocations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,11 +90,22 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnAddLocation
+            // 
+            this.btnAddLocation.Location = new System.Drawing.Point(193, 338);
+            this.btnAddLocation.Name = "btnAddLocation";
+            this.btnAddLocation.Size = new System.Drawing.Size(175, 29);
+            this.btnAddLocation.TabIndex = 5;
+            this.btnAddLocation.Text = "AddLocation";
+            this.btnAddLocation.UseVisualStyleBackColor = true;
+            this.btnAddLocation.Click += new System.EventHandler(this.btnAddLocation_Click);
+            // 
             // LocationTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAddLocation);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEditLocation);
@@ -113,5 +125,6 @@
         private Button btnEditLocation;
         private Button btnClose;
         private Button btnDelete;
+        private Button btnAddLocation;
     }
 }

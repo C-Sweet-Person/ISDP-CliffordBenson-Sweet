@@ -81,5 +81,11 @@ namespace ISDP_FinalProject.Admin_Functions
             editLocation.ChangeText(currentSite);
             editLocation.ShowDialog();
         }
+
+        private void btnAddLocation_Click(object sender, EventArgs e)
+        {
+            AddLocation addLocation = new AddLocation();
+            addLocation.ShowDialog();
+        }
     }
 }

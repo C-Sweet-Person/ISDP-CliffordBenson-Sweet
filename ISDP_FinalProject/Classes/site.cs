@@ -136,6 +136,37 @@ namespace ISDP_FinalProject
             }
             return location;
         }
+        /*
+         * Function: getSiteTypes()
+         * This function places a list of sites into a list of strings
+         * to be used in a site type combo box.
+        */
+        public static List<string> getSiteTypes()
+        {
+            List<string> siteTypes = new List<string>();
+           
+            try
+            {
+                DBConnector connector = new DBConnector();
+                connector.cnn.Open();
+                MySqlCommand cmd = connector.cnn.CreateCommand();
+                cmd.CommandText = "select siteType from sitetype";
+                using MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    string siteType = rdr.GetString(0);
+                    siteTypes.Add(siteType);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            return siteTypes;
+        }
+        /*
+         * End of function details.
+         */
         public static List<site> GetSites()
         {
             List<site> sites = new List<site>();
@@ -198,7 +229,7 @@ namespace ISDP_FinalProject
                 MySqlConnection cnn = db.cnn;
                 MySqlCommand cmd = cnn.CreateCommand();
                 cnn.Open();
-                cmd.CommandText = String.Format("insert into site(name,provinceID,address,address2,city,country,postalCode,phone,dayOfWeek,distanceFromWH,siteType,notes,active) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')", location.getName(), location.getProvince(), location.getAddress(), location.getAddress2(), location.getCity(),location.getCountry(),location.getPostalCode(),location.getPhone(),location.dayOfWeek,location.getDistanceFromWH(),location.getSiteType(),location.getNotes(),true);
+                cmd.CommandText = String.Format("insert into site(name,provinceID,address,address2,city,country,postalCode,phone,dayOfWeek,distanceFromWH,siteType,notes,active) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}',{12})", location.getName(), location.getProvince(), location.getAddress(), location.getAddress2(), location.getCity(),location.getCountry(),location.getPostalCode(),location.getPhone(),location.getDayOfWeek(),location.getDistanceFromWH(),location.getSiteType(),location.getNotes(),1);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)

@@ -35,7 +35,7 @@ namespace ISDP_FinalProject.LocationSide
             int WHDistance = Convert.ToInt32(txtWHDistance.Text);
             string phone = txtPhone.Text;
             string dayOfWeek = cboxWeekDay.SelectedItem.ToString();
-            string siteType = txtSiteType.Text;
+            string siteType = cboxSiteType.SelectedItem.ToString();
             string Notes = txtNotes.Text;
             if(MessageBox.Show("Do you want to edit this?", "Notice", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -60,10 +60,19 @@ namespace ISDP_FinalProject.LocationSide
         txtPostalCode.Text = site.getPostalCode();
         txtWHDistance.Text = site.getDistanceFromWH().ToString();
         txtPhone.Text = site.getPhone();
-            cboxWeekDay.Text = site.getDayOfWeek();
-        txtSiteType.Text = site.getSiteType();
+        cboxWeekDay.Text = site.getDayOfWeek();
+        addSiteTypes();
         txtNotes.Text = site.getNotes();
-
+        
+        }
+        private void addSiteTypes()
+        {
+            List<string> siteTypes = site.getSiteTypes();
+            foreach (string site in siteTypes)
+            {
+                MessageBox.Show(site);
+                cboxSiteType.Items.Add(site);
+            }
         }
     }
 }

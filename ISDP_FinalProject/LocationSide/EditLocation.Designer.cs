@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtWHDistance = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.txtSiteType = new System.Windows.Forms.TextBox();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
@@ -41,7 +40,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,11 +55,13 @@
             this.cboxWeekDay = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.cboxSiteType = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(425, 393);
+            this.btnClose.Location = new System.Drawing.Point(425, 409);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 29);
             this.btnClose.TabIndex = 29;
@@ -71,7 +71,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(18, 393);
+            this.btnEdit.Location = new System.Drawing.Point(18, 409);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
             this.btnEdit.TabIndex = 28;
@@ -103,13 +103,6 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(165, 126);
             this.textBox9.TabIndex = 57;
-            // 
-            // txtSiteType
-            // 
-            this.txtSiteType.Location = new System.Drawing.Point(163, 370);
-            this.txtSiteType.Name = "txtSiteType";
-            this.txtSiteType.Size = new System.Drawing.Size(125, 27);
-            this.txtSiteType.TabIndex = 56;
             // 
             // txtPostalCode
             // 
@@ -163,15 +156,6 @@
             this.txtNotes.Size = new System.Drawing.Size(51, 20);
             this.txtNotes.TabIndex = 49;
             this.txtNotes.Text = "Notes:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 370);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 20);
-            this.label8.TabIndex = 48;
-            this.label8.Text = "Site Type:";
             // 
             // label7
             // 
@@ -313,17 +297,35 @@
             this.txtID.Size = new System.Drawing.Size(125, 27);
             this.txtID.TabIndex = 62;
             // 
+            // cboxSiteType
+            // 
+            this.cboxSiteType.FormattingEnabled = true;
+            this.cboxSiteType.Location = new System.Drawing.Point(164, 367);
+            this.cboxSiteType.Name = "cboxSiteType";
+            this.cboxSiteType.Size = new System.Drawing.Size(151, 28);
+            this.cboxSiteType.TabIndex = 89;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 367);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 20);
+            this.label8.TabIndex = 88;
+            this.label8.Text = "Site Type:";
+            // 
             // EditLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 450);
+            this.Controls.Add(this.cboxSiteType);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.cboxWeekDay);
             this.Controls.Add(this.txtWHDistance);
             this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.txtSiteType);
             this.Controls.Add(this.txtPostalCode);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.txtCity);
@@ -334,7 +336,6 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNotes);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -361,7 +362,6 @@
         private Label label1;
         private TextBox txtWHDistance;
         private TextBox textBox9;
-        private TextBox txtSiteType;
         private TextBox txtPostalCode;
         private TextBox txtCountry;
         private TextBox txtCity;
@@ -369,7 +369,6 @@
         private TextBox txtName;
         private Label label3;
         private Label txtNotes;
-        private Label label8;
         private Label label7;
         private Label label6;
         private Label label5;
@@ -385,5 +384,7 @@
         private ComboBox cboxWeekDay;
         private Label label13;
         private TextBox txtID;
+        private ComboBox cboxSiteType;
+        private Label label8;
     }
 }

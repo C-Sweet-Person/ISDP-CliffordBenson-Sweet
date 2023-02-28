@@ -34,7 +34,6 @@
             this.cboxWeekDay = new System.Windows.Forms.ComboBox();
             this.txtWHDistance = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.txtSiteType = new System.Windows.Forms.TextBox();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
@@ -55,6 +54,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cboxSiteType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -117,13 +117,6 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(165, 126);
             this.textBox9.TabIndex = 83;
-            // 
-            // txtSiteType
-            // 
-            this.txtSiteType.Location = new System.Drawing.Point(161, 343);
-            this.txtSiteType.Name = "txtSiteType";
-            this.txtSiteType.Size = new System.Drawing.Size(125, 27);
-            this.txtSiteType.TabIndex = 82;
             // 
             // txtPostalCode
             // 
@@ -294,15 +287,23 @@
             this.label2.Text = "Name:\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // cboxSiteType
+            // 
+            this.cboxSiteType.FormattingEnabled = true;
+            this.cboxSiteType.Location = new System.Drawing.Point(161, 343);
+            this.cboxSiteType.Name = "cboxSiteType";
+            this.cboxSiteType.Size = new System.Drawing.Size(151, 28);
+            this.cboxSiteType.TabIndex = 87;
+            // 
             // AddLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 450);
+            this.Controls.Add(this.cboxSiteType);
             this.Controls.Add(this.cboxWeekDay);
             this.Controls.Add(this.txtWHDistance);
             this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.txtSiteType);
             this.Controls.Add(this.txtPostalCode);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.txtCity);
@@ -340,7 +341,6 @@
         private Button btnClose;
         private TextBox txtWHDistance;
         private TextBox textBox9;
-        private TextBox txtSiteType;
         private TextBox txtPostalCode;
         private TextBox txtCountry;
         private TextBox txtCity;
@@ -362,5 +362,6 @@
         private Label label10;
         private Label label11;
         private Label label9;
+        private ComboBox cboxSiteType;
     }
 }
