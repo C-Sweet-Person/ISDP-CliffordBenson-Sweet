@@ -90,7 +90,9 @@ class OrderAccessor
      */
     public function changeType($order,$type)
     {
-        
+        $stmt = $this->conn->prepare('Update txn set txnType = ' . '"'. $type . '" ' . 'where txnID = ' . $order);
+        $stmt->execute();
+        $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);    
     }
 }
 ?>
