@@ -3,11 +3,11 @@ session_start();
 require_once '../DB/UserAccessor.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
+
 if ($method === "POST")
 {
         doLogin();
 }
-
 
 
 

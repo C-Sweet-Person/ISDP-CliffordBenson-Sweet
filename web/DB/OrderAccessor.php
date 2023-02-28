@@ -14,6 +14,11 @@ class OrderAccessor
             throw new Exception("no connection");
         }
     }
+    /*
+    This function is used
+    to get all the orders with a custom
+    select string.
+    */
     public function getAllOrders($selectString)
     {
         $result = [];
@@ -47,14 +52,68 @@ class OrderAccessor
 
         return $result;
     }
+    //
+    //
+    //
+    //
+
     public function changeStatus($orderID, $msg)
     {
         $stmt = $this->conn->prepare("update txn set status = '" . $msg . "' where txnID = " . $orderID);
         $stmt->execute();    
     }
+    /**
+     * This function is used
+     * to get the order types, but only for ones that can be specfically created.
+     */
     public function getOrderDetails()
     {
         
+    }
+    /**
+     * This function creates an
+     * order using a specified order type and
+     * takes in a list to create txnLine items after the
+     * actual order is created.
+     */
+    public function createOrder($items,$type)
+    {
+        $stmt = $this->conn->prepare($selectString);
+        $stmt->execute();
+        $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+    }
+    /**
+     * We of course need a function
+     * That will allow us to create
+     * line items attached to an order.
+     * Best way to do this, create a function that will
+     * Take in an ID and a line.
+     */
+    public function createTxnItem($ID,$line)
+    {
+        
+    }
+    /**
+     * This function will just take in an order
+     * And a type in order to change
+     * that order's status to a particular 
+     * type
+     */
+    public function changeType($order,$type)
+    {
+        try{
+        $stmt = $this->conn->prepare('Update txn set txnType = ' . '"'. $type . '" ' . 'where txnID = ' . $order);
+        $stmt->execute();
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        finally {
+            if (!is_null($this->insertStatement)) {
+                $stmt->closeCursor();
+            }
+            return $success;
+        }    
     }
 }
 ?>
