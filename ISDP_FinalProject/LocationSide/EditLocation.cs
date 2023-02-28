@@ -24,6 +24,7 @@ namespace ISDP_FinalProject.LocationSide
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            int id = Convert.ToInt32(txtID.Text);
             string name = txtName.Text;
             string address = txtAddress.Text;
             string address2 = txtAddress2.Text;
@@ -36,18 +37,30 @@ namespace ISDP_FinalProject.LocationSide
             string dayOfWeek = cboxWeekDay.SelectedItem.ToString();
             string siteType = txtSiteType.Text;
             string Notes = txtNotes.Text;
-            site.EditLocation(new site(33333, name, province, address, address2, city, country, postalCode, phone, dayOfWeek, WHDistance, siteType, Notes, true));
+            if(MessageBox.Show("Do you want to edit this?", "Notice", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (site.EditLocation(new site(id, name, province, address, address2, city, country, postalCode, phone, dayOfWeek, WHDistance, siteType, Notes, true)))
+                {
+                    MessageBox.Show(id + " has been edited.");
+                    Close();
+                };
+            }
+
+           
         }
         public void ChangeText(site site)
         {
+        txtID.Text = site.getID().ToString();
         txtName.Text = site.getName();
-        txtAddress = site.getAddress();
-        txtAddress2 = site.getAddress2();
+        txtAddress.Text = site.getAddress();
+        txtAddress2.Text = site.getAddress2();
         txtProvince.Text = site.getProvince();
         txtCity.Text = site.getCity();
         txtCountry.Text = site.getCountry();
         txtPostalCode.Text = site.getPostalCode();
         txtWHDistance.Text = site.getDistanceFromWH().ToString();
+        txtPhone.Text = site.getPhone();
+            cboxWeekDay.Text = site.getDayOfWeek();
         txtSiteType.Text = site.getSiteType();
         txtNotes.Text = site.getNotes();
 

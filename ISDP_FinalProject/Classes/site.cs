@@ -218,7 +218,7 @@ namespace ISDP_FinalProject
             MySqlConnection cnn = db.cnn;
             MySqlCommand cmd = cnn.CreateCommand();
             cnn.Open();
-            cmd.CommandText = String.Format("update site set name = '{0}', provinceID = '{1}', address = '{2}', address2 = '{3}', city = '{4}', country = '{5}', postalCode = '{6}', phone = '{7}', dayOfWeek = '{8}', distanceFromWH = {9}, siteType = '{10}' where siteID = {11}", location.getName(), location.getProvince(), location.getAddress(), location.getAddress(), location.getAddress2(), location.getCity(), location.getCountry(), location.getPostalCode(), location.getPhone(), location.getDayOfWeek(), location.getDistanceFromWH(), location.getSiteType(), location.getNotes(), location.getID());
+            cmd.CommandText = String.Format("update site set name = '{0}', provinceID = '{1}', address = '{2}', address2 = '{3}', city = '{4}', country = '{5}', postalCode = '{6}', phone = '{7}', dayOfWeek = '{8}', distanceFromWH = {9}, siteType = '{10}', active = 1, notes = '{11}' where siteID = {12}", location.getName(), location.getProvince(), location.getAddress(), location.getAddress2(), location.getCity(), location.getCountry(), location.getPostalCode(), location.getPhone(), location.getDayOfWeek(), location.getDistanceFromWH(), location.getSiteType(), location.getNotes(), location.getID());
             cmd.ExecuteNonQuery();
             return true;
         }
