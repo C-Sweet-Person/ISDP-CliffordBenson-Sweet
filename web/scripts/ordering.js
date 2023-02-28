@@ -151,19 +151,22 @@ function Dashboard() {
   /// The creation of the order.
   ///
   function OrderCreate() {
-    let url = "API/ItemService.php"; // REST-style: URL refers to an entity or collection, not an action
+    let url = "API/OrderService.php"; // REST-style: URL refers to an entity or collection, not an action
     let xmlhttp = new XMLHttpRequest();
     let method = "PUT";
-    let lineItems = []
+    if (orderItems.length == 0)
+    {
+      alert("Cannot create empty order.");
+      return
+    }
     xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
         let resp = xmlhttp.responseText;
         console.log(resp);
         alert("Order has been created.")
-        initialSetup(resp);
       }
     
     };
     xmlhttp.open(method, url, true); // method is either POST or PUT
-    xmlhttp.send();
+    xmlhttp.send(JSON.stringify(orderItems));
   }
