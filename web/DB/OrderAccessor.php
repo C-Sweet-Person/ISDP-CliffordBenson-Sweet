@@ -1,6 +1,6 @@
 <?php
 require_once 'DatabaseConnecter.php';
-require_once '../Entity/User.php';
+require_once '../Entity/transaction.php';
 
 class OrderAccessor
 {

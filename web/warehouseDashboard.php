@@ -36,15 +36,14 @@
      echo "Whatever";
  }
  ?>
-<h1>User Dashboard</h1>
+<h1>Warehouse Dashboard</h1>
 <div id="Menu">
-    <p class="option" id="createOrder">Create Store Orders</p>
-    <p class="option" id="createEOrder">Create Emergency Orders</p>
+    <p class="option" id="createOrder">Create Orders</p>
     <p class="option" id="RecieveOrder">Recieve Orders</p>
-    <p class="option" id="RecieveOrder">Fulfil Orders</p>
+    <p class="option" id="FulfilOrder">Fulfil Orders</p>
 </div>
 <hr>
-<div id="tableDisplay"><table id="tableItems"></table>
+<div id="WHtableDisplay"><table id="tableItems"></table>
 </div>
 <table>
 </table>

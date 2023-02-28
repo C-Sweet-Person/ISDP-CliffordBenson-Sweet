@@ -33,7 +33,7 @@ function getOrders()
         //$passReal = password_hash($contents['password'], PASSWORD_DEFAULT);
     //$passwords = [$user->getID(), $user->getUsername(), $user->getPassword(), $user->getEmail(), $bool];
     //$resultsA = json_encode($passwords, JSON_NUMERIC_CHECK);
-        $result = json_encode($items,JSON_NUMERIC_CHECK);
+        $result = json_encode($ic->getAllOrders("select * from txn"),JSON_NUMERIC_CHECK);
 } 
 catch (PDOException $e) {
         $result = $e->getMessage();
