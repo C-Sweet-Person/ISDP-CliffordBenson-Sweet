@@ -39,7 +39,7 @@ function Add_Item()
   html = ""
   if (tempList.length == 0)
   {
-    alert("No item select");
+    alert("No item selected.");
   }
   else
   {
