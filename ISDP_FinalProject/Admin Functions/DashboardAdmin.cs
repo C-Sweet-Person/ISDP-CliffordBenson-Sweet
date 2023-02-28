@@ -76,6 +76,7 @@ namespace ISDP_FinalProject
             employee employee1 = employee.GetEmployeeByUsername("admin");
             dataGridUsers.Columns.Add("ID", "id");
             dataGridUsers.Columns.Add("Username", "username");
+            
             dataGridUsers.Columns.Add("Password", "password");
             dataGridUsers.Columns.Add("FirstName", "firstName");
             dataGridUsers.Columns.Add("LastName", "lastName");
@@ -89,6 +90,10 @@ namespace ISDP_FinalProject
             {
 
                 dataGridUsers.Rows.Add(worker.returnList());
+            }
+            if (btn_editUser.Enabled == false)
+            {
+                dataGridUsers.Columns.Remove("Password");
             }
         }
 
