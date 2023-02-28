@@ -113,6 +113,7 @@
             this.Controls.Add(this.BtnRefresh);
             this.Name = "LocationTools";
             this.Text = "LocationTools - Bullseye Sporting Goods";
+            this.Load += new System.EventHandler(this.LocationTools_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewLocations)).EndInit();
             this.ResumeLayout(false);
 

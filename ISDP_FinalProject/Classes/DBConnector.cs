@@ -73,7 +73,8 @@ namespace ISDP_FinalProject
                         }
                         else
                         {
-                            MessageBox.Show("Invalid Permissions.", "Error");
+                            MessageBox.Show("Non-Admin role found.", "Notice");
+                            return true;
                         }
                     }
                     else
