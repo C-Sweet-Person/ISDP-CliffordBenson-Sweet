@@ -25,7 +25,9 @@ catch (PDOException $e) {
         echo $e->getMessage();
     
 }
+//echo json_encode($ic->getInventoryItems("select * from item"), JSON_NUMERIC_CHECK);
 echo json_encode($ic->getInventoryItems("select * from item"), JSON_NUMERIC_CHECK);
+
 }
 
 function doRegister(){

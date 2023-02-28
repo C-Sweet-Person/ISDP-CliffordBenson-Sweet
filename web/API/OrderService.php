@@ -10,7 +10,7 @@ if ($method === "POST")
 }
 else if ($method === "GET")
 {
-        getOrder();
+        getOrders();
 }
 function createOrder()
 {
@@ -24,15 +24,24 @@ function createOrder()
 }
 
 //Way to check the status of the 
-function getOrder()
-{
-    return "Null";
-}
 function getOrders()
 {
-    //Bulk checking of orders
-    //In case one needs to do that.
+    try {
+        $body = file_get_contents('php://input');
+        $ic = new OrderAccessor();
+        $items = $ic->getAllOrders("select * from txn");
+        //$passReal = password_hash($contents['password'], PASSWORD_DEFAULT);
+    //$passwords = [$user->getID(), $user->getUsername(), $user->getPassword(), $user->getEmail(), $bool];
+    //$resultsA = json_encode($passwords, JSON_NUMERIC_CHECK);
+        $result = json_encode($ic->getAllOrders("select * from txn"),JSON_NUMERIC_CHECK);
+} 
+catch (PDOException $e) {
+        $result = $e->getMessage();
+    
 }
+echo $result;
+}
+
 
 function checkStatus()
 {

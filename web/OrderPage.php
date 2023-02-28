@@ -6,6 +6,8 @@
 </head>
 <body>
     <h1>Warehouse Stock</h1>
+    <span>Type: </span><select name="types" id="txnType">
+    </select>
     <table id="orderPage"></table>
     <h1>Order Summary</h1>
     <div id="Summary"><table id="orderDetails"></table></div>

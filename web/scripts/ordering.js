@@ -1,4 +1,4 @@
-let items;
+let orderItems = [];
 window.onload = function()
 {
   document.querySelector("#AddItem").addEventListener("click",Add_Item)
@@ -10,8 +10,8 @@ function Add_Item()
 {
   //This function will iterate through the list of items and
   //Check for the minimum quantity.
+  let tempList = [];
   Rows = document.querySelectorAll("tr input");
-  let orderItems = []
   console.log(Rows);
   for (let i = 0; i < Rows.length;i++)
   {
@@ -22,33 +22,57 @@ function Add_Item()
       itemNameNode = nodes[1].innerHTML
       itemDescriptionNode = nodes[2].innerHTML
       itemCategoryNode = nodes[3].innerHTML
-      itemCostPrice = nodes[4].innerHTML
-      itemRetailPrice = nodes[5].innerHTML
+      weight = nodes[4].innerHTML
+      itemCostPrice = nodes[5].innerHTML
+      itemRetailPrice = nodes[6].innerHTML
       itemQuantity = nodes[11].firstChild.value;
       console.log(itemQuantity)     
       //Item list generation. 
-      orderItems.push(`${itemIDNode}, ${itemNameNode},${itemDescriptionNode},${itemCategoryNode},${itemCostPrice},${itemRetailPrice},${itemQuantity}`) 
+      orderItems.push({"itemID": `${itemIDNode}`, "itemName": `${itemNameNode}`,"CostPrice": `${itemCostPrice}`,"RetailPrice": `${itemRetailPrice}`,"Quantity": `${itemQuantity}`}); 
+      tempList.push({"itemID": `${itemIDNode}`, "itemName": `${itemNameNode}`,"CostPrice": `${itemCostPrice}`,"RetailPrice": `${itemRetailPrice}`,"Quantity": `${itemQuantity}`}); 
+
     }
 
   }
   console.log(orderItems)
   orderSummary = document.querySelector("#orderDetails")
   html = ""
+  if (tempList.length == 0)
+  {
+    alert("No item selected.");
+  }
+  else
+  {
   for (let i = 0; i < orderItems.length; i++)
   {
-    line = orderItems[i].split(',');
+    line = tempList[i];
     html += trCreator(line)
   }
-  orderSummary.innerHTML += html;
 }
-
+  orderSummary.innerHTML += html;
+  clearQuantitySelect();
+}
+//
+//
+//Clears values
+function clearQuantitySelect()
+{
+  let numeric = document.querySelectorAll("input[type=number]");
+  for (let i = 0; i < numeric.length; i++)
+  {
+    numeric[i].value = 0;
+  }
+}
+///
+///
+///
 function trCreator(line)
 {
 let html = "<tr id='lineItem'>"
-for (let i = 0; i < line.length; i++)
-{
-html += `<td>${line[i]}</td>`
-}
+html += `<td>${line["itemID"]}</td>`
+html += `<td>${line["itemName"]}</td>`
+html += `<td>${line["CostPrice"]}</td>`
+html += `<td>${line["Quantity"]}</td>`
 html += "</tr>"
 return html
 }
