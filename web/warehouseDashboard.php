@@ -29,6 +29,7 @@
     echo $user[0]->username ?></p>
 <h1>Warehouse Dashboard</h1>
 <div id="Menu">
+    <a href="viewInventory.php"><p class="option">View Inventory</p></a>
     <a href="OrderPage.php"><p class="option" id="createOrder">Create Orders</p></a>
     <p class="option" id="RecieveOrder">Recieve Orders</p>
     <p class="option" id="FulfilOrder">Fulfil Orders</p>
@@ -41,7 +42,7 @@
 <p id="currentIndex"></p>
 <button id="Previous">Prev</button>
 <button id="Forward">Next</button>
-<br><button id="Logout">Logout</button>
+<br><a href="login.php"><button id="Logout">Logout</button></a>
 <br><button id="Test">Test</button>
 <script src="scripts/WHDashboard.js"></script>
 </body>

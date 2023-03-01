@@ -3,14 +3,16 @@
 class inventory implements JsonSerializable {
 
 private $itemID;
+private $itemName;
 private $siteID;
 private $quantity;
 private $itemLocation;
 private $reorderThreshold;
 
-public function __construct($itemID,$siteID,$quantity,$itemLocation,$reorderThreshold)
+public function __construct($itemID,$itemName,$siteID,$quantity,$itemLocation,$reorderThreshold)
 {
     $this->itemID = $itemID;
+    $this->itemName = $itemName;
     $this->siteID = $siteID;
     $this->quantity = $quantity;
     $this->itemLocation = $itemLocation;
@@ -19,6 +21,10 @@ public function __construct($itemID,$siteID,$quantity,$itemLocation,$reorderThre
 public function getID()
 {
     return $this->itemID;
+}
+public function getName()
+{
+    return $this->itemName;
 }
 public function getSiteID()
 {

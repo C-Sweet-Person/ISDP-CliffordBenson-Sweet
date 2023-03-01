@@ -81,9 +81,27 @@ class itemAccessor
      * @return array MenuItem objects, possibly empty
      */
 
-    public function getAllUsers()
+    public function getItemNameByID($id)
     {
-        return $this->getUsersByQuery("select * from QuizAppUser");
+        $result = [];
+        try {
+            $stmt = $this->conn->prepare("select name from item where itemID = " . $id);
+            $stmt->execute();
+            $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($dbresults as $r)
+            {
+                $result = $r['name'];
+            }
+        }
+         catch (PDOException $e) {
+            $result = $e->getMessage();
+        }
+        finally {
+            if (!is_null($stmt)) {
+                $stmt->closeCursor();
+            }
+        }
+        return $result;
     }
 
 /**
