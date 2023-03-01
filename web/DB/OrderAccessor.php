@@ -64,7 +64,7 @@ class OrderAccessor
         $stmt->execute();  
         }
         catch (PDOException $ex) {
-            $result = $ex->getMessage()
+            $result = $ex->getMessage();
         }  finally {
             if (!is_null($stmt)) {
                 $stmt->closeCursor();
@@ -86,29 +86,46 @@ class OrderAccessor
      * takes in a list to create txnLine items after the
      * actual order is created.
      */
-    public function createOrder($items,$type)
+    public function createOrder($txn,$type)
     {
         $result = false;
+        $siteIDTO = $txn->getSiteIDTo();
+        $siteIDFrom = $txn->getSiteIDFrom();
+        $status = $txn->getStatus();
+        $shippedDate = $txn->getShipDate();
+        $txnType = $txn->getType();
+        $barcode = $txn->getBarCode();
+        $deliveryID = $txn->getDeliveryID();
+        $emergency = $txn->isEmergencyOrder();
+
+
         try{
-        $stmt = $this->conn->prepare("insert into txn (siteIDTo,siteIDFrom,status,shipDate,txnType,barCode,createdDate,deliveryID,emergencyDelivery) values (:NsiteIDTo,:NsiteIDFrom,:Nstatus,:NshipDate,:NtxnType,:NbarCode,GETDATE(),:NdeliveryID,:NemergencyDelivery");
-        $stmt->bindParam("NsiteIDTo",$items["siteIDTo"],PDO::PARAM_INT);
-        $stmt->bindParam("NsiteIDFrom",$items["siteIDFrom"],PDO::PARAM_INT);
-        $stmt->bindParam("Nstaus",$items["status"],PDO::PARAM_STR);
-        $stmt->bindParam("NshipDate",$items["shipDate"],PDO::PARAM_STR);
-        $stmt->bindParam("NtxnType",$items["txnType"],PDO::PARAM_STR);
-        $stmt->bindParam("NtxnType",$items["barCode"],PDO::PARAM_STR);
-        $stmt->bindParam("NtxnType",$items["deliveryID"],PDO::PARAM_INT);
-        $stmt->bindParam("NtxnType",$items["emergencyDelivery"],PDO::PARAM_BOOL);
+        $stmt = $this->conn->prepare("insert into txn (siteIDTo,siteIDFrom,status,shipDate,txnType,barCode,createdDate,deliveryID,emergencyDelivery) values (:NsiteIDTo,:NsiteIDFrom,:Nstatus,:NshipDate,:NtxnType,:NbarCode,NOW(),:NdeliveryID,:NemergencyDelivery)");
+        $stmt->bindParam(":NsiteIDTo",$siteIDTO);
+        $stmt->bindParam(":NsiteIDFrom",$siteIDFrom);
+        $stmt->bindParam(":Nstatus",$status);
+        $stmt->bindParam(":NshipDate",$shippedDate);
+        $stmt->bindParam(":NtxnType",$txnType);
+        $stmt->bindParam(":NbarCode",$barcode);
+        $stmt->bindParam(":NdeliveryID",$deliveryID);
+        $stmt->bindParam(":NemergencyDelivery",$emergency);
         $stmt->execute();
-        $result = true;
+        $stmt->rowCount();
+        if ($stmt->rowCount() > 0)
+        {
+            $result = true;
+        }
+        else
+        {
+            $result = false;
+        }
         }
         catch (PDOException $ex) {
-        $result = false;
+        $result = $ex->getMessage();
     } finally {
         if (!is_null($stmt)) {
             $stmt->closeCursor();
         }
-        $result = true;
     }
     return $result;
     }
@@ -123,15 +140,15 @@ class OrderAccessor
 
     public function GetLatestOrderID()
     {
-        result = null;
+        $result = null;
         try{
         $stmt = $this->conn->prepare("select txnID from txn order by txnID desc");
         }
         catch (PDOException $ex)
         {
-            result = $ex->getMessage();
+            $result = $ex->getMessage();
         }
-    } finally {
+    finally {
         if (!is_null($stmt)) {
             $stmt->closeCursor();
         }
@@ -165,7 +182,7 @@ class OrderAccessor
             if (!is_null($stmt)) {
                 $stmt->closeCursor();
             }
-            return $success;
+            return $result;
         }  
       
     }
@@ -177,18 +194,19 @@ class OrderAccessor
      */
     public function changeType($order,$type)
     {
+        $result = null;
         try{
         $stmt = $this->conn->prepare('Update txn set txnType = ' . '"'. $type . '" ' . 'where txnID = ' . $order);
         $stmt->execute();
         }
         catch (PDOException $e) {
-            echo $e->getMessage();
+            return $result = $e->getMessage();
         }
         finally {
             if (!is_null($stmt)) {
                 $stmt->closeCursor();
             }
-            return $success;
+            return $result;
         }    
     }
 }

@@ -162,7 +162,7 @@ function Dashboard() {
     xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
         let resp = xmlhttp.responseText;
-        console.log(resp);
+        console.log(resp + "null");
         alert("Order has been created.")
       }
     

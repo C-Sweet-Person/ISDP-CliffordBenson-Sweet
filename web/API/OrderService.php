@@ -14,16 +14,24 @@ else if ($method === "GET")
 }
 function createOrder()
 {
+    $result = "Err";
     try {
         $body = file_get_contents('php://input');
         $contents = json_decode($body, true);
+        $date_old = '30-6-2023 11:11:11'; 
+        //Date for database
+        $shippedDate = date('Y-m-d H:i:s', strtotime($date_old));
+        $createdDate = date('Y-m-d H:i:s');
+        $order = new transaction("dummy","1","2","Ready",$shippedDate,"Store Order",bin2hex(random_bytes(20)),$createdDate,1,0);
+        $oc = new OrderAccessor();
+        $result = $oc->createOrder($order,"Store Order");
 
 } 
 catch (PDOException $e) {
         $result = $e->getMessage();
     
 }
-echo $contents[0]["itemName"] . $contents[1]["itemName"];
+echo $result;
 }
 
 //Way to check the status of the 
