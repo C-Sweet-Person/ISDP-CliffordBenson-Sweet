@@ -1,6 +1,7 @@
 <?php
 require_once 'DatabaseConnecter.php';
 require_once '../Entity/transaction.php';
+require_once "../Entity/txnLineItem.php";
 
 class OrderAccessor
 {
@@ -76,10 +77,45 @@ class OrderAccessor
      * This function is used
      * to get the order types, but only for ones that can be specfically created.
      */
-    public function getOrderDetails()
-    {
-        
+     public function getOrderDetails()
+     {
+         
+     }
+    /**
+ * This function checks for the list
+ * of line items created with an order
+ * and sends it to the client.
+ */
+public function getLineItems($ID)
+{
+    $result = [];
+    try {
+        $stmt = $this->conn->prepare("select * from txnitems where txnID = :ID");
+        $stmt->bindParam(":ID",$ID);
+        $stmt->execute();
+        $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($dbresults as $r)
+        {
+            $txnID = $r["txnID"];
+            $itemID = $r["itemID"];
+            $quantity = $r["quantity"];
+            $line = new txnLineItem($txnID,$itemID,$quantity);
+            array_push($result,$line);
+        }
     }
+    catch (PDOException $ex)
+    {
+        $result = $ex->getMessage();
+    } finally {
+        if (!is_null($stmt))
+        {
+            $stmt->closeCursor();
+        }
+    }
+    return $result;
+    }
+
+
     /**
      * This function creates an
      * order using a specified order type and
