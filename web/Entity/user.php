@@ -11,7 +11,6 @@ class User implements JsonSerializable {
     private $locked;
     private $positionID;
     private $siteID;
-    private $permissionLevel;
 
     public function __construct( $employeeID, $username, $password, $firstname,$lastname,$email,$active,$locked,$positionID,$siteID) {
         $this->employeeID = $employeeID;

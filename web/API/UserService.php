@@ -30,6 +30,7 @@ function doLogin(){
     //$resultsA = json_encode($passwords, JSON_NUMERIC_CHECK);
     $success = true;
     $_SESSION["user"] = json_encode($user, JSON_NUMERIC_CHECK);
+
 } 
 catch (PDOException $e) {
     echo $e->getMessage() . "Help" . print_r($user);

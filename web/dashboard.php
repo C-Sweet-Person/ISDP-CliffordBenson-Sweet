@@ -26,7 +26,11 @@
 <body>
     <p id="Signed"><?php
     $user = json_decode($_SESSION['user']);
-    echo $user[0]->username ?></p>
+    echo $user[0]->username;
+    if (strcmp($user[0]->getPositionID,"4"))
+    {
+        header("Location: warehouseDashboard.php");
+    }?></p>
  <?php if (strcmp($user[0]->username,"admin") === 0)
  {
      echo "<p><a href='OrderPage.php'>Order Page</a></p>";
