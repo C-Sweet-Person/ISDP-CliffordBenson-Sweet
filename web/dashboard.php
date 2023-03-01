@@ -27,7 +27,7 @@
     <p id="Signed"><?php
     $user = json_decode($_SESSION['user']);
     echo $user[0]->username;
-    if (strcmp($user[0]->getPositionID,"4"))
+    if ($user[0]->positionID == 4)
     {
         header("Location: warehouseDashboard.php");
     }?></p>
@@ -38,6 +38,7 @@
  ?>
 <h1>User Dashboard</h1>
 <div id="Menu">
+    <a href="viewInventory.php"><p class="option">View Inventory</p></a>
     <p class="option" id="createOrder">Create Store Orders</p>
     <p class="option" id="createEOrder">Create Emergency Orders</p>
 </div>
@@ -49,7 +50,7 @@
 <p id="currentIndex"></p>
 <button id="Previous">Prev</button>
 <button id="Forward">Next</button>
-<br><button id="Logout">Logout</button>
+<br><a href="login.php"><button id="Logout">Logout</button></a>
 <br><button id="Test">Test</button>
 <script src="scripts/Dashboard.js"></script>
 </body>
