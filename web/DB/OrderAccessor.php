@@ -63,8 +63,7 @@ class OrderAccessor
         $stmt = $this->conn->prepare("update txn set status = '" . $msg . "' where txnID = " . $orderID);
         $stmt->execute();  
         }
-        catch(Exception $ex)
-        {
+        catch (PDOException $ex) {
             $result = $ex->getMessage()
         }  finally {
             if (!is_null($stmt)) {
@@ -103,7 +102,7 @@ class OrderAccessor
         $stmt->execute();
         $result = true;
         }
-     catch (Exception $e) {
+        catch (PDOException $ex) {
         $result = false;
     } finally {
         if (!is_null($stmt)) {
@@ -115,18 +114,33 @@ class OrderAccessor
     }
 
    
-    /**
+    /*
      * Alright, so we can use this function
      * to grab the latest txn
      * to be used RIGHT AFTER an 
      * order is created. (To add the line items).
      */
-    /**
-    public function GetLatestOrder()
+
+    public function GetLatestOrderID()
     {
+        result = null;
+        try{
+        $stmt = $this->conn->prepare("select txnID from txn order by txnID desc");
+        }
+        catch (PDOException $ex)
+        {
+            result = $ex->getMessage();
+        }
+    } finally {
+        if (!is_null($stmt)) {
+            $stmt->closeCursor();
+        }
+        $result = true;
+    }
+    echo $result;
 
     }
-     * We of course need a function
+     /* We of course need a function
      * That will allow us to create
      * line items attached to an order.
      * Best way to do this, create a function that will
@@ -134,11 +148,18 @@ class OrderAccessor
      */
     public function createTxnItem($ID,$line,$quantity)
     {
+        $result = null;
+        try{
         $stmt = $this->conn->prepare("insert into txnitems values (:OrderID, :itemID, :quantity");
         $stmt->bindParam('OrderID', $ID, PDO::PARAM_INT);
         $stmt->bindParam('itemID', $line, PDO::PARAM_INT);
         $stmt->bindParam('quantity', $quantity, PDO::PARAM_INT);
-        $stmt->execute();   
+        $stmt->execute(); 
+        }
+        catch(PDOException $ex)
+        {
+
+        }  
     }
     /**
      * This function will just take in an order
