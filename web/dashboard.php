@@ -31,13 +31,9 @@
     {
         header("Location: warehouseDashboard.php");
     }?></p>
- <?php if (strcmp($user[0]->username,"admin") === 0)
+ <?php if (strcmp($user[0]->username,"admin" || strcmp($user[0]->getPositionID,"3")) === 0)
  {
      echo "<p><a href='OrderPage.php'>Order Page</a></p>";
- }
- else
- {
-     echo "Whatever";
  }
  ?>
 <h1>User Dashboard</h1>
