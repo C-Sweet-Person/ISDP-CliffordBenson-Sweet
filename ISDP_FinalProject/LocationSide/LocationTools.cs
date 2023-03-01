@@ -87,5 +87,19 @@ namespace ISDP_FinalProject.Admin_Functions
             AddLocation addLocation = new AddLocation();
             addLocation.ShowDialog();
         }
+
+        private void LocationTools_Load(object sender, EventArgs e)
+        {
+            if (Login.getPermissionLevel() != "Administrator")
+            {
+                lockout();
+            }
+        }
+        private void lockout()
+        {
+            btnAddLocation.Enabled = false;
+            btnDelete.Enabled = false;
+            btnEditLocation.Enabled = false;
+        }
     }
 }

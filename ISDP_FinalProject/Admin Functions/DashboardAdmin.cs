@@ -26,8 +26,20 @@ namespace ISDP_FinalProject
         private void btn_refreshInfo_Click(object sender, EventArgs e)
         {
             refresh();
+            MessageBox.Show(Login.getLoggedUser());
         }
-
+        /*
+         * Locks out a normal
+         * user from accessing any
+         * add/edit functions, making it
+         * readonly.
+         */
+        private void lockout()
+        {
+            btn_editUser.Enabled = false;
+            btn_newUser.Enabled = false;
+            btn_removeUser.Enabled = false;
+        }
         private void btn_editUser_Click(object sender, EventArgs e)
         {
             if (dataGridUsers.SelectedRows.Count == 1)
@@ -64,6 +76,7 @@ namespace ISDP_FinalProject
             employee employee1 = employee.GetEmployeeByUsername("admin");
             dataGridUsers.Columns.Add("ID", "id");
             dataGridUsers.Columns.Add("Username", "username");
+            
             dataGridUsers.Columns.Add("Password", "password");
             dataGridUsers.Columns.Add("FirstName", "firstName");
             dataGridUsers.Columns.Add("LastName", "lastName");
@@ -77,6 +90,10 @@ namespace ISDP_FinalProject
             {
 
                 dataGridUsers.Rows.Add(worker.returnList());
+            }
+            if (btn_editUser.Enabled == false)
+            {
+                dataGridUsers.Columns.Remove("Password");
             }
         }
 
@@ -128,6 +145,14 @@ namespace ISDP_FinalProject
         {
             LocationTools location = new LocationTools();
             location.ShowDialog();
+        }
+
+        private void DashboardAdmin_Load(object sender, EventArgs e)
+        {
+            if (Login.getPermissionLevel() != "Administrator")
+            {
+                lockout();
+            }
         }
     }
 }

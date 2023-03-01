@@ -202,6 +202,7 @@ namespace ISDP_FinalProject
             this.Controls.Add(this.tabControl1);
             this.Name = "DashboardAdmin";
             this.Text = "DashboardAdmin";
+            this.Load += new System.EventHandler(this.DashboardAdmin_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabUsers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).EndInit();

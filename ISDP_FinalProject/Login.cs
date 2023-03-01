@@ -12,7 +12,8 @@ namespace ISDP_FinalProject
 {
     public partial class Login : Form
     {
-        string userLogged;
+        private static string userLogged;
+        private static string permissionLvl;
         public Login()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace ISDP_FinalProject
             {
                 MessageBox.Show("Welcome " + username);
                 userLogged = username;
+                permissionLvl = position.getPermissionLevelByID(employee.GetEmployeeByUsername(username).getPositionID());
                 DashboardAdmin AdminDash = new DashboardAdmin();
                 AdminDash.Show();
                 this.Hide();
@@ -46,6 +48,17 @@ namespace ISDP_FinalProject
         {
             bool boolean = txtPassword.UseSystemPasswordChar == true ? false : true;
             txtPassword.UseSystemPasswordChar = boolean;
+        }
+        public static string getLoggedUser()
+        {
+            return userLogged;
+        }
+        /**
+         * 
+         */
+        public static string getPermissionLevel()
+        {
+            return permissionLvl;
         }
     }
 }
