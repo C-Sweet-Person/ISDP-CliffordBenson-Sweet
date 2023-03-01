@@ -14,7 +14,6 @@ else if ($method === "GET")
 }
 function createOrder()
 {
-    $result = "Err";
     try {
         $body = file_get_contents('php://input');
         $contents = json_decode($body, true);
@@ -31,7 +30,7 @@ catch (PDOException $e) {
         $result = $e->getMessage();
     
 }
-echo $result . print_r($contents["items"]);
+echo $result;
 }
 
 //Way to check the status of the 
@@ -49,7 +48,6 @@ catch (PDOException $e) {
 }
 echo $result;
 }
-
 
 function checkStatus()
 {
