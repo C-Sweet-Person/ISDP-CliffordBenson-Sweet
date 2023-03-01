@@ -14,7 +14,7 @@ class permissionAccessor
             throw new Exception("no connection");
         }
     }
-    public function getPermissionsOfUser()
+    public function getPermissionsOfUser($username)
     {
         
     }
