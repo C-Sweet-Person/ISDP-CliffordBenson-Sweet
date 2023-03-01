@@ -29,7 +29,7 @@
     echo $user[0]->username ?></p>
 <h1>Warehouse Dashboard</h1>
 <div id="Menu">
-    <p class="option" id="createOrder">Create Orders</p>
+    <a href="OrderPage.php"><p class="option" id="createOrder">Create Orders</p></a>
     <p class="option" id="RecieveOrder">Recieve Orders</p>
     <p class="option" id="FulfilOrder">Fulfil Orders</p>
 </div>

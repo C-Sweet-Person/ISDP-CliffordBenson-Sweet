@@ -31,7 +31,7 @@ catch (PDOException $e) {
         $result = $e->getMessage();
     
 }
-echo $result;
+echo $result . print_r($contents["items"]);
 }
 
 //Way to check the status of the 

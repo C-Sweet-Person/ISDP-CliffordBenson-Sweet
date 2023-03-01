@@ -154,6 +154,7 @@ function Dashboard() {
     let url = "API/OrderService.php"; // REST-style: URL refers to an entity or collection, not an action
     let xmlhttp = new XMLHttpRequest();
     let method = "PUT";
+    let JSONObj = {"items": orderItems}
     if (orderItems.length == 0)
     {
       alert("Cannot create empty order.");
@@ -164,9 +165,11 @@ function Dashboard() {
         let resp = xmlhttp.responseText;
         console.log(resp + "null");
         alert("Order has been created.")
+        orderItems = [];
+        document.querySelector("#orderDetails").innerHTML = "";
       }
     
     };
     xmlhttp.open(method, url, true); // method is either POST or PUT
-    xmlhttp.send(JSON.stringify(orderItems));
+    xmlhttp.send(JSON.stringify(JSONObj));
   }
