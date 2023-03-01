@@ -59,8 +59,19 @@ class OrderAccessor
 
     public function changeStatus($orderID, $msg)
     {
+        try{
         $stmt = $this->conn->prepare("update txn set status = '" . $msg . "' where txnID = " . $orderID);
-        $stmt->execute();    
+        $stmt->execute();  
+        }
+        catch(Exception $ex)
+        {
+            $result = $ex->getMessage()
+        }  finally {
+            if (!is_null($stmt)) {
+                $stmt->closeCursor();
+            }
+        }
+        return $result;
     }
     /**
      * This function is used
@@ -78,20 +89,56 @@ class OrderAccessor
      */
     public function createOrder($items,$type)
     {
-        $stmt = $this->conn->prepare($selectString);
+        $result = false;
+        try{
+        $stmt = $this->conn->prepare("insert into txn (siteIDTo,siteIDFrom,status,shipDate,txnType,barCode,createdDate,deliveryID,emergencyDelivery) values (:NsiteIDTo,:NsiteIDFrom,:Nstatus,:NshipDate,:NtxnType,:NbarCode,GETDATE(),:NdeliveryID,:NemergencyDelivery");
+        $stmt->bindParam("NsiteIDTo",$items["siteIDTo"],PDO::PARAM_INT);
+        $stmt->bindParam("NsiteIDFrom",$items["siteIDFrom"],PDO::PARAM_INT);
+        $stmt->bindParam("Nstaus",$items["status"],PDO::PARAM_STR);
+        $stmt->bindParam("NshipDate",$items["shipDate"],PDO::PARAM_STR);
+        $stmt->bindParam("NtxnType",$items["txnType"],PDO::PARAM_STR);
+        $stmt->bindParam("NtxnType",$items["barCode"],PDO::PARAM_STR);
+        $stmt->bindParam("NtxnType",$items["deliveryID"],PDO::PARAM_INT);
+        $stmt->bindParam("NtxnType",$items["emergencyDelivery"],PDO::PARAM_BOOL);
         $stmt->execute();
-        $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+        $result = true;
+        }
+     catch (Exception $e) {
+        $result = false;
+    } finally {
+        if (!is_null($stmt)) {
+            $stmt->closeCursor();
+        }
+        $result = true;
     }
+    return $result;
+    }
+
+   
     /**
+     * Alright, so we can use this function
+     * to grab the latest txn
+     * to be used RIGHT AFTER an 
+     * order is created. (To add the line items).
+     */
+    /**
+    public function GetLatestOrder()
+    {
+
+    }
      * We of course need a function
      * That will allow us to create
      * line items attached to an order.
      * Best way to do this, create a function that will
      * Take in an ID and a line.
      */
-    public function createTxnItem($ID,$line)
+    public function createTxnItem($ID,$line,$quantity)
     {
-        
+        $stmt = $this->conn->prepare("insert into txnitems values (:OrderID, :itemID, :quantity");
+        $stmt->bindParam('OrderID', $ID, PDO::PARAM_INT);
+        $stmt->bindParam('itemID', $line, PDO::PARAM_INT);
+        $stmt->bindParam('quantity', $quantity, PDO::PARAM_INT);
+        $stmt->execute();   
     }
     /**
      * This function will just take in an order
