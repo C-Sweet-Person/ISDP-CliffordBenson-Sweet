@@ -155,11 +155,19 @@ class OrderAccessor
         $stmt->bindParam('itemID', $line, PDO::PARAM_INT);
         $stmt->bindParam('quantity', $quantity, PDO::PARAM_INT);
         $stmt->execute(); 
+        $result = true;
         }
         catch(PDOException $ex)
         {
-
+            $result = $ex->getMessage();
+        }
+        finally {
+            if (!is_null($stmt)) {
+                $stmt->closeCursor();
+            }
+            return $success;
         }  
+      
     }
     /**
      * This function will just take in an order
@@ -177,7 +185,7 @@ class OrderAccessor
             echo $e->getMessage();
         }
         finally {
-            if (!is_null($this->insertStatement)) {
+            if (!is_null($stmt)) {
                 $stmt->closeCursor();
             }
             return $success;
