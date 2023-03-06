@@ -1,15 +1,65 @@
 let orderItems = [];
+eMode = false;
 window.onload = function()
 {
   document.querySelector("#AddItem").addEventListener("click",Add_Item)
   document.querySelector("#OrderSubmit").addEventListener("click",OrderCreate);
-    Dashboard();
+  document.querySelector("#txnType").addEventListener("change",switchType)
+  Dashboard();
+  FillTxnTypes()
 }
+
+/**
+ * This function clears the orderItems list
+ * and sents eMode(emergency mode) depending on
+ * what's found in the textbox.
+ */
+function switchType()
+{
+  choice = document.querySelector("#txnType").value
+  if (choice === "Emergency")
+  {
+    eMode = true
+  }
+  else
+  {
+    eMode = false
+  }
+  orderItems = []
+  document.querySelector("#orderDetails").innerHTML = ""
+  
+}
+
+
+/**
+ * This section fills
+ * in the txn dropdown with for now the ability
+ * to create a store order and an emergency order.
+ */
+function FillTxnTypes()
+{
+  dropDown = document.querySelector("#txnType")
+  choice1 = document.createElement("option")
+  choice1.text = "Store"
+  dropDown.add(choice1);
+  choice2 = document.createElement("option")
+  choice2.text = "Emergency"
+  dropDown.add(choice2);
+  console.log(dropDown)
+}
+
+
 
 function Add_Item()
 {
   //This function will iterate through the list of items and
   //Check for the minimum quantity.
+  if (orderItems.length > 4 && eMode == true)
+  {
+    alert("Maximum items added.")
+  }
+  else
+  {
   let tempList = [];
   Rows = document.querySelectorAll("tr input");
   console.log(Rows);
@@ -43,7 +93,7 @@ function Add_Item()
   }
   else
   {
-  for (let i = 0; i < orderItems.length; i++)
+  for (let i = 0; i < tempList.length; i++)
   {
     line = tempList[i];
     html += trCreator(line)
@@ -51,6 +101,7 @@ function Add_Item()
 }
   orderSummary.innerHTML += html;
   clearQuantitySelect();
+}
 }
 //
 //
@@ -69,6 +120,7 @@ function clearQuantitySelect()
 function trCreator(line)
 {
 let html = "<tr id='lineItem'>"
+console.log(line + " You don't work!")
 html += `<td>${line["itemID"]}</td>`
 html += `<td>${line["itemName"]}</td>`
 html += `<td>${line["CostPrice"]}</td>`
