@@ -69,17 +69,15 @@ function Add_Item()
     {
       let nodes = Rows[i].parentElement.parentElement.childNodes;
       itemIDNode = nodes[0].innerHTML
-      itemNameNode = nodes[1].innerHTML
-      itemDescriptionNode = nodes[2].innerHTML
-      itemCategoryNode = nodes[3].innerHTML
-      weight = nodes[4].innerHTML
-      itemCostPrice = nodes[5].innerHTML
-      itemRetailPrice = nodes[6].innerHTML
-      itemQuantity = nodes[11].firstChild.value;
+      siteIDNode = nodes[1].innerHTML
+      quantityNode = nodes[2].innerHTML
+      itemLocation = nodes[3].innerHTML
+      reorderThreshold = nodes[4].innerHTML
+      amountOrdered = nodes[5].value
       console.log(itemQuantity)     
       //Item list generation. 
-      orderItems.push({"itemID": `${itemIDNode}`, "itemName": `${itemNameNode}`,"CostPrice": `${itemCostPrice}`,"RetailPrice": `${itemRetailPrice}`,"Quantity": `${itemQuantity}`}); 
-      tempList.push({"itemID": `${itemIDNode}`, "itemName": `${itemNameNode}`,"CostPrice": `${itemCostPrice}`,"RetailPrice": `${itemRetailPrice}`,"Quantity": `${itemQuantity}`}); 
+      orderItems.push({"itemID": `${itemIDNode}`, "siteID": `${siteIDNode}`,"itemLocation": `${itemLocation}`,"reorderThreshold": `${reorderThreshold}`, "Quantity": `${quantityNode}`}); 
+      orderItems.push({"itemID": `${itemIDNode}`, "siteID": `${siteIDNode}`,"itemLocation": `${itemLocation}`,"reorderThreshold": `${reorderThreshold}`, "Quantity": `${quantityNode}`}); 
 
     }
 
@@ -117,20 +115,10 @@ function clearQuantitySelect()
 ///
 ///
 ///
-function trCreator(line)
-{
-let html = "<tr id='lineItem'>"
-console.log(line + " You don't work!")
-html += `<td>${line["itemID"]}</td>`
-html += `<td>${line["itemName"]}</td>`
-html += `<td>${line["CostPrice"]}</td>`
-html += `<td>${line["Quantity"]}</td>`
-html += "</tr>"
-return html
-}
+
 
 function Dashboard() {
-    let url = "API/ItemService.php"; // REST-style: URL refers to an entity or collection, not an action
+    let url = "API/inventoryService.php"; // REST-style: URL refers to an entity or collection, not an action
     let xmlhttp = new XMLHttpRequest();
     let method = "GET";
     xmlhttp.onreadystatechange = function () {
@@ -159,24 +147,18 @@ function Dashboard() {
     let tableItems = document.querySelector("#orderPage");
     tableItems.innerHTML = "";
     headerRow =
-      "<th>itemID</th><th>name</th><th>description</th><th>category</th>" +
-      "<th>weight</th><th>costPrice</th><th>retailPrice</th>" +
-      "<th>supplierID</th><th>active</th><th>notes</th><th>caseSize</th><th>Quantity</th>";
+      "<th>itemID</th><th>name</th><th>siteID</th><th>quantity</th>" +
+      "<th>itemLocation</th><th>reorderThreshold</th>";
     tableItems.innerHTML += headerRow;
     for (let i = 0; i < 100; i++) {
       let tableItem = "";
       tableItem += "<tr>";
       tableItem += `<td>${items[i]['itemID']}</td>`;
-      tableItem += `<td>${items[i]['name']}</td>`;
-      tableItem += `<td>${items[i]['description']}</td>`;
-      tableItem += `<td>${items[i]['category']}</td>`;
-      tableItem += `<td>${items[i]['weight']}</td>`;
-      tableItem += `<td>${items[i]['costPrice']}</td>`;
-      tableItem += `<td>${items[i]['retailPrice']}</td>`;
-      tableItem += `<td>${items[i]['supplierID']}</td>`;
-      tableItem += `<td>${items[i]['active']}</td>`;
-      tableItem += `<td>${items[i]['notes']}</td>`;
-      tableItem += `<td>${items[i]['caseSize']}</td>`;
+      tableItem += `<td>${items[i]['itemName']}</td>`;
+      tableItem += `<td>${items[i]['siteID']}</td>`;
+      tableItem += `<td>${items[i]['quantity']}</td>`;
+      tableItem += `<td>${items[i]['itemLocation']}</td>`;
+      tableItem += `<td>${items[i]['reorderThreshold']}</td>`;
       tableItem += '<td><input type="number" id="quantity" min="0" value="0"></input>'
       tableItem += '</tr>';
       tableItems.innerHTML += tableItem;

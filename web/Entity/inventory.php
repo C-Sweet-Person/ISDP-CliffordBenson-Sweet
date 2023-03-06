@@ -16,7 +16,7 @@ public function __construct($itemID,$itemName,$siteID,$quantity,$itemLocation,$r
     $this->siteID = $siteID;
     $this->quantity = $quantity;
     $this->itemLocation = $itemLocation;
-    $this->$reorderThreshold = $reorderThreshold;
+    $this->reorderThreshold = $reorderThreshold;
 }
 public function getID()
 {
