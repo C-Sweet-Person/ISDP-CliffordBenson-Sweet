@@ -8,13 +8,34 @@
         display:none;
         color:red;
     }
+    #contentArea
+    {
+    border: solid thin black;
+    overflow:hidden;
+    }
+    #tableItems
+    {
+        border: solid thin black;
+        width: 48%;
+        float: left;
+    }
+    #shoppingCartItems
+    {
+        width:50%;
+        border: solid thin black;
+        float: left;
+    }
+    
     </style>
 </head>
 <body>
 <h1>Items to order.</h1>
 <label for="storeSelect">Store Select: </label><select name="Store" id="storeSelect"></select>
 <label for="itemSearch">Search items: </label><input type ="text" id="itemSearch"><button id="searchButton">Search</button>
+<div id="contentArea">
 <table id="tableItems"></table>
+<div id="Shipping"><u>Shopping Cart Items</u><table id="shoppingCartItems"></table></div>
 <script src="scripts/webOrdering.js"></script>
+</div>
 </body>
 </html>
