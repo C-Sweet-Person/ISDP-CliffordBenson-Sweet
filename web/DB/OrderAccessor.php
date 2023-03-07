@@ -57,7 +57,12 @@ class OrderAccessor
     //
     //
     //
-
+    /**
+     * This function will
+     * get all online orders via
+     * the siteID in order
+     * to allow o
+     */
     public function changeStatus($orderID, $msg)
     {
         try{
