@@ -162,7 +162,14 @@ function searchItems()
     for (let i = 1; i < tableRows.length; i++)
     {
         rowText = tableRows[i].children[1].innerHTML
+        if (rowText.includes(searchText))
+        {
         tableRows[i].classList.remove("hidden");
+        }
+    }
+    if (searchText = "")
+    {
+        showItems();
     }
 }
 
@@ -177,7 +184,7 @@ function hideItems()
     for (let i = 1; i < tableRows.length; i++)
     {
     tableRows[i].classList.add("hidden");
-    console.log(tableRows[i])
+    console.log(tableRows[i].innerHTML)
 
     }
 }
