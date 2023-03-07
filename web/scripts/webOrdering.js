@@ -17,15 +17,17 @@ function getStores()
 function fillInStores()
  {
 
+
+
  }
-    /**
-     * This function will get
-     * the items into a json to be
-     * placed into a table.
-     * (This function is called
-     * whenever the dropdown boxes
-     * changes)
-     */
+/**
+ * This function will get
+ * the items into a json to be
+ * placed into a table.
+ * (This function is called
+ * whenever the dropdown boxes
+ * changes)
+ */
 function getItemsExisting()
 {
 
@@ -53,10 +55,18 @@ function AddItem_Order()
 }
 
 /**
+ * This function will create an account creation box
+ * 
+ */
+/**
  * This function creates the order and sends it to the warehouse
  * as an online order txnType as well. (Take in a list, return an alert.)
+ * Note: Maybe add the ability to add a name for a customer, might be
+ * too complicated though.
  */
 function sendOrderInfo(items)
 {
+
+
 
 }
