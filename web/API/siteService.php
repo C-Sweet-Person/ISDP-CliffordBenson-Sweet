@@ -1,23 +1,20 @@
 <?php
-require_once 'DatabaseConnecter.php';
 require_once '../DB/siteAccessor.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method === "GET")
 {
-        getOrders();
+        getSites();
 }
-function getOrders()
+function getSites()
 {
     try {
         $body = file_get_contents('php://input');
-        $ic = new OrderAccessor();
-        $items = $ic->getAllOrders("select * from txn");
-        $result = json_encode($ic->getAllOrders("select * from txn"),JSON_NUMERIC_CHECK);
+        $sa = new siteAcessor();
+        $result = json_encode($sa->getSites("select * from site"),JSON_NUMERIC_CHECK);
 } 
 catch (PDOException $e) {
         $result = $e->getMessage();
-    
 }
 echo $result;
 }

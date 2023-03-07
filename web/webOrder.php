@@ -6,4 +6,5 @@
 <body>
 <h1>Items to order.</h1>
 <label for="storeSelect">Store Select: </label><select name="Store" id="storeSelect"></select>
+<script src="scripts/webOrdering.js"></script>
 </body>

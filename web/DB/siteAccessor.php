@@ -32,11 +32,11 @@ class siteAcessor
     // $this->siteType = $siteType;
     // $this->notes = $notes;
     // $this->active = $active;
-    public function getAllSites()
+    public function getSites($selectStatement)
     {
         $result = [];
         try {
-            $stmt = $this->conn->prepare("select * from site");
+            $stmt = $this->conn->prepare($selectStatement);
             $stmt->execute();
             $dbresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($dbresults as $r)
