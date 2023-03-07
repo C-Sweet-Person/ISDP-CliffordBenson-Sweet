@@ -14,10 +14,8 @@ class siteAcessor
             throw new Exception("no connection");
         }
     }
-    public function getPermissionsOfUser($username)
-    {
-        
-    }
+   /**
+    */
     // $this->siteID = $ID;
     // $this->name = $name;
     // $this->provinceID = $provinceID;

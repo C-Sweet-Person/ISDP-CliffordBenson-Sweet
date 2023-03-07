@@ -12,6 +12,7 @@ else if ($method === "GET")
 {
         getOrders();
 }
+
 function createOrder()
 {
     try {

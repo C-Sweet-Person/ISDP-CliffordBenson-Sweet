@@ -60,6 +60,23 @@ function getItemsExisting()
 {
 let value = document.querySelector("#storeSelect").value;
 console.log(value);
+let url = "API/inventoryService.php" + `?site=${value}`; // REST-style: URL refers to an entity or collection, not an action
+let xmlhttp = new XMLHttpRequest();
+let method = "GET";
+xmlhttp.onreadystatechange = function () {
+  if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+    let resp = xmlhttp.responseText;
+    console.log(resp)
+    js = JSON.parse(resp);
+    console.log(js[0])
+  }
+  else
+  {
+    console.log("No data found.");
+  }
+};
+xmlhttp.open(method, url, true); // method is either POST or PUT
+xmlhttp.send();
 }
 /**
  * This function displays
@@ -109,5 +126,5 @@ function sendOrderInfo(items)
 
 function createModalAccountWindow()
 {
-    
+
 }
