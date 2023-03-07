@@ -8,6 +8,8 @@ window.onload = function()
 {
     getStores();
     document.querySelector("#storeSelect").addEventListener("change",getItemsExisting)
+    document.querySelector("#searchButton").addEventListener("click",searchItems);
+    getItemsExisting()
 }
 function getStores()
 {
@@ -67,8 +69,7 @@ xmlhttp.onreadystatechange = function () {
   if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
     let resp = xmlhttp.responseText;
     console.log(resp)
-    js = JSON.parse(resp);
-    console.log(js[0])
+    makeItemDisplay(resp)
   }
   else
   {
@@ -83,10 +84,25 @@ xmlhttp.send();
  * the items into a table
  * to select items via quantity.
  */
-function makeItemDisplay()
+function makeItemDisplay(data)
 {
-
-
+dataParsed = JSON.parse(data);
+table = document.querySelector("#tableItems")
+table.innerHTML = ""
+HTMLData = "<tr><th>ItemID</th><th>ItemName</th><th>Quantity</th></tr>";
+for (let i = 0; i < dataParsed.length; i++)
+{
+rowStart = "<tr>"
+nameNode = dataParsed[i]['itemName'];
+quantityNode = dataParsed[i]['quantity'];
+IDNode = dataParsed[i]['itemID'];
+rowData = `<td>${IDNode}</td><td>${nameNode}</td><td>${quantityNode}</td>`
+rowEnd = "</tr>"
+HTMLRow = rowStart + rowData + rowEnd;
+HTMLData += HTMLRow
+}
+table.innerHTML += HTMLData;
+console.log(table)
 }
 
 /**
@@ -127,4 +143,55 @@ function sendOrderInfo(items)
 function createModalAccountWindow()
 {
 
+}
+
+/**
+ * This function creates a search
+ * button that is able to be clicked on and
+ * will grab items that relate to the search query.
+ * 
+ */
+
+function searchItems()
+{
+    search = document.querySelector("#itemSearch");
+    searchText = search.value;
+    table = document.querySelector("#tableItems")
+    tableRows = document.querySelectorAll("#tableItems tr");
+    hideItems();
+    for (let i = 1; i < tableRows.length; i++)
+    {
+        rowText = tableRows[i].children[1].innerHTML
+        tableRows[i].classList.remove("hidden");
+    }
+}
+
+/**
+ * This function will hide every row for the search
+ * function using the '.hidden' class
+ */
+function hideItems()
+{
+    table = document.querySelector("#tableItems")
+    tableRows = document.querySelectorAll("#tableItems tr");
+    for (let i = 1; i < tableRows.length; i++)
+    {
+    tableRows[i].classList.add("hidden");
+    console.log(tableRows[i])
+
+    }
+}
+/**
+ * This function will hide every row for the search
+ * function removing the '.hidden' class
+ */
+function showItems()
+{
+    table = document.querySelector("#tableItems")
+    tableRows = document.querySelectorAll("#tableItems tr");
+    for (let i = 1; i < tableRows.length; i++)
+    {
+       tableRows.classList.remove("hidden");
+        
+    }
 }

@@ -29,7 +29,7 @@ catch (PDOException $e) {
         echo $e->getMessage();
     
 }
-echo json_encode($result, JSON_NUMERIC_CHECK);
+echo $result;
 }
 /**
  * Grabs all the pieces of inventory in 
