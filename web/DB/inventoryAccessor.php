@@ -1,6 +1,8 @@
 <?php
 require_once 'DatabaseConnecter.php';
 require_once '../Entity/inventory.php';
+require_once '../Entity/inventoryStore.php';
+
 require_once '../DB/itemAccessor.php';
 
 
@@ -21,13 +23,14 @@ class inventoryAccessor
 /**This function grabs the inventory items
  * by site.
  */
- public function getAllInventoryBySite($id)
+ public function getAllInventoryBySiteWithPrice($id)
  {
     $ia = new itemAccessor();
     $result = [];
     try
     {
-     $stmt = $this->conn->prepare("select * from inventory where siteID = :thisID");
+     $stmt = $this->conn->prepare("select *, i.itemID from inventory i inner join
+     item on i.itemID where siteID = :thisID");
      $stmt->bindParam(':thisID', $id);
      $stmt->execute();
      $dbresults = $stmt->fetchAll();
@@ -36,12 +39,13 @@ class inventoryAccessor
         $itemID = $r["itemID"];
         $siteID = $r["siteID"];
         $quantity = $r["quantity"];
+        $category = $r["category"];
         $itemLocation = $r["itemLocation"];
         $reorderThreshold = $r["reorderThreshold"];
+        $retailPrice = $r["retailPrice"];
         $itemName = $ia->getItemNameByID($r["itemID"]);
-        $inventoryItem = new inventory($itemID,$itemName,$siteID,$quantity,$itemLocation,$reorderThreshold);
+        $inventoryItem = new inventoryStore($itemID,$itemName,$category,$siteID,$quantity,$itemLocation,$reorderThreshold,$retailPrice);
         array_push($result,$inventoryItem);
-
      }
 
     }
