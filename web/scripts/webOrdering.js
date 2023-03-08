@@ -1,16 +1,19 @@
 
-/**
- * This function gets the store
- * locations that can be used with
- * the next function, fill in stores.
- */
 window.onload = function()
 {
     getStores();
     document.querySelector("#storeSelect").addEventListener("change",getItemsExisting)
     document.querySelector("#searchButton").addEventListener("click",searchItems);
+    document.querySelector("#searchButton").addEventListener("click",searchItems);
+
     getItemsExisting()
 }
+
+/**
+ * This function gets the store
+ * locations that can be used with
+ * the next function, fill in stores.
+ */
 function getStores()
 {
  let url = "API/siteService.php"; // REST-style: URL refers to an entity or collection, not an action
@@ -162,7 +165,7 @@ function searchItems()
     for (let i = 1; i < tableRows.length; i++)
     {
         rowText = tableRows[i].children[1].innerHTML
-        if (rowText.includes(searchText))
+        if (rowText.toUpperCase().includes(searchText.toUpperCase()))
         {
         tableRows[i].classList.remove("hidden");
         }

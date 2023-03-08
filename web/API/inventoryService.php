@@ -5,7 +5,7 @@ require_once '../DB/inventoryAccessor.php';
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method === "GET" && isset($_GET['site']))
 {
-        grabInventoryBySite();
+        grabInventoryBySiteWithPrice();
 }
 else if ($method === "GET")
 {
@@ -16,13 +16,13 @@ else if ($method === "GET")
  * simply gives a json containing inventory items ONLY
  * from that site.
  */
-function grabInventoryBySite()
+function grabInventoryBySiteWithPrice()
 {
         $result = "";
         try {
         $body = file_get_contents('php://input');
         $ic = new inventoryAccessor();
-        $items = $ic->getAllInventoryBySite($_GET['site']);
+        $items = $ic->getAllInventoryBySiteWithPrice($_GET['site']);
         $result = json_encode($items,JSON_NUMERIC_CHECK); 
 }       
 catch (PDOException $e) {

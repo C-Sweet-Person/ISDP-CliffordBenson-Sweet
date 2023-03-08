@@ -35,6 +35,10 @@
 <div id="contentArea">
 <table id="tableItems"></table>
 <div id="Shipping"><u>Shopping Cart Items</u><table id="shoppingCartItems"></table></div>
+</div>
+<button id="orderSubmit">Submit</button><button id="addItem">Add to cart</button>
+<a href="homepage.php"><button id="orderSubmit">Back</button></a>
+
 <script src="scripts/webOrdering.js"></script>
 </div>
 </body>
