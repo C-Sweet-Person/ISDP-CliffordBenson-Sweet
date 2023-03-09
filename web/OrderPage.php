@@ -6,7 +6,9 @@
 </head>
 <body>
     <h1>Warehouse Stock</h1>
-    <span>Type: </span><select name="types" id="txnType">
+    <span>Type: </span><select name="types" id="txnType"><br>
+    <span>Send to store: </span><select name="stores" id="storeDelivery"><br>
+
     </select>
     <table id="orderPage"></table>
     <h1>Order Summary</h1>

@@ -8,7 +8,65 @@ window.onload = function()
   Dashboard();
   FillTxnTypes()
 }
-
+/**
+ * Code grabbed from
+ * web ordering in order to grab a list of 
+ * stores that can be used to send to a
+ * specific store
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+function getStores()
+{
+ let url = "API/siteService.php"; // REST-style: URL refers to an entity or collection, not an action
+ let xmlhttp = new XMLHttpRequest();
+ let method = "GET";
+ xmlhttp.onreadystatechange = function () {
+   if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+     let resp = xmlhttp.responseText;
+     fillInStores(resp)
+   }
+   else
+   {
+     console.log("No data found.");
+   }
+ };
+ xmlhttp.open(method, url, true); // method is either POST or PUT
+ xmlhttp.send();
+}
+/**
+ * This function grabs the info
+ * from getStores and places it
+ * in the dropdown box.
+ */
+function fillInStores(JSONfile)
+ {
+let file = JSON.parse(JSONfile)
+let selection = document.querySelector("#storeSelect");
+for (let i = 0; i < file.length; i++)
+{
+    if (file[i]["siteType"] == 'Retail' && file[i]['name'].toUpperCase().includes('RETAIL'))
+    {
+    choice = document.createElement("option");
+    choice.text = file[i]['name'];
+    choice.value = file[i]['siteID'];
+    selection.add(choice);
+    console.log(choice)
+    }
+}
+ }
+ /**
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  */
 /**
  * This function clears the orderItems list
  * and sents eMode(emergency mode) depending on

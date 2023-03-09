@@ -14,6 +14,6 @@
     <a id="deliverOrder">Deliver Store order</a>
     <a id="viewOrder">View Order Details</a>
 </ul>
-<script src="acadia.js"></script>
+<script src="scripts/acadia.js"></script>
 </body>    
 </html>
