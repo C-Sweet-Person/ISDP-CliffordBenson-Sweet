@@ -7,6 +7,7 @@ window.onload = function()
   document.querySelector("#txnType").addEventListener("change",switchType)
   Dashboard();
   FillTxnTypes()
+  getStores();
 }
 /**
  * Code grabbed from
@@ -45,7 +46,7 @@ function getStores()
 function fillInStores(JSONfile)
  {
 let file = JSON.parse(JSONfile)
-let selection = document.querySelector("#storeSelect");
+let selection = document.querySelector("#storeDelivery");
 for (let i = 0; i < file.length; i++)
 {
     if (file[i]["siteType"] == 'Retail' && file[i]['name'].toUpperCase().includes('RETAIL'))
