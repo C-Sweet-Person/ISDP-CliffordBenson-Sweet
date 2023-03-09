@@ -92,17 +92,19 @@ function makeItemDisplay(data)
 dataParsed = JSON.parse(data);
 table = document.querySelector("#tableItems")
 table.innerHTML = ""
-HTMLData = "<tr><th>ItemID</th><th>ItemName</th><th>Quantity</th></tr>";
+HTMLData = "<tr><th>ItemID</th><th>ItemName</th><th>category</th><th>Quantity</th><th>Price</th><th>QTY</th></tr>";
 for (let i = 0; i < dataParsed.length; i++)
 {
-rowStart = "<tr>"
-nameNode = dataParsed[i]['itemName'];
-quantityNode = dataParsed[i]['quantity'];
-IDNode = dataParsed[i]['itemID'];
-rowData = `<td>${IDNode}</td><td>${nameNode}</td><td>${quantityNode}</td>`
-rowEnd = "</tr>"
-HTMLRow = rowStart + rowData + rowEnd;
-HTMLData += HTMLRow
+  rowStart = "<tr>"
+  nameNode = dataParsed[i]['itemName'];
+  categoryNode = dataParsed[i]['category'];
+  quantityNode = dataParsed[i]['quantity'];
+  priceNode = dataParsed[i]['retailCost'];
+  IDNode = dataParsed[i]['itemID'];
+  rowData = `<td>${IDNode}</td><td>${nameNode}</td><td>${categoryNode}</td><td>${quantityNode}</td><td>$${priceNode}</td><td><input class="qty" type="number" min=0 value=0 max="${Number(quantityNode)}"></td>`
+  rowEnd = "</tr>"
+  HTMLRow = rowStart + rowData + rowEnd;
+  HTMLData += HTMLRow
 }
 table.innerHTML += HTMLData;
 console.log(table)

@@ -29,8 +29,8 @@ class inventoryAccessor
     $result = [];
     try
     {
-     $stmt = $this->conn->prepare("select *, i.itemID from inventory i inner join
-     item on i.itemID where siteID = :thisID");
+     $stmt = $this->conn->prepare("select distinct i.itemID, i.siteID, i.quantity, item.category,i.itemLocation,i.reorderThreshold,item.retailPrice from inventory i join
+     item on i.itemID = item.itemID where siteID = :thisID order by i.itemID asc");
      $stmt->bindParam(':thisID', $id);
      $stmt->execute();
      $dbresults = $stmt->fetchAll();
