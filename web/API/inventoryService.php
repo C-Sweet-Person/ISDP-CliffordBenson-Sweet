@@ -7,6 +7,10 @@ if ($method === "GET" && isset($_GET['site']))
 {
         grabInventoryBySiteWithPrice();
 }
+else if ($method === "GET" && isset($_GET['stock']))
+{
+        grabStock();
+}
 else if ($method === "GET")
 {
         grabInventory();
@@ -50,3 +54,23 @@ catch (PDOException $e) {
 echo json_encode($ic->getAllInventoryItems(), JSON_NUMERIC_CHECK);
 
 }
+/**
+ * This function just
+ * grabs the warehouse stock for the order
+ * page, grabbing anything that has stock within the inventory.
+ */
+function grabStock(){
+        try {
+            $body = file_get_contents('php://input');
+            $ic = new inventoryAccessor();
+            $items = $ic->getInventoryStock();
+            $result = json_encode($items,JSON_NUMERIC_CHECK);
+    } 
+    catch (PDOException $e) {
+            echo $e->getMessage();
+        
+    }
+    //echo json_encode($ic->getInventoryItems("select * from item"), JSON_NUMERIC_CHECK);
+    echo $result;
+    
+    }

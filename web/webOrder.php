@@ -16,16 +16,19 @@
     #tableItems
     {
         border: solid thin black;
-        width: 48%;
+        width: 54%;
         float: left;
     }
     #shoppingCartItems
     {
-        width:50%;
+        width:46%;
         border: solid thin black;
         float: left;
     }
-    
+    .qty
+    {
+        width: 60px;
+    }
     </style>
 </head>
 <body>

@@ -5,7 +5,7 @@ window.onload = function()
   document.querySelector("#AddItem").addEventListener("click",Add_Item)
   document.querySelector("#OrderSubmit").addEventListener("click",OrderCreate);
   document.querySelector("#txnType").addEventListener("change",switchType)
-  Dashboard();
+  getStock();
   FillTxnTypes()
   getStores();
 }
@@ -176,31 +176,30 @@ function clearQuantitySelect()
 ///
 
 
-function Dashboard() {
-    let url = "API/inventoryService.php"; // REST-style: URL refers to an entity or collection, not an action
-    let xmlhttp = new XMLHttpRequest();
-    let method = "GET";
-    xmlhttp.onreadystatechange = function () {
-      if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-        let resp = xmlhttp.responseText;
-        console.log(resp);
-        initialSetup(resp);
-      }
-    
-    };
-    xmlhttp.open(method, url, true); // method is either POST or PUT
-    xmlhttp.send();
+function getStock()
+{
+let url = "API/inventoryService.php" + `?stock`; // REST-style: URL refers to an entity or collection, not an action
+let xmlhttp = new XMLHttpRequest();
+let method = "GET";
+xmlhttp.onreadystatechange = function () {
+  if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+    let resp = xmlhttp.responseText;
+    console.log(resp)
+    tableItemCreation(resp)
   }
-
-  function initialSetup(resp)
+  else
   {
-  items = JSON.parse(resp);
-  tableItemCreation();
+    console.log("No data found.");
   }
+};
+xmlhttp.open(method, url, true); // method is either POST or PUT
+xmlhttp.send();
+}
+//
+//
 
-
-
-  function tableItemCreation() {
+  function tableItemCreation(resp) {
+    items = JSON.parse(resp)
     console.log(items[0]["itemID"]);
     let difference = 0;
     let tableItems = document.querySelector("#orderPage");
@@ -246,8 +245,9 @@ function Dashboard() {
   function OrderCreate() {
     let url = "API/OrderService.php"; // REST-style: URL refers to an entity or collection, not an action
     let xmlhttp = new XMLHttpRequest();
+    let storeID = document.querySelector("#storeDelivery").value;
     let method = "PUT";
-    let JSONObj = {"items": orderItems}
+    let JSONObj = {"items": orderItems, "DateCreated": Date.now(), "siteIDTO": storeID}
     if (orderItems.length == 0)
     {
       alert("Cannot create empty order.");
@@ -266,3 +266,23 @@ function Dashboard() {
     xmlhttp.open(method, url, true); // method is either POST or PUT
     xmlhttp.send(JSON.stringify(JSONObj));
   }
+  /**
+   * This function checks to see what value
+   * is in the store selector, and automatically creates an order
+   * based on the reorder quantity.
+   * 
+   * Hopefully.
+   */
+  function fillOrderDetails_Auto(data)
+  {
+    return ""
+  }
+  /**
+   * Finally, in order to fill those order details, we're gonna 
+   * need the inventory detail from the selected store
+   * so this is what this function will do.
+   */
+  function getInventoryFromStore()
+{
+
+}
