@@ -7,7 +7,7 @@ window.onload = function()
     document.querySelector("#searchButton").addEventListener("click",searchItems);
     getItemsExistingDefault()
 }
-
+let orderItems = [];
 /**
  * This function gets the store
  * locations that can be used with
@@ -87,6 +87,7 @@ xmlhttp.send();
  */
 function getItemsExisting()
 {
+orderItems = [];
 let value = document.querySelector("#storeSelect").value;
 console.log(value);
 let url = "API/inventoryService.php" + `?site=${value}`; // REST-style: URL refers to an entity or collection, not an action
