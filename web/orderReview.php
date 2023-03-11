@@ -11,8 +11,8 @@
 <h1><u>Order Review</u></h1>
 <div id="orderSummary"></div>
 <label for="custName">Name: </label><input id = "custName" type="text"><br>
-<label for="custName">Phone: </label><input id = "custPhone" type="text"><br>
-<label for="custName">Email: </label><input id = "custEmail" type="text"><br><br>
+<label for="custPhone">Phone: </label><input id = "custPhone" type="tel" placeholder="(506) 123-4567"><br>
+<label for="custEmail">Email: </label><input id = "custEmail" type="email" placeholder="email@email.com"><br><br>
 <button id="submitButton">Submit</button>
 </body>
 </html>

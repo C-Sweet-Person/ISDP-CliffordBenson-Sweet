@@ -2,6 +2,7 @@ window.onload = function()
 {
 orderCheck()
 orderSumUp()
+document.querySelector("#submitButton").addEventListener("click",orderFinalSubmit)
 }
 
 /**
@@ -48,8 +49,6 @@ for (let i = 0; i < cartItems.length; i++)
     console.log(i)
 }
 summaryTable.innerHTML += `<p>Grand total: $${totalPrice}</p>`
-
-
 }
 
 /**
@@ -62,7 +61,14 @@ summaryTable.innerHTML += `<p>Grand total: $${totalPrice}</p>`
 
 function orderFinalSubmit()
 {
-
+let name = document.querySelector("#custName").value;
+let phone = document.querySelector("#custPhone").value;
+let email = document.querySelector("#custEmail").value;
+if (isNaN(parseInt(phone)))
+{
+    alert("Please enter a valid phone number");
+}
+console.log(name,phone,email);
 
 }
 
