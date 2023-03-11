@@ -12,6 +12,7 @@
 <div id="orderSummary"></div>
 <label for="custName">Name: </label><input id = "custName" type="text"><br>
 <label for="custName">Phone: </label><input id = "custPhone" type="text"><br>
-<label for="custName">Email: </label><input id = "custEmail" type="text"><br>
+<label for="custName">Email: </label><input id = "custEmail" type="text"><br><br>
+<button id="submitButton">Submit</button>
 </body>
 </html>

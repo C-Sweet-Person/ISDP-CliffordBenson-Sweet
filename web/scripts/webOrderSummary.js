@@ -1,6 +1,7 @@
 window.onload = function()
 {
 orderCheck()
+orderSumUp()
 }
 
 /**
@@ -30,6 +31,23 @@ function orderCheck()
 
 function orderSumUp()
 {
+let items = JSON.parse(sessionStorage.getItem("orderInfo"));
+let summaryTable = document.querySelector("#orderSummary");
+console.log(items);
+let cartItems = items.items;
+let totalPrice = 0;
+for (let i = 0; i < cartItems.length; i++)
+{
+    let name = cartItems[i].name
+    let quantity = cartItems[i].quantity
+    let id = cartItems[i].ID
+    let price = cartItems[i].price
+    html = `<p>Product Name: ${name}, ID: ${id}, QTY: ${quantity}, Price: ${price}</p>`;
+    totalPrice += (Number(quantity) * Number(price))
+    summaryTable.innerHTML += html;
+    console.log(i)
+}
+summaryTable.innerHTML += `<p>Grand total: $${totalPrice}</p>`
 
 
 }
