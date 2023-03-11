@@ -4,10 +4,11 @@ window.onload = function()
     getStores();
     document.querySelector("#storeSelect").addEventListener("change",getItemsExisting)
     document.querySelector("#searchButton").addEventListener("click",searchItems);
-    document.querySelector("#searchButton").addEventListener("click",searchItems);
+    document.querySelector("#orderSubmit").addEventListener("click",submitOrder);
     getItemsExistingDefault()
 }
-let orderItems = [];
+let orderItems = {};
+let cartItems = [];
 /**
  * This function gets the store
  * locations that can be used with
@@ -148,12 +149,18 @@ for (let i = 0; i < Add.length; i++)
  */
 function AddItem_Order(evt)
 {
+  //Variables
   row = evt.target.parentElement.parentElement;
   rowLength = row.children.length
   quantity = row.querySelector(".qty");
+  tableCart = document.querySelector("#shoppingCartItems")
   console.log(rowLength)
   quantity.max -= quantity.value
-  quantity.value = 0; 
+  let name = row.children[1].innerHTML;
+  let id = row.children[0].innerHTML;
+  let price = row.children[4].innerHTML;
+  row.children[3].innerHTML = quantity.max;
+  //End Variables
   if (quantity.max == 0)
   {
     row.classList.add("hidden");
@@ -164,44 +171,29 @@ function AddItem_Order(evt)
    * we really don't need weight since that's gonna be checked
    * on the SQL side.
    */
-  item = {"Name": "dummy", "ID": "dummy", "Price": "dummy", "Weight": "dummy"}
+
+  //1. Filling in the list.
+  if (cartItems.includes(id))
+  {
+    shoppingCart = document.querySelectorAll(".cartItem");
+    for (let i = 0; i < shoppingCart.length; i++)
+    {
+      if (shoppingCart[i].children[1].innerHTML == id)
+      {
+        initialAmount = Number(shoppingCart[i].children[2].innerHTML)
+        newAmount = initialAmount + Number(quantity.value)
+        shoppingCart[i].children[2].innerHTML = newAmount
+      }
+    }
+  }
+  else
+  {
+    htmlRow = `<tr class="cartItem"><td>${name}</td><td>${id}</td><td>${quantity.value}</td><td>${price}</td></tr>`
+    tableCart.innerHTML += htmlRow;
+    cartItems.push(id)
+  }
+  quantity.value = 0;
 }
-
-/**
- * This function will create an account creation box
- * 
- */
-/**
- * This function creates the order and sends it to the warehouse
- * as an online order txnType as well. (Take in a list, return an alert.)
- * Note: Maybe add the ability to add a name for a customer, might be
- * too complicated though.
- */
-function sendOrderInfo(items)
-{
-
-
-
-}
-
-/**
- * This function creates a Modal web
- * form that goes on top of the main
- * page and will have a add account info
- * and close account info.
- */
-
-function createModalAccountWindow()
-{
-
-}
-
-/**
- * This function creates a search
- * button that is able to be clicked on and
- * will grab items that relate to the search query.
- * 
- */
 
 function searchItems()
 {
@@ -257,4 +249,37 @@ function showItems()
        tableRows.classList.remove("hidden");
       }
     }
+}
+/**
+ * This function will submit an order
+ * and then redirect the user to a page
+ * with account details.
+ */
+
+function submitOrder()
+{
+orderItems = {};
+let shoppingItems = [];
+if (document.querySelectorAll(".cartItem").length == 0)
+{
+  alert("Can't submit an order with nothing in it.");
+}
+else
+{
+  let items = document.querySelectorAll(".cartItem")
+  for (let i = 0; i < items.length; i++)
+  {
+    let name = items[i].children[0].innerHTML;
+    let id = items[i].children[1].innerHTML;
+    let itemCount = items[i].children[2].innerHTML;
+    let price = items[i].children[3].innerHTML;
+    let item = {"name": name, "ID": id, "quantity": itemCount, "price": price.replace("$","")}
+    shoppingItems.push(item);
+  }
+  date = {"Date": Date.now()}
+  orderItems.items = shoppingItems;
+  orderItems.date = date;
+  sessionStorage.setItem("orderInfo", JSON.stringify(orderItems));
+  window.location.href = "orderReview.php"
+}
 }
