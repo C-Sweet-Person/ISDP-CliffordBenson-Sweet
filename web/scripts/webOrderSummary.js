@@ -4,7 +4,7 @@ orderCheck()
 orderSumUp()
 document.querySelector("#submitButton").addEventListener("click",orderFinalSubmit)
 }
-
+let items
 /**
  * This function just checks to see if there's a sessionObject with "orderInfo" made.
  * If not, display an alert and redirect a customer: they shouldn't be here. That's just
@@ -32,7 +32,7 @@ function orderCheck()
 
 function orderSumUp()
 {
-let items = JSON.parse(sessionStorage.getItem("orderInfo"));
+items = JSON.parse(sessionStorage.getItem("orderInfo"));
 let summaryTable = document.querySelector("#orderSummary");
 console.log(items);
 let cartItems = items.items;
@@ -68,10 +68,34 @@ if (isNaN(parseInt(phone)))
 {
     alert("Please enter a valid phone number");
 }
-console.log(name,phone,email);
+items.Notes = `${name}||${phone}||${email}`
 
 }
 
+/**
+ * This function uploads
+ * the order to the database 
+ * where the database will do calculations such as weight
+ * for the truck as well as seperate each item
+ * into txnLine.
+ */
+function uploadOrder()
+{
+    let url = "API/orderService.php"; // REST-style: URL refers to an entity or collection, not an action
+    let xmlhttp = new XMLHttpRequest();
+    JSON = JSON.stringify(items);
+    let method = "PUT";
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+        let resp = xmlhttp.responseText;
+        console.log(resp);
+        getItems(resp);
+      }
+    
+    };
+    xmlhttp.open(method, url, true); // method is either POST or PUT
+    xmlhttp.send(JSON); 
+}
 //-- Vigenère --
 // Joxiutvc K foin lsog
 // I rexe lef cyhknq ttamxkcow cnn
